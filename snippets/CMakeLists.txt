@@ -1,0 +1,6 @@
+add_subdirectory(basic)
+add_subdirectory(templates)
+add_subdirectory(algorithm)
+add_subdirectory(data_structures)
+add_subdirectory(paradigms)
+add_subdirectory(utilities)
