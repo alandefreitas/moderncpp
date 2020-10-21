@@ -1,0 +1,12 @@
+remote_theme: pmarsceill/just-the-docs
+#theme: "just-the-docs"
+title: Modern C++ Snippets
+description: Snippets for Modern C++
+
+search_enabled: true
+
+aux_links:
+  "Modern C++ on GitHub":
+    - "//github.com/alandefreitas/moderncpp"
+
+footer_content: "Copyright &copy; Alan Freitas. Distributed by an <a href=\"https://github.com/alandefreitas/moderncpp/tree/master/LICENSE.txt\">MIT license.</a>"
