@@ -1,6 +1,7 @@
 #include <iostream>
 #include <numeric>
 #include <type_traits>
+#include <array>
 
 // 1. the return type (bool) is only valid if T is an integral type:
 template <class T>
