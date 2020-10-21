@@ -2,6 +2,7 @@
 #include <numeric>
 #include <random>
 #include <vector>
+#include <algorithm>
 
 int main() {
     std::random_device rd;
