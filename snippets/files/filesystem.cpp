@@ -1,12 +1,13 @@
-#include <filesystem>
+#include CXX_FILESYSTEM_HEADER
 #include <fstream>
 #include <iostream>
 #include <string>
 
-using namespace std;
-namespace fs = std::filesystem;
-
 int main() {
+    using namespace std;
+
+    namespace fs = CXX_FILESYSTEM_NAMESPACE;
+
     // Writing to file
     ofstream fout;
     fout.open("example.txt");

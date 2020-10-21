@@ -5,13 +5,12 @@
 #include <iomanip>
 #include <iostream>
 #include <memory>
-#include <numeric>
-#include <string>
 #include <vector>
-
-using namespace std;
+#include <algorithm>
 
 int main() {
+    using namespace std;
+
     vector<int> numbers;
     numbers.resize(15);
     for (size_t i = 0; i < 15; ++i) {
