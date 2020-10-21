@@ -1,12 +1,11 @@
 #include <iostream>
-#include <numeric>
-#include <string>
-#include <unordered_map>
+#include <memory>
 
 using namespace std;
 
 int main() {
     // Use smart pointers whenever possible
+    // But you can't do it without understanding raw pointers
 
     // Only one unique pointer can point to an address
     std::unique_ptr<int> c;
@@ -17,7 +16,7 @@ int main() {
     }
 
     // Changing value
-    c.reset(new int(2));
+    c = std::make_unique<int>(2);
     if (c) {
         std::cout << "*c : " << *c << std::endl;
     } else {
