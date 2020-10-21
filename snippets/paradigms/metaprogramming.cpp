@@ -3,6 +3,7 @@
 #include <string>
 #include <numeric>
 
+// Meta-programming with templates
 template <unsigned n>
 struct factorial {
   enum { value = n * factorial<n-1>::value };
@@ -13,6 +14,7 @@ struct factorial<0> {
   enum { value = 1 };
 };
 
+// Meta-programming with constexpr
 constexpr int factorial2(int n) {
     return n <= 1 ? 1 : (n * factorial2(n - 1));
 }
