@@ -1,6 +1,6 @@
 #include <iostream>
 #include <numeric>
-#include <vector>
+#include <type_traits>
 
 // 1. the return type (bool) is only valid if T is an integral type:
 template <class T>
