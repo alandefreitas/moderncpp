@@ -7,6 +7,9 @@ set(CMAKE_REQUIRED_FLAGS -fconcepts)
 
 # Try to compile
 check_cxx_source_compiles("#if __cpp_concepts == 201507
+#include <concepts>
+#include <type_traits>
+template <typename T> concept Number = std::is_arithmetic_v<T>;
 int main() { return 0; }
 #endif" Concepts_FOUND)
 
