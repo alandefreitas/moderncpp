@@ -17,7 +17,11 @@ endif ()
 
 if (NOT TARGET glfw)
     CPMAddPackage(NAME glfw GIT_REPOSITORY https://github.com/glfw/glfw VERSION 3.3.2 GIT_TAG 3.3.2 OPTIONS "GLFW_BUILD_DOCS OFF" "GLFW_BUILD_EXAMPLES OFF" "GLFW_BUILD_TESTS OFF" "GLFW_INSTALL OFF")
-    target_compile_options(glfw PRIVATE -Wno-pedantic -Wno-missing-field-initializers -Wno-unused-parameter)
+    if (MSVC)
+        target_compile_options(glfw PRIVATE /Wno-pedantic)
+    else()
+        target_compile_options(glfw PRIVATE -Wno-pedantic -Wno-missing-field-initializers -Wno-unused-parameter)
+    endif()
 endif ()
 
 CPMAddPackage(NAME imgui GIT_REPOSITORY https://github.com/ocornut/imgui VERSION 1.77 DOWNLOAD_ONLY TRUE)
