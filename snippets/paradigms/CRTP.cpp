@@ -1,22 +1,16 @@
 #include <iostream>
-#include <unordered_map>
-#include <string>
 #include <numeric>
+#include <string>
+#include <unordered_map>
 
-template<typename derived>
-class shape {
-    public:
-        derived clone() {
-            return static_cast<derived>(*this);
-        };
+template <typename derived> class shape {
+  public:
+    derived clone() { return static_cast<derived>(*this); };
 };
 
-class square
-        : public shape<square> {
-    public:
-        square clone() {
-            return *this;
-        }
+class square : public shape<square> {
+  public:
+    square clone() { return *this; }
 };
 
 int main() {

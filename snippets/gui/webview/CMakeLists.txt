@@ -15,8 +15,8 @@ if (UNIX)
         target_compile_definitions(webview_hello PUBLIC WEBVIEW_GTK)
         target_compile_options(webview_hello PUBLIC -Wall -Wextra -Wpedantic)
         target_link_libraries(webview_hello PUBLIC "$(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0)")
-    endif()
-else()
+    endif ()
+else ()
     # Link windows
     # See: https://github.com/webview/webview/blob/master/script/build.bat
-endif()
+endif ()

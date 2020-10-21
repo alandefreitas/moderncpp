@@ -1,13 +1,13 @@
 #include <chrono>
 #include <string>
-#include <vector>
 #include <tuple>
+#include <vector>
 
-#include <fmt/format.h>
 #include <fmt/chrono.h>
-#include <fmt/ranges.h>
 #include <fmt/color.h>
+#include <fmt/format.h>
 #include <fmt/ostream.h>
+#include <fmt/ranges.h>
 
 int main() {
     using namespace std;
@@ -40,14 +40,12 @@ int main() {
 
     // Color support
     print(fg(color::crimson) | emphasis::bold, "Hello, {}!\n", "world");
-    print(fg(color::floral_white) | bg(color::slate_gray) | emphasis::underline, "Hello, {}!\n", "мир");
+    print(fg(color::floral_white) | bg(color::slate_gray) | emphasis::underline,
+          "Hello, {}!\n", "мир");
     print(fg(color::steel_blue) | emphasis::italic, "Hello, {}!\n", "世界");
 
     // Format to memory
     memory_buffer out;
     format_to(out, "For a moment, {} happened.", "nothing");
     out.data();
-
-
-
 }

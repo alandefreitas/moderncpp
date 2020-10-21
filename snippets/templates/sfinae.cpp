@@ -1,5 +1,5 @@
-#include <iostream>
 #include <array>
+#include <iostream>
 #include <string>
 #include <type_traits>
 
@@ -20,7 +20,7 @@ void max(std::enable_if_t<!std::is_arithmetic_v<T>, T> a, T b) {
 }
 
 int main() {
-    max(5,7);
+    max(5, 7);
     max("foo", "bar");
     return 0;
 }

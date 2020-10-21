@@ -1,8 +1,8 @@
-#include <iostream>
 #include <array>
-#include <string>
-#include <random>
+#include <iostream>
 #include <memory>
+#include <random>
+#include <string>
 
 using namespace std;
 
@@ -11,7 +11,7 @@ int main() {
     // Try to avoid them (few exceptions)
 
     // Pointer to an int
-    int* x = new int(5);
+    int *x = new int(5);
     std::cout << "x: " << x << std::endl;
     if (x) {
         std::cout << "*x: " << *x << std::endl;
@@ -57,7 +57,7 @@ int main() {
     // Another danger: pointer arithmetic
     // We might access invalid addresses
     x = new int(i);
-    int* tmp = x;
+    int *tmp = x;
     for (int i = 0; i < 30; ++i) {
         // Go to new address
         // - But what's in there?
@@ -69,7 +69,6 @@ int main() {
 
     // Use tmp, which is fortunately pointing to the address we need to delete
     delete tmp;
-
 
     // Raw dynamic arrays
     // - This is what existed before vectors
@@ -86,7 +85,7 @@ int main() {
     // x is pointing to the first number in the sequence
     std::cout << "*x: " << *x << std::endl;
     std::cout << "x[3]: " << x[3] << std::endl;
-    std::cout << "*(x+3): " << *(x+3) << std::endl;
+    std::cout << "*(x+3): " << *(x + 3) << std::endl;
 
     // Deallocate sequence
     // - Different command - more danger

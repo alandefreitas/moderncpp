@@ -1,9 +1,9 @@
 #include <iostream>
-#include <vector>
 #include <memory>
+#include <vector>
 
 class shape {
-public:
+  public:
     shape() : _side1(0), _side2(0) {}
 
     shape(double side) : _side1(side), _side2(side) {}
@@ -15,20 +15,22 @@ public:
     double _side1;
     double _side2;
 
-    bool operator==(const shape &rhs) const { return _side1 == rhs._side1 && _side2 == rhs._side2; }
+    bool operator==(const shape &rhs) const {
+        return _side1 == rhs._side1 && _side2 == rhs._side2;
+    }
 
     bool operator!=(const shape &rhs) const { return !(rhs == *this); }
 };
 
 class triangle : public shape {
-public:
+  public:
     using shape::shape;
 
     double area() { return this->_side1 * this->_side2 / 2; }
 };
 
 class square : public shape {
-public:
+  public:
     using shape::shape;
 
     double area() { return this->_side1 * this->_side2; }
@@ -73,7 +75,8 @@ int main() {
             std::cout << "This is a shape" << std::endl;
         }
         if (*i && **i == *rp) {
-            std::cout << "It has the same area as rp: " << (*i)->area() << std::endl;
+            std::cout << "It has the same area as rp: " << (*i)->area()
+                      << std::endl;
         }
     }
 
@@ -95,7 +98,8 @@ int main() {
             std::cout << "This is a shape" << std::endl;
         }
         if (item && *item == *p) {
-            std::cout << "It has the same area as p: " << item->area() << std::endl;
+            std::cout << "It has the same area as p: " << item->area()
+                      << std::endl;
         }
     }
 

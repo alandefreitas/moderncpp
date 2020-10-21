@@ -30,18 +30,18 @@ int main() {
 
     // Switch on fundamental data types
     switch (n_even_numbers) {
-        case 0:
-            cout << "Zero even numbers. Two odd numbers." << endl;
-            break;
-        case 1:
-            cout << "One even number and one odd number." << endl;
-            break;
-        case 2:
-            cout << "Two even numbers. No odd numbers." << endl;
-            break;
-        default:
-            cout << "Tem um erro sério no seu programa" << endl;
-            return 1;
+    case 0:
+        cout << "Zero even numbers. Two odd numbers." << endl;
+        break;
+    case 1:
+        cout << "One even number and one odd number." << endl;
+        break;
+    case 2:
+        cout << "Two even numbers. No odd numbers." << endl;
+        break;
+    default:
+        cout << "Tem um erro sério no seu programa" << endl;
+        return 1;
     }
 
     // Common conditional without n_even_numbers
@@ -54,7 +54,8 @@ int main() {
     }
 
     // Printing directly
-    cout << "You typed " << n_even_numbers << " even numbers and " << number_of_numbers - n_even_numbers << " odd numbers" << endl;
+    cout << "You typed " << n_even_numbers << " even numbers and "
+         << number_of_numbers - n_even_numbers << " odd numbers" << endl;
 
     // Ternary operators for fixing plurals
     cout << "You typed " << n_even_numbers << " even number";
@@ -70,7 +71,9 @@ int main() {
     }
 
     // Ternary operator
-    cout << "You " << ((n_even_numbers > number_of_numbers - n_even_numbers) ? ("") : ("don't"));
+    cout << "You "
+         << ((n_even_numbers > number_of_numbers - n_even_numbers) ? ("")
+                                                                   : ("don't"));
     cout << " have more even numbers than odd numbers" << endl;
 
     // Testing constants

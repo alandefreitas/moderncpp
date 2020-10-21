@@ -1,5 +1,5 @@
-#include <iostream>
 #include <array>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -9,7 +9,7 @@ int main() {
 
     // Raw array
     // Examples only: don't use raw arrays!
-    int temp[n] = {1,2,3};
+    int temp[n] = {1, 2, 3};
     for (size_t i = 0; i < n; ++i) {
         cout << "temp[" << i << "]: " << temp[i] << endl;
     }

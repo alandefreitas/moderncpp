@@ -1,5 +1,5 @@
-#include <iostream>
 #include <array>
+#include <iostream>
 
 // Never do that on header files
 // Probably not a good idea in other files
@@ -33,14 +33,14 @@ int main() {
     // std::array<int,a> v1;
 
     // Sometimes possible
-    std::array<int,b> v2 = {5,6,5};
+    std::array<int, b> v2 = {5, 6, 5};
     cout << "v2.size(): " << v2.size() << endl;
 
     // Impossible (b2 depends on a variable):
     // std::array<int,b2> v2b;
 
     // Always possible
-    std::array<int,c> v3 = {7,8,7,8};
+    std::array<int, c> v3 = {7, 8, 7, 8};
     cout << "v3.size(): " << v3.size() << endl;
 
     return 0;

@@ -1,13 +1,13 @@
-#include <iostream>
 #include <array>
-#include <memory>
 #include <chrono>
-#include <string>
-#include <vector>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
+#include <memory>
 #include <numeric>
 #include <random>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -17,16 +17,17 @@ int random_number(int low, int high);
 vector<int> generate_vector(int n);
 int sequential_search(const vector<int> &v, const int key);
 int binary_search(const vector<int> &v, const int key);
-pair<int,int> sequential_search_operations(const vector<int> &v, const int key);
-pair<int,int> binary_search_operations(const vector<int> &v, const int key);
+pair<int, int> sequential_search_operations(const vector<int> &v,
+                                            const int key);
+pair<int, int> binary_search_operations(const vector<int> &v, const int key);
 
 int main() {
     // alias to "now" function
-    const auto& now = chrono::high_resolution_clock::now;
+    const auto &now = chrono::high_resolution_clock::now;
 
     // Real time experiment
     cout << "n\t\tpos\t\t\tsequential\tsorting\tbinary" << endl;
-    for (int i = 2; i < 100000000; i*=2) {
+    for (int i = 2; i < 100000000; i *= 2) {
         // header
         cout << "n=" << i << "\t";
         if (i < 10) {
@@ -35,11 +36,11 @@ int main() {
 
         // create vector and key
         vector<int> v = generate_vector(i);
-        int key = random_number(0,i-1);
+        int key = random_number(0, i - 1);
 
         // measure time with sequential search
         auto start_time = now();
-        int pos = sequential_search(v,key);
+        int pos = sequential_search(v, key);
         auto duration = now() - start_time;
         cout << "pos=" << pos << "\t\t";
         cout << duration.count() << "ms\t\t";
@@ -52,7 +53,7 @@ int main() {
 
         // measure time with binary search
         start_time = now();
-        pos = binary_search(v,key);
+        pos = binary_search(v, key);
         duration = now() - start_time;
         cout << duration.count() << "ms\t";
 
@@ -61,7 +62,7 @@ int main() {
 
     // Count operations
     cout << "n\t\tpos\t\t\tsequential\tsorting\tbinary" << endl;
-    for (int i = 2; i < 100000000; i*=2) {
+    for (int i = 2; i < 100000000; i *= 2) {
         // header
         cout << "n=" << i << "\t";
         if (i < 10) {
@@ -70,10 +71,10 @@ int main() {
 
         // create vector
         vector<int> v = generate_vector(i);
-        int key = random_number(0,i-1);
+        int key = random_number(0, i - 1);
 
         // count operations with sequential search
-        auto [pos,operations] = sequential_search_operations(v,key);
+        auto [pos, operations] = sequential_search_operations(v, key);
         cout << "pos=" << pos << "\t\t";
         cout << operations << "\t\t";
 
@@ -82,7 +83,7 @@ int main() {
         cout << v.size() * log2(v.size()) << "\t\t";
 
         // count operations with binary search
-        auto [pos2,operations2] = binary_search_operations(v,key);
+        auto [pos2, operations2] = binary_search_operations(v, key);
         cout << operations2 << "\t";
 
         cout << endl;
@@ -91,21 +92,18 @@ int main() {
     return 0;
 }
 
-
-void shuffle_vector(vector<int> &v){
+void shuffle_vector(vector<int> &v) {
     static random_device r;
     static default_random_engine generator(r());
-    shuffle(v.begin(),v.end(),generator);
+    shuffle(v.begin(), v.end(), generator);
 }
 
-void sort_vector(vector<int> &v){
-    sort(v.begin(),v.end());
-}
+void sort_vector(vector<int> &v) { sort(v.begin(), v.end()); }
 
-int random_number(int low, int high){
+int random_number(int low, int high) {
     static random_device r;
     static default_random_engine generator(r());
-    uniform_int_distribution<int> ud(low,high);
+    uniform_int_distribution<int> ud(low, high);
     return ud(generator);
 }
 
@@ -129,10 +127,10 @@ int sequential_search(const vector<int> &v, const int key) {
 
 int binary_search(const vector<int> &v, const int key) {
     int esq = 0;
-    int dir = v.size()-1;
+    int dir = v.size() - 1;
     int i;
     do {
-        i = (esq + dir)/2;
+        i = (esq + dir) / 2;
         if (v[i] < key) {
             esq = i + 1;
         } else {
@@ -146,25 +144,26 @@ int binary_search(const vector<int> &v, const int key) {
     }
 }
 
-pair<int,int> sequential_search_operations(const vector<int> &v, const int key) {
+pair<int, int> sequential_search_operations(const vector<int> &v,
+                                            const int key) {
     int operations = 0;
     for (int i = 0; i < v.size(); ++i) {
         operations++;
         if (v[i] == key) {
-            return {i,operations};
+            return {i, operations};
         }
         operations++;
     }
-    return {-1,operations};
+    return {-1, operations};
 }
 
-pair<int,int> binary_search_operations(const vector<int> &v, const int key) {
+pair<int, int> binary_search_operations(const vector<int> &v, const int key) {
     int esq = 0;
-    int dir = v.size()-1;
+    int dir = v.size() - 1;
     int i;
     int operations = 0;
     do {
-        i = (esq + dir)/2;
+        i = (esq + dir) / 2;
         operations++;
         if (v[i] < key) {
             esq = i + 1;
@@ -175,8 +174,8 @@ pair<int,int> binary_search_operations(const vector<int> &v, const int key) {
     } while (v[i] != key && esq <= dir);
     operations++;
     if (v[i] == key) {
-        return {i,operations};
+        return {i, operations};
     } else {
-        return {-1,operations};
+        return {-1, operations};
     }
 }

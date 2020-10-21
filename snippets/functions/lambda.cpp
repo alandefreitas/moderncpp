@@ -1,15 +1,15 @@
-#include <iostream>
-#include <vector>
-#include <array>
 #include <algorithm>
+#include <array>
 #include <functional>
+#include <iostream>
 #include <numeric>
+#include <vector>
 
 class add {
-    public:
-        add() {};
+  public:
+    add(){};
 
-        double operator()(double left, double right) { return left + right; }
+    double operator()(double left, double right) { return left + right; }
 };
 
 using namespace std;
@@ -23,7 +23,7 @@ int main() {
     // The modern way
     // - Keeping inline lambda functions in variables
     // - This is a good place to use auto
-    auto function = [](){ cout << "Hello, world! "; };
+    auto function = []() { cout << "Hello, world! "; };
     function();
 
     // Using the lambda functions as arguments to other functions
@@ -45,11 +45,11 @@ int main() {
     // Capturing values in lambda function
     // - These values are external to the function parameters
     int x = 10;
-    std::function<int(int)> func2 = [x](int i){ return i + x; };
+    std::function<int(int)> func2 = [x](int i) { return i + x; };
     cout << "func2(6): " << func2(6) << endl;
 
     // Automatic parameters
-    auto decreasing_comparison = [](auto a, auto b) {return b < a; };
+    auto decreasing_comparison = [](auto a, auto b) { return b < a; };
     vector<double> v2 = {3.6, 3.2, 7.5, 2.4};
     sort(v.begin(), v.end());
 
@@ -69,13 +69,15 @@ int main() {
     cout << "fn_half(10): " << fn_half(10) << endl;
 
     // Keep parameters but convert the return type
-    auto fn_floor = bind<int>(my_divide, placeholders::_1, placeholders::_2); // returns int(x/y)
+    auto fn_floor = bind<int>(my_divide, placeholders::_1,
+                              placeholders::_2); // returns int(x/y)
     cout << "fn_floor(10,2): " << fn_floor(13, 2) << endl;
 
     // Sorting with lambdas
-    vector<int> myvector = {32,71,12,45,26,80,53,33};
-    sort (myvector.begin(), myvector.begin()+4);
-    sort (myvector.begin()+4, myvector.end(), [](auto x, auto y){return x > y;});
+    vector<int> myvector = {32, 71, 12, 45, 26, 80, 53, 33};
+    sort(myvector.begin(), myvector.begin() + 4);
+    sort(myvector.begin() + 4, myvector.end(),
+         [](auto x, auto y) { return x > y; });
 
     // Checking condition on all elements
     // - This algorithm (like some others) only makes sense with lambdas
@@ -98,7 +100,7 @@ int main() {
 
     // Find if...
     vector<int> v3 = {10, 25, 40, 55};
-    auto it = find_if(v3.begin(), v3.end(),[](auto i) { return i % 2 == 1; });
+    auto it = find_if(v3.begin(), v3.end(), [](auto i) { return i % 2 == 1; });
     cout << "The first odd value is " << *it << '\n';
 
     // Removing if...
@@ -108,20 +110,23 @@ int main() {
     for_each(v4.begin(), v4.end(), [](const double c) { cout << c << " "; });
     cout << endl;
     x = 5;
-    v4.erase(remove_if(v4.begin(), v4.end(), [x](int n) { return n < x; }), v4.end());
+    v4.erase(remove_if(v4.begin(), v4.end(), [x](int n) { return n < x; }),
+             v4.end());
     for_each(v4.begin(), v4.end(), [](const double c) { cout << c << " "; });
     cout << endl;
 
     // Counting if...
     vector<int> v5(9);
     iota(v5.begin(), v5.end(), 1);
-    int mycount = count_if(v5.begin(), v5.end(), [](int i) { return ((i % 2) == 1); });
+    int mycount =
+        count_if(v5.begin(), v5.end(), [](int i) { return ((i % 2) == 1); });
     cout << "My vector contains " << mycount << " odd values.\n";
 
     // Replacing if...
     vector<int> v6(9);
     iota(v6.begin(), v6.end(), 1);
-    replace_if(v6.begin(), v6.end(), [](int i) { return ((i % 2) == 1); }, 0);
+    replace_if(
+        v6.begin(), v6.end(), [](int i) { return ((i % 2) == 1); }, 0);
     cout << "v6 contains:";
     for (vector<int>::iterator it = v6.begin(); it != v6.end(); ++it) {
         cout << ' ' << *it;

@@ -1,7 +1,7 @@
+#include "asio.hpp"
 #include <ctime>
 #include <iostream>
 #include <string>
-#include "asio.hpp"
 
 using namespace std;
 
@@ -15,9 +15,11 @@ string make_daytime_string() {
 int main() {
     try {
         // Listen for connections
-        // All programs that use asio need to have at least one io_context object
+        // All programs that use asio need to have at least one io_context
+        // object
         asio::io_context io_context;
-        asio::ip::tcp::acceptor acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 8080));
+        asio::ip::tcp::acceptor acceptor(
+            io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 8080));
 
         // It will handle one connection at a time
         for (;;) {
@@ -34,8 +36,7 @@ int main() {
             error_code ignored_error;
             asio::write(socket, asio::buffer(message), ignored_error);
         }
-    }
-    catch (exception &e) {
+    } catch (exception &e) {
         // handle any exceptions
         cerr << e.what() << endl;
     }

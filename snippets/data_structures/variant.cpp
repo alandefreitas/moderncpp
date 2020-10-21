@@ -1,7 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <numeric>
 #include <variant>
+#include <vector>
 
 using namespace std;
 
@@ -35,12 +35,12 @@ int main() {
     cout << get<string>(v) << endl;
 
     switch (v.index()) {
-        case 0:
-            cout << "This is a double" << endl;
-        case 1:
-            cout << "This is a char" << endl;
-        case 2:
-            cout << "This is a string" << endl;
+    case 0:
+        cout << "This is a double" << endl;
+    case 1:
+        cout << "This is a char" << endl;
+    case 2:
+        cout << "This is a string" << endl;
     }
 
     return 0;

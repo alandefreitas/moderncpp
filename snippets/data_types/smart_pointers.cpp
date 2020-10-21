@@ -1,7 +1,7 @@
 #include <iostream>
-#include <unordered_map>
-#include <string>
 #include <numeric>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -10,7 +10,7 @@ int main() {
 
     // Only one unique pointer can point to an address
     std::unique_ptr<int> c;
-    if (c){
+    if (c) {
         std::cout << "*c : " << *c << std::endl;
     } else {
         std::cout << "c is empty" << std::endl;
@@ -18,7 +18,7 @@ int main() {
 
     // Changing value
     c.reset(new int(2));
-    if (c){
+    if (c) {
         std::cout << "*c : " << *c << std::endl;
     } else {
         std::cout << "c is empty" << std::endl;
@@ -38,13 +38,13 @@ int main() {
 
     // Moving values is valid
     c = std::move(c2);
-    if (c){
+    if (c) {
         std::cout << "New *c : " << *c << std::endl;
     } else {
         std::cout << "c is empty" << std::endl;
     }
 
-    if (c2){
+    if (c2) {
         std::cout << "New *c2 : " << *c << std::endl;
     } else {
         std::cout << "c2 is empty" << std::endl;
@@ -55,7 +55,7 @@ int main() {
     // - Deletes data automatically when the last pointer is over
     // - More expensive than unique pointers
     std::shared_ptr<int> sp(new int(2));
-    if (sp){
+    if (sp) {
         std::cout << "New *sp : " << *sp << std::endl;
     } else {
         std::cout << "sp is empty" << std::endl;
@@ -65,19 +65,20 @@ int main() {
     // This is valid now:
     std::shared_ptr<int> sp2 = sp;
     *sp2 = 3;
-    if (sp){
+    if (sp) {
         cout << "New *sp : " << *sp << endl;
     } else {
         cout << "sp is empty" << endl;
     }
-    if (sp2){
+    if (sp2) {
         cout << "New *sp2 : " << *sp << endl;
     } else {
         cout << "sp2 is empty" << endl;
     }
 
     // How many pointers are pointing to this number 3?
-    std::cout << "There are " << sp.use_count() << " pointers to " << sp.get() << std::endl;
+    std::cout << "There are " << sp.use_count() << " pointers to " << sp.get()
+              << std::endl;
 
     return 0;
 }

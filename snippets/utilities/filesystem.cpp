@@ -1,7 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -51,7 +51,8 @@ int main() {
 
     fs::path pl{"/Linux/System/photo.jpg"};
     cout << "pl: " << pl << '\n';
-    cout << "pl.lexically_proximate(\"/Linux/\"): " << pl.lexically_proximate("/Linux/") << '\n';
+    cout << "pl.lexically_proximate(\"/Linux/\"): "
+         << pl.lexically_proximate("/Linux/") << '\n';
     cout << "pl.root_name(): " << pl.root_name() << '\n';
     cout << "pl.root_directory(): " << pl.root_directory() << '\n';
     cout << "pl.root_path(): " << pl.root_path() << '\n';
@@ -83,8 +84,7 @@ int main() {
     try {
         fs::file_status s = status(p7);
         cout << boolalpha << fs::is_directory(s) << '\n';
-    }
-    catch (fs::filesystem_error &e) {
+    } catch (fs::filesystem_error &e) {
         cerr << e.what() << '\n';
     }
 
@@ -146,7 +146,7 @@ int main() {
     // Iterating over files
     fs::path p13 = fs::current_path();
     fs::directory_iterator range{p13};
-    for (auto& p: range) {
+    for (auto &p : range) {
         cout << p.path().filename() << '\n';
     }
 

@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <numeric>
 #include <any>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
 using namespace std;
 
@@ -22,10 +22,10 @@ int main() {
     cout << a.type().name() << ": " << any_cast<string>(a) << '\n';
 
     try {
-      any a = 1;
-      cout << any_cast<float>(a) << '\n';
+        any a = 1;
+        cout << any_cast<float>(a) << '\n';
     } catch (bad_any_cast &e) {
-      cout << e.what() << '\n';
+        cout << e.what() << '\n';
     }
 
     any s2 = 1;

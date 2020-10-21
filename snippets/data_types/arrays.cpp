@@ -1,5 +1,5 @@
-#include <iostream>
 #include <array>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -8,7 +8,7 @@ int main() {
     constexpr int n = 3;
 
     // Fixed size array
-    array<int,n> a = {1,2,3};
+    array<int, n> a = {1, 2, 3};
     for (size_t i = 0; i < a.size(); ++i) {
         cout << "a[" << i << "]: " << a[i] << endl;
     }
@@ -29,7 +29,7 @@ int main() {
     cout << "sizeof(a): " << sizeof(a) << endl;
 
     // Multidimensional array
-    array<array<double,3>,10> matrix;
+    array<array<double, 3>, 10> matrix;
     for (size_t i = 0; i < matrix.size(); ++i) {
         for (size_t j = 0; j < matrix[i].size(); ++j) {
             matrix[i][j] = 0.5 * i + 0.8 * j;
@@ -38,7 +38,7 @@ int main() {
 
     for (const auto &row : matrix) {
         double sum = 0.;
-        for (const auto &col: row) {
+        for (const auto &col : row) {
             sum += col;
         }
         cout << "Row average " << sum / row.size() << endl;

@@ -1,8 +1,7 @@
 #include <iostream>
-#include <unordered_map>
-#include <string>
 #include <numeric>
-
+#include <string>
+#include <unordered_map>
 
 int main() {
     using std::cout;
@@ -17,7 +16,7 @@ int main() {
     cout << "dont_do_that: " << dont_do_that << endl;
 
     // Data type alias
-    using hash_table = std::unordered_map<std::string,double>;
+    using hash_table = std::unordered_map<std::string, double>;
     hash_table t;
     t["zero"] = 0.0;
     t["pi"] = 3.14;
@@ -25,7 +24,7 @@ int main() {
 
     // Without auto
     hash_table::iterator it = t.find("pi");
-    if (it != t.end()){
+    if (it != t.end()) {
         cout << it->first << ": " << it->second << endl;
     }
 
@@ -34,20 +33,20 @@ int main() {
     // - It avoids a long type name
     // - There's no ambiguity (find always returns an iterator)
     auto it2 = t.find("zero");
-    if (it2 != t.end()){
+    if (it2 != t.end()) {
         cout << it2->first << ": " << it2->second << endl;
     }
 
     // Get type from another variable
     decltype(it) it3 = it;
     ++it3;
-    if (it3 != t.end()){
+    if (it3 != t.end()) {
         cout << it3->first << ": " << it3->second << endl;
     }
 
     // Auto is also very useful for generic functions
-    auto print_map_container = [](const auto& m){
-        for (auto&& item: m) {
+    auto print_map_container = [](const auto &m) {
+        for (auto &&item : m) {
             std::cout << item.first << ": " << item.second << std::endl;
         }
     };

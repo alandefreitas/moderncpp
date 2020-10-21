@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -28,7 +28,7 @@ int main() {
     cout << "sizeof(v): " << sizeof(v) << endl;
 
     // Multidimensional vector
-    vector<vector<double>> matrix(10,vector<double>(3, 0));
+    vector<vector<double>> matrix(10, vector<double>(3, 0));
     for (size_t i = 0; i < matrix.size(); ++i) {
         for (size_t j = 0; j < matrix[i].size(); ++j) {
             matrix[i][j] = 0.5 * i + 0.8 * j;
@@ -37,7 +37,7 @@ int main() {
 
     for (const auto &row : matrix) {
         double sum = 0.;
-        for (const auto &col: row) {
+        for (const auto &col : row) {
             sum += col;
         }
         cout << "Row average " << sum / row.size() << endl;

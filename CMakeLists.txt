@@ -12,6 +12,10 @@ option(CPM_USE_LOCAL_PACKAGES "Try `find_package` before downloading dependencie
 option(BUILD_SNIPPETS "Build snippets" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
 
+# The tray library is not being frequently maintained
+# This example is not good for all operating systems
+option(BUILD_TRAY "Build tray snippets" OFF)
+
 # Libraries
 if (${UNIX} AND NOT ${APPLE})
     find_package(Threads)

@@ -1,9 +1,8 @@
 #include <QApplication>
 #include <QPushButton>
 
-int main(int argc, char **argv)
-{
-    QApplication app (argc, argv);
+int main(int argc, char **argv) {
+    QApplication app(argc, argv);
 
     QWidget window;
     window.setFixedSize(100, 80);
