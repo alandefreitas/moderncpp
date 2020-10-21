@@ -51,7 +51,7 @@ int main() {
     // Automatic parameters
     auto decreasing_comparison = [](auto a, auto b) { return b < a; };
     vector<double> v2 = {3.6, 3.2, 7.5, 2.4};
-    sort(v.begin(), v.end());
+    sort(v.begin(), v.end(), decreasing_comparison);
 
     // Binding parameters to the function
     // - Creates new functions from existing functions

@@ -22,7 +22,7 @@ class graph {
         std::vector<int>::iterator vertex_end() {return vertices.end(); }
         std::unordered_multimap<size_t,size_t>::iterator edge_begin() {return edges.begin(); }
         std::unordered_multimap<size_t,size_t>::iterator edge_end() {return edges.end(); }
-        std::pair<std::unordered_multimap<size_t,size_t>::iterator,std::unordered_multimap<size_t,size_t>::iterator> neighbors(std::vector<int>::iterator vertex) {
+        std::pair<std::unordered_multimap<size_t,size_t>::iterator,std::unordered_multimap<size_t,size_t>::iterator> neighbors([[maybe_unused]] std::vector<int>::iterator vertex) {
             return std::make_pair(edges.begin(),edges.end());
         }
     private:

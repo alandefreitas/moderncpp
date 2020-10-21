@@ -27,7 +27,7 @@ int main() {
     // Decide GL+GLSL versions
 #if __APPLE__
     // GL 3.2 Core + GLSL 150
-    const char *glsl_version = "#version 150";
+    // const char *glsl_version = "#version 150";
     SDL_GL_SetAttribute(
         SDL_GL_CONTEXT_FLAGS,
         SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG); // Always required on Mac

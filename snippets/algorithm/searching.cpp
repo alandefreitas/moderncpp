@@ -116,7 +116,7 @@ vector<int> generate_vector(int n) {
 }
 
 int sequential_search(const vector<int> &v, const int key) {
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         if (v[i] == key) {
             return i;
         }
@@ -146,7 +146,7 @@ int binary_search(const vector<int> &v, const int key) {
 pair<int, int> sequential_search_operations(const vector<int> &v,
                                             const int key) {
     int operations = 0;
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         operations++;
         if (v[i] == key) {
             return {i, operations};

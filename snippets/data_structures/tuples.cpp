@@ -46,7 +46,8 @@ int main() {
 
     // Larger tuple
     auto t3 = std::make_tuple(6.3, "texto", 2, 'o');
-    int x = std::get<3>(t3);
+    char x = std::get<3>(t3);
+    std::cout << "x: " << x << std::endl;
     std::cout << "std::get<0>(t3): " << std::get<0>(t3)
               << ", std::get<1>(t3): " << std::get<1>(t3) << std::endl;
 

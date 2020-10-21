@@ -15,7 +15,7 @@ int main() {
     // Changing update statement
     int b = 2;
     int e = 1024;
-    for (size_t i = b; i <= e; i *= b) {
+    for (int i = b; i <= e; i *= b) {
         cout << b << endl;
     }
 
@@ -27,14 +27,14 @@ int main() {
 
     // Index based loop
     constexpr int n = 100;
-    array<double, n> prices;
-    for (int i = 0; i < prices.size(); ++i) {
+    array<double, n> prices{};
+    for (size_t i = 0; i < prices.size(); ++i) {
         prices[i] = 4 + 0.1 * i;
     }
 
     // Iterator based loop
-    for (auto it = prices.begin(); it != prices.end(); ++it) {
-        cout << "Item price: " << *it << endl;
+    for (double & price : prices) {
+        cout << "Item price: " << price << endl;
     }
 
     // Range based loop
@@ -56,7 +56,7 @@ int main() {
     // Iterating 2-dimensional arrays
     constexpr int n1 = 100;
     constexpr int n2 = 3;
-    array<array<double, n2>, n1> grades;
+    array<array<double, n2>, n1> grades{};
 
     // Index based loop
     for (int i = 0; i < n1; ++i) {

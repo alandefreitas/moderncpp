@@ -69,27 +69,28 @@ int main() {
 
     // Use tmp, which is fortunately pointing to the address we need to delete
     delete tmp;
+    delete x;
 
     // Raw dynamic arrays
     // - This is what existed before vectors
     // - Point to a sequence of values
     // - Always use vectors instead of this
     // - If you need to access the raw data, use vector::data()
-    x = new int[10];
-    for (size_t i = 0; i < 10; ++i) {
-        x[i] = 10 + i * 10;
+    int* x2 = new int[10];
+    for (int i2 = 0; i2 < 10; ++i2) {
+        x2[i2] = 10 + i2 * 10;
     }
-    std::cout << "x: " << x << std::endl;
-    std::cout << "&x[0]: " << &x[0] << std::endl;
-    std::cout << "x[0]: " << x[0] << std::endl;
-    // x is pointing to the first number in the sequence
-    std::cout << "*x: " << *x << std::endl;
-    std::cout << "x[3]: " << x[3] << std::endl;
-    std::cout << "*(x+3): " << *(x + 3) << std::endl;
+    std::cout << "x2: " << x2 << std::endl;
+    std::cout << "&x2[0]: " << &x2[0] << std::endl;
+    std::cout << "x2[0]: " << x2[0] << std::endl;
+    // x2 is pointing to the first number in the sequence
+    std::cout << "*x2: " << *x2 << std::endl;
+    std::cout << "x2[3]: " << x2[3] << std::endl;
+    std::cout << "*(x2+3): " << *(x2 + 3) << std::endl;
 
     // Deallocate sequence
     // - Different command - more danger
-    delete[] x;
+    delete[] x2;
 
     return 0;
 }

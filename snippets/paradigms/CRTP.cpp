@@ -17,5 +17,7 @@ int main() {
     square a;
     square b = a.clone();
     std::cout << "The square has been cloned as a real square" << std::endl;
+    std::cout << "&a: " << &a << std::endl;
+    std::cout << "&b: " << &b << std::endl;
     return 0;
 }

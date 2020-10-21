@@ -6,9 +6,11 @@ class shape {
   public:
     shape() : _side1(0), _side2(0) {}
 
-    shape(double side) : _side1(side), _side2(side) {}
+    explicit shape(double side) : _side1(side), _side2(side) {}
 
     shape(double side1, double side2) : _side1(side1), _side2(side2) {}
+
+    virtual ~shape() = default;
 
     virtual double area() { return 0; }
 
@@ -26,23 +28,27 @@ class triangle : public shape {
   public:
     using shape::shape;
 
-    double area() { return this->_side1 * this->_side2 / 2; }
+    ~triangle() override = default;
+
+    double area() override { return this->_side1 * this->_side2 / 2; }
 };
 
 class square : public shape {
   public:
     using shape::shape;
 
-    double area() { return this->_side1 * this->_side2; }
+    ~square() override = default;
+
+    double area() override { return this->_side1 * this->_side2; }
 };
 
 std::vector<shape *> load_shapes_old_cpp() {
     std::vector<shape *> v(30);
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         if (i % 2) {
-            v[i] = new triangle(i + 30);
+            v[i] = new triangle(static_cast<double>(i + 30));
         } else {
-            v[i] = new square(i + 30);
+            v[i] = new square(static_cast<double>(i + 30));
         }
     }
     return v;
@@ -50,7 +56,7 @@ std::vector<shape *> load_shapes_old_cpp() {
 
 std::vector<std::shared_ptr<shape>> load_shapes_modern_cpp() {
     std::vector<std::shared_ptr<shape>> v(30);
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         if (i % 2) {
             v[i] = std::make_shared<triangle>(i + 30);
         } else {
@@ -80,10 +86,12 @@ int main() {
         }
     }
 
+    /*
     for (std::vector<shape *>::iterator i = rv.begin(); i != rv.end(); ++i) {
         delete *i; // not exception safe
     }
     delete rp;
+    */
 
     // Smart pointers
     std::shared_ptr<shape> p = std::make_shared<square>(42);

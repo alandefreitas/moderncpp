@@ -148,7 +148,7 @@ void sort_vector(vector<int> &v) { sort(v.begin(), v.end()); }
 
 void sort_selection(vector<int> &v) {
     // índices para loops
-    int i, j, min;
+    size_t i, j, min;
     // elemento para trocas
     int x;
     // para cada posição
@@ -171,14 +171,15 @@ void sort_selection(vector<int> &v) {
 
 void sort_insertion(vector<int> &v) {
     // índices para loops
-    int i, j;
+    size_t i;
+    int j;
     // elemento
     int x;
     // para cada posição a partir de i = 1
     for (i = 1; i < v.size(); i++) {
         // coloca o elemento a[i] na posição correta
         x = v[i];
-        j = i - 1;
+        j = static_cast<int>(i) - 1;
         // enquanto há posições válidas e
         //    elemento a colocar é menor que o corrente
         while ((j >= 0) && (x < v[j])) {
@@ -203,7 +204,7 @@ int sort_vector_operations(vector<int> &v) {
 int sort_selection_operations(vector<int> &v) {
     int operations = 0;
     // índices para loops
-    int i, j, min;
+    size_t i, j, min;
     // elemento para trocas
     int x;
     // para cada posição
@@ -229,14 +230,15 @@ int sort_selection_operations(vector<int> &v) {
 int sort_insertion_operations(vector<int> &v) {
     int operations = 0;
     // índices para loops
-    int i, j;
+    size_t i;
+    int j;
     // elemento
     int x;
     // para cada posição a partir de i = 1
     for (i = 1; i < v.size(); i++) {
         // coloca o elemento a[i] na posição correta
         x = v[i];
-        j = i - 1;
+        j = static_cast<int>(i) - 1;
         // enquanto há posições válidas e
         //    elemento a colocar é menor que o corrente
         ++operations;
@@ -373,7 +375,7 @@ vector<int> create_vector(int n) {
 }
 
 int search_sequential(const vector<int> &v, const int key) {
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         if (v[i] == key) {
             return i;
         }
@@ -403,7 +405,7 @@ int search_binary(const vector<int> &v, const int key) {
 pair<int, int> search_sequential_operations(const vector<int> &v,
                                             const int key) {
     int operations = 0;
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         operations++;
         if (v[i] == key) {
             return {i, operations};

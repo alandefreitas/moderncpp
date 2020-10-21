@@ -21,7 +21,7 @@ append(CONTAINER &c, int el) {
 
 template <class CONTAINER>
 std::enable_if_t<std::is_same_v<CONTAINER, std::array<int, 5>>, void>
-append(CONTAINER &c, int el) {
+append([[maybe_unused]] CONTAINER &c, int) {
     std::cout << "Cannot increase the array" << std::endl;
 }
 
@@ -29,7 +29,7 @@ template <class CONTAINER>
 std::enable_if_t<std::is_same_v<CONTAINER, std::vector<int>> ||
                      std::is_same_v<CONTAINER, std::array<int, 5>>,
                  void>
-append_front(CONTAINER &c, int el) {
+append_front([[maybe_unused]] CONTAINER &c, int) {
     std::cout << "Cannot insert in front of vector or array" << std::endl;
 }
 
@@ -43,7 +43,7 @@ append_front(CONTAINER &c, int el) {
 
 template <class CONTAINER>
 std::enable_if_t<std::is_same_v<CONTAINER, std::list<int>>, void>
-print_container_with_subscript(const CONTAINER &c) {
+print_container_with_subscript([[maybe_unused]] const CONTAINER &c) {
     std::cout << "Cannot iterate list with subscripts" << std::endl;
 }
 

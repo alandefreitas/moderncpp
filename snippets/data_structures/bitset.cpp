@@ -72,7 +72,7 @@ int main() {
     std::cout << "b: " << b << std::endl;
     std::cout << "b: " << b.to_ulong() << std::endl;
     std::cout << "b: " << b.to_string() << std::endl;
-    for (int i = 0; i < b.size(); ++i) {
+    for (size_t i = 0; i < b.size(); ++i) {
         std::cout << "b[i] : " << b[i] << std::endl;
     }
 

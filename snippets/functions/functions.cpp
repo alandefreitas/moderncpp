@@ -17,7 +17,7 @@ void sort(int a, int b, int c, int &minimum, int &middle, int &maximum);
 tuple<int, int, int> sort(int a, int b, int c);
 bool has_element(const array<int, 1000> &a, int element);
 void increment_all(array<int, 1000> &a, int increment_value = 1);
-void pointer_to_cube(shared_ptr<int> p);
+void pointer_to_cube(const shared_ptr<int>& p);
 int fibonacci_iterative(int n);
 int fibonacci_recursive(int n);
 
@@ -45,15 +45,15 @@ int main() {
 
     // Parameter by reference
     // - Always pass arrays by reference to avoid copying
-    array<int, 1000> v;
+    array<int, 1000> v{};
     increment_all(v);
-    for (int i = 0; i < v.size() && i < 20; ++i) {
+    for (size_t i = 0; i < v.size() && i < 20; ++i) {
         cout << v[i] << " ";
     }
     cout << endl;
 
     increment_all(v, 10);
-    for (int i = 0; i < v.size() && i < 20; ++i) {
+    for (size_t i = 0; i < v.size() && i < 20; ++i) {
         cout << v[i] << " ";
     }
     cout << endl;
@@ -61,7 +61,7 @@ int main() {
     // Parameters by constant reference
     // - We don't want to copy
     // - But we also don't want to change it
-    for (int i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
         v[i] = i;
     }
     if (has_element(v, 400)) {
@@ -221,21 +221,16 @@ tuple<int, int, int> sort(int a, int b, int c) {
 }
 
 bool has_element(const array<int, 1000> &a, int element) {
-    for (int i = 0; i < a.size(); ++i) {
-        if (a[i] == element) {
-            return true;
-        }
-    }
-    return false;
+    return std::any_of(a.begin(), a.end(), [element](int x) { return x == element; });
 }
 
 void increment_all(array<int, 1000> &a, int increment_value) {
-    for (int i = 0; i < a.size(); ++i) {
-        a[i] += increment_value;
+    for (int & x : a) {
+        x += increment_value;
     }
 }
 
-void pointer_to_cube(shared_ptr<int> p) {
+void pointer_to_cube(const shared_ptr<int>& p) {
     if (p) {
         *p = *p * *p * *p;
     }

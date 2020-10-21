@@ -29,14 +29,14 @@ int main() {
     // Generating a histogram
     vector<int> hist(10, 0);
     for (int i = 0; i < 300; ++i) {
-        int bin = d2(g2) + hist.size() / 2;
+        auto bin = static_cast<size_t>(d2(g2) + static_cast<double>(hist.size()) / 2);
         if (bin >= 0 && bin < hist.size()) {
             ++hist[bin];
         }
     }
-    for (int i = 0; i < hist.size(); ++i) {
+    for (int n : hist) {
         cout << '-';
-        for (int j = 0; j < hist[i]; ++j) {
+        for (int j = 0; j < n; ++j) {
             cout << '*';
         }
         cout << endl;
