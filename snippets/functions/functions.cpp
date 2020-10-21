@@ -127,14 +127,14 @@ int main() {
         cout << "fibonacci_iterative(" << i << ") = " << fibonacci_iterative(i)
              << " - ";
         auto duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::steady_clock::now() - start);
+            std::chrono::high_resolution_clock::now() - start);
         cout << duration.count() << " milliseconds" << endl;
 
         start = chrono::high_resolution_clock::now();
         cout << "fibonacci_recursive(" << i << ") = " << fibonacci_recursive(i)
              << " - ";
         duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::steady_clock::now() - start);
+            std::chrono::high_resolution_clock::now() - start);
         cout << duration.count() << " milliseconds" << endl;
     }
 
