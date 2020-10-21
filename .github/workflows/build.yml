@@ -1,0 +1,83 @@
+name: Build
+
+on: 
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'README.md'
+      - '.github/**'
+      - '!.github/workflows/build.yml'
+      - 'documentation/**'
+      - '.clang-format'
+      - '.gitignore'
+      - 'LICENSE'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'README.md'
+      - '.github/**'
+      - '!.github/workflows/build.yml'
+      - 'documentation/**'
+      - '.clang-format'
+      - '.gitignore'
+      - 'LICENSE'
+        
+jobs:
+  Build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          # see: https://github.com/actions/virtual-environments
+          - {
+            name: "Windows/2019/Static/X86/Release",
+            os: windows-2019,
+            config: Release,
+            cmake_extra_args: -G "Visual Studio 16 2019" -A Win32,
+            sudocmd: "",
+            artifact_name: "Windows x86",
+            cores: 2,
+          }
+          - {
+            name: "Windows/2019/Static/X64/Release",
+            os: windows-2019,
+            config: Release,
+            cmake_extra_args: -G "Visual Studio 16 2019" -A x64 -DCMAKE_CXX_FLAGS="/O2",
+            sudocmd: "",
+            artifact_name: "Windows x64",
+            cores: 2,
+          }
+          - {
+            name: "Ubuntu/18.04/Static/X64/Release",
+            os: ubuntu-18.04,
+            config: Release,
+            cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-8 -DCMAKE_CXX_COMPILER=/usr/bin/g++-8  -DCMAKE_CXX_FLAGS=\"-O2\"",
+            sudocmd: "sudo",
+            artifact_name: "Linux",
+            cores: 2,
+          }
+          - {
+            name: "MacOSX/10.15/Static/X64/Release",
+            os: macos-10.15,
+            config: Release,
+            cmake_extra_args: "-DCMAKE_CXX_FLAGS=\"-O2\"",
+            sudocmd: "sudo",
+            artifact_name: "MacOSX",
+            cores: 4,
+          }
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Work Dir
+        run: mkdir build
+      - name: Configure
+        working-directory: ./build
+        run: |
+          cmake .. ${{ matrix.config.cmake_extra_args }} -DCMAKE_BUILD_TYPE=${{ matrix.config.config }}
+      - name: Build
+        working-directory: ./build
+        run: cmake --build . -j ${{ matrix.config.cores }} --config ${{ matrix.config.config }}
+      - name: Test
+        working-directory: ./build
+        run: ctest -j ${{ matrix.config.cores }} -C ${{ matrix.config.config }}
