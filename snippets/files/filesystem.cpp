@@ -102,9 +102,13 @@ int main() {
     // Last time write
     fs::path p9{"C:\\Windows\\win.ini"};
     try {
-        fs::file_time_type t = last_write_time(p9);
+        // Maybe unused as an example, because the next code snippet
+        // is not portable
+        [[maybe_unused]] fs::file_time_type t = last_write_time(p9);
+        /* The following is not portable: https://en.cppreference.com/w/cpp/filesystem/file_time_type
         std::time_t cftime = fs::file_time_type::clock::to_time_t(t);
         cout << cftime << '\n';
+         */
     } catch (fs::filesystem_error &e) {
         cout << e.what() << '\n';
     }

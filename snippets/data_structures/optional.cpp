@@ -3,11 +3,13 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <ctime>
 
 using namespace std;
 
 // Clearly mark optional values
 optional<int> get_even_random_number() {
+    // std::rand() has limited randomness (use C++ <random> instead>
     int i = std::rand();
     if (i % 2 == 0) {
         return i;
@@ -17,12 +19,14 @@ optional<int> get_even_random_number() {
 }
 
 optional<int> get_even_random_number2() {
+    // std::rand() has limited randomness (use C++ <random> instead>
     int i = std::rand();
     return make_optional(int(i % 2 == 0));
 }
 
 int main() {
-    std::srand(static_cast<unsigned int>(std::time(0)));
+    auto entropy_source = static_cast<unsigned int>(std::time(nullptr));
+    std::srand(entropy_source);
 
     std::cout << "Optional variables:" << std::endl;
     {

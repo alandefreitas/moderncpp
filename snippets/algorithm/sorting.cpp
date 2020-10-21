@@ -6,7 +6,6 @@
 #include <iomanip>
 #include <iostream>
 #include <memory>
-#include <numeric>
 #include <random>
 #include <string>
 #include <vector>
@@ -313,10 +312,8 @@ template <typename T> T median(T t1, T t2, T t3) {
 
 // Helper object to get <= from <
 template <typename Order>
-struct non_strict_op
-    : public std::binary_function<typename Order::second_argument_type,
-                                  typename Order::first_argument_type, bool> {
-    non_strict_op(Order o) : order(o) {}
+struct non_strict_op {
+    explicit non_strict_op(Order o) : order(o) {}
     bool operator()(typename Order::second_argument_type arg1,
                     typename Order::first_argument_type arg2) const {
         return !order(arg2, arg1);
