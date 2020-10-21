@@ -1,0 +1,18 @@
+# https://github.com/zserge/tray
+add_executable(tray_helloworld tray_hello.cpp tray/tray.h)
+
+if (WIN32)
+    target_compile_definitions(tray_helloworld PUBLIC TRAY_WINAPI)
+    target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON1="icon.ico")
+    target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON2="icon.ico")
+else()
+    if (APPLE)
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_APPKIT)
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON1="icon.png")
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON2="icon.png")
+    else()
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_APPINDICATOR)
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON1="indicator-messages")
+        target_compile_definitions(tray_helloworld PUBLIC TRAY_ICON2="indicator-messages-new")
+    endif()
+endif()
