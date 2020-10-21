@@ -1,13 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<details>
-<summary>Table of Contents</summary>
-
-- [Modern C++: Snippets and Examples](#modern-c-snippets-and-examples)
-
-</details>
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Modern C++: Snippets and Examples
 
 * [Hello World](snippets/hello_world.cpp)
