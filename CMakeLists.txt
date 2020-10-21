@@ -38,6 +38,10 @@ if (BUILD_WITH_PEDANTIC_WARNINGS)
     endif ()
 endif ()
 
+if (MSVC)
+    add_compile_options(/EHsc)
+endif()
+
 if (BUILD_SNIPPETS)
     add_subdirectory(snippets)
 endif()
