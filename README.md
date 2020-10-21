@@ -43,6 +43,7 @@
     * [Polymorphism Cast](snippets/paradigms/polymorphism_cast.cpp)
     * [Metaprogramming](snippets/paradigms/metaprogramming.cpp)
     * [SFINAE](snippets/paradigms/SFINAE.cpp)
+    * [Metaprogramming](snippets/paradigms/metaprogramming.cpp)
 * [Utilities](snippets/utilities/)
     * [Clock](snippets/utilities/clock.cpp)
     * [Filesystem](snippets/utilities/filesystem.cpp)
@@ -59,3 +60,4 @@
     * [Opengl](snippetsgui/opengl/opengl_hello.cpp)
     * [SDL](snippetsgui/sdl/sdl_hello.cpp)
     * [Imgui](snippetsgui/imgui/imgui_hello.cpp)
+    * [Tray](snippetsgui/tray/tray_hello.cpp)
