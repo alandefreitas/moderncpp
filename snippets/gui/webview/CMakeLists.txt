@@ -1,6 +1,6 @@
-# We still need to write the build script to find the appropriate libraries on windows
-# We need a build script to find > #include "WebView2.h"
-if (NOT MSVC)
+# We still need to write the build script to find the appropriate libraries
+# on windows and linux.
+if (APPLE)
     CPMAddPackage(NAME webview GIT_REPOSITORY https://github.com/zserge/webview GIT_TAG 50e4bcc420abdc7be96a54b7c79934a000b76901
             VERSION 0.1.1 DOWNLOAD_ONLY TRUE)
     add_library(webview INTERFACE)
