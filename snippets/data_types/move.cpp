@@ -1,7 +1,7 @@
-// For old C++
 #include <iostream>
 #include <numeric>
 #include <vector>
+#include <algorithm>
 
 int main() {
     std::vector<double> v(30, 1.0);
