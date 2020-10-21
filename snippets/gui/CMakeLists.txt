@@ -1,7 +1,6 @@
 add_subdirectory(qt)
 add_subdirectory(webview)
 add_subdirectory(opengl)
-add_subdirectory(sdl)
 add_subdirectory(imgui)
 if (BUILD_TRAY)
     add_subdirectory(tray)

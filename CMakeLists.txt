@@ -17,7 +17,7 @@ option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TRAY "Build tray snippets" OFF)
 
 # Libraries
-if (${UNIX} AND NOT ${APPLE})
+if (UNIX AND NOT APPLE)
     find_package(Threads)
 endif()
 
