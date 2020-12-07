@@ -7,7 +7,11 @@ has_toc: false
 ---
 # Modern C++: Snippets and Examples
 
-* [Hello World](https://github.com/alandefreitas/moderncpp/blob/master/snippets/hello_world.cpp)
+* [Control Flow](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow)
+    * [Hello World](https://github.com/alandefreitas/moderncpp/blob/master/)
+    * [Sequential](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/sequential.cpp)
+    * [Conditional](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/conditional.cpp)
+    * [Loops](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/loops.cpp)
 * [Data Types](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types)
     * [Data Types](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types/data_types.cpp)
     * [Auto](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types/auto.cpp)
@@ -21,10 +25,6 @@ has_toc: false
     * [Smart Pointers](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types/smart_pointers.cpp)
     * [Structured Binding](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types/structured_binding.cpp)
     * [Vectors](https://github.com/alandefreitas/moderncpp/blob/master/snippets/data_types/vectors.cpp)
-* [Control Flow](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow)
-    * [Sequential](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/sequential.cpp)
-    * [Conditional](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/conditional.cpp)
-    * [Loops](https://github.com/alandefreitas/moderncpp/blob/master/snippets/control_flow/loops.cpp)
 * [Functions](https://github.com/alandefreitas/moderncpp/blob/master/snippets/functions)
     * [Functions](https://github.com/alandefreitas/moderncpp/blob/master/snippets/functions/functions.cpp)
     * [Lambda](https://github.com/alandefreitas/moderncpp/blob/master/snippets/functions/lambda.cpp)
@@ -74,6 +74,7 @@ has_toc: false
     * [SDL](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/sdl/sdl_hello.cpp)
     * [Imgui](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/imgui/imgui_hello.cpp)
     * [Tray](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/tray/tray_hello.cpp)
+
 
 
 
