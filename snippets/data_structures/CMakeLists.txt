@@ -1,8 +1,12 @@
 add_executable(sequential_containers sequential_containers.cpp)
 add_executable(associative_containers associative_containers.cpp)
-
 add_executable(tuples tuples.cpp)
 add_executable(variant variant.cpp)
 add_executable(any any.cpp)
 add_executable(bitset bitset.cpp)
 add_executable(optional optional.cpp)
+add_executable(span span.cpp)
+
+CPMAddPackage(NAME cxx17_memory_resource GIT_REPOSITORY https://github.com/feroldi/cxx17_memory_resource GIT_TAG 4b70435ee2c993d74ac0159d2dad474c53f6e770 VERSION 0.0.1)
+add_executable(memory_resource memory_resource.cpp)
+target_include_directories(memory_resource PRIVATE ${cxx17_memory_resource_SOURCE_DIR}/include)
