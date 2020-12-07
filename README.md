@@ -29,7 +29,7 @@
     * [Template Alias](snippets/templates/template_alias.cpp)
     * [Concepts](snippets/templates/concepts.cpp)
     * [SFINAE](snippets/templates/sfinae.cpp)
-* [Algorithm](snippets/algorithm/)
+* [Algorithms](snippets/algorithm/)
     * [Searching](snippets/algorithm/searching.cpp)
     * [Sorting](snippets/algorithm/sorting.cpp)
     * [Algorithms](snippets/algorithm/algorithms.cpp)
@@ -67,6 +67,10 @@
     * [SDL](snippets/gui/sdl/sdl_hello.cpp)
     * [Imgui](snippets/gui/imgui/imgui_hello.cpp)
     * [Tray](snippets/gui/tray/tray_hello.cpp)
+* [Tests](snippets/tests/)
+    * [Source Location](snippets/tests/source_location.cpp)
+    * [Unit Tests](snippets/tests/unit_tests.cpp)
+    * [Plots](snippets/tests/plots.cpp)
 
 # Installing C++20
 
@@ -114,7 +118,7 @@ Let CMake know that's the compiler you want to use.
 If you want this to be your default compiler, you can set the `CXX` environment variable:
 
 ```bash
-export CXX=/usr/local/bin/clang-11
+export CXX=/usr/local/bin/clang++
 ```
 
 If you want to use this compiler in a single project, run cmake with these options:
