@@ -27,7 +27,7 @@ Let CMake know that's the compiler you want to use.
 If you want this to be your default compiler, you can set the `CXX` environment variable:
 
 ```bash
-export CXX=/usr/local/bin/clang-11
+export CXX=/usr/local/bin/clang++
 ```
 
 If you want to use this compiler in a single project, run cmake with these options:

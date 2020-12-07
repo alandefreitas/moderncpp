@@ -36,7 +36,7 @@ has_toc: false
     * [Template Alias](https://github.com/alandefreitas/moderncpp/blob/master/snippets/templates/template_alias.cpp)
     * [Concepts](https://github.com/alandefreitas/moderncpp/blob/master/snippets/templates/concepts.cpp)
     * [SFINAE](https://github.com/alandefreitas/moderncpp/blob/master/snippets/templates/sfinae.cpp)
-* [Algorithm](https://github.com/alandefreitas/moderncpp/blob/master/snippets/algorithm)
+* [Algorithms](https://github.com/alandefreitas/moderncpp/blob/master/snippets/algorithm)
     * [Searching](https://github.com/alandefreitas/moderncpp/blob/master/snippets/algorithm/searching.cpp)
     * [Sorting](https://github.com/alandefreitas/moderncpp/blob/master/snippets/algorithm/sorting.cpp)
     * [Algorithms](https://github.com/alandefreitas/moderncpp/blob/master/snippets/algorithm/algorithms.cpp)
@@ -74,6 +74,10 @@ has_toc: false
     * [SDL](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/sdl/sdl_hello.cpp)
     * [Imgui](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/imgui/imgui_hello.cpp)
     * [Tray](https://github.com/alandefreitas/moderncpp/blob/master/snippets/gui/tray/tray_hello.cpp)
+* [Tests](https://github.com/alandefreitas/moderncpp/blob/master/snippets/tests)
+    * [Source Location](https://github.com/alandefreitas/moderncpp/blob/master/snippets/tests/source_location.cpp)
+    * [Unit Tests](https://github.com/alandefreitas/moderncpp/blob/master/snippets/tests/unit_tests.cpp)
+    * [Plots](https://github.com/alandefreitas/moderncpp/blob/master/snippets/tests/plots.cpp)
 
 
 
