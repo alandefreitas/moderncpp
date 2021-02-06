@@ -58,10 +58,10 @@ int main() {
          << endl;
 
     // Modern C++
-    // - High Resolution Clock
-    auto start3 = chrono::high_resolution_clock::now();
+    // - Steady Clock
+    auto start3 = chrono::steady_clock::now();
     very_expensive_function();
-    auto end3 = chrono::high_resolution_clock::now();
+    auto end3 = chrono::steady_clock::now();
 
     // Duration represented with the default duration type
     auto auto_duration_3 = end2 - start2;

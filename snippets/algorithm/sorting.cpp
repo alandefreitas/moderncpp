@@ -59,50 +59,50 @@ int main() {
         vector<int> v = create_vector(i);
 
         vector<int> v1 = v;
-        auto start = chrono::high_resolution_clock::now();
+        auto start = chrono::steady_clock::now();
         sort_vector(v1);
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(
-            chrono::high_resolution_clock::now() - start);
+            chrono::steady_clock::now() - start);
         cout << duration.count() << "μs\t\t";
         fout << duration.count() << ",";
 
         vector<int> v4 = v;
-        start = chrono::high_resolution_clock::now();
+        start = chrono::steady_clock::now();
         if constexpr (use_std) {
             sort_selection_std(v4);
         } else {
             sort_selection(v4);
         }
         duration = std::chrono::duration_cast<std::chrono::microseconds>(
-            chrono::high_resolution_clock::now() - start);
+            chrono::steady_clock::now() - start);
         cout << duration.count() << "μs\t\t";
         fout << duration.count() << ",";
 
         vector<int> v5 = v;
-        start = chrono::high_resolution_clock::now();
+        start = chrono::steady_clock::now();
         if constexpr (use_std) {
             sort_insertion_std(v5);
         } else {
             sort_insertion(v5);
         }
         duration = std::chrono::duration_cast<std::chrono::microseconds>(
-            chrono::high_resolution_clock::now() - start);
+            chrono::steady_clock::now() - start);
         cout << duration.count() << "μs\t\t";
         fout << duration.count() << ",";
 
         vector<int> v6 = v;
-        start = chrono::high_resolution_clock::now();
+        start = chrono::steady_clock::now();
         sort_merge_sort_std(v6);
         duration = std::chrono::duration_cast<std::chrono::microseconds>(
-            chrono::high_resolution_clock::now() - start);
+            chrono::steady_clock::now() - start);
         cout << duration.count() << "μs\t\t";
         fout << duration.count() << ",";
 
         vector<int> v7 = v;
-        start = chrono::high_resolution_clock::now();
+        start = chrono::steady_clock::now();
         sort_quicksort_std(v7);
         duration = std::chrono::duration_cast<std::chrono::microseconds>(
-            chrono::high_resolution_clock::now() - start);
+            chrono::steady_clock::now() - start);
         cout << duration.count() << "μs\t\t";
         fout << duration.count() << ",";
 

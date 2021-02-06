@@ -124,18 +124,18 @@ int main() {
     // - Iterative algorithms are more efficient
     // - Recursive algorithms are easier to write
     for (int i = 3; i < 60; ++i) {
-        auto start = chrono::high_resolution_clock::now();
+        auto start = chrono::steady_clock::now();
         cout << "fibonacci_iterative(" << i << ") = " << fibonacci_iterative(i)
              << " - ";
         auto duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::high_resolution_clock::now() - start);
+            std::chrono::steady_clock::now() - start);
         cout << duration.count() << " milliseconds" << endl;
 
-        start = chrono::high_resolution_clock::now();
+        start = chrono::steady_clock::now();
         cout << "fibonacci_recursive(" << i << ") = " << fibonacci_recursive(i)
              << " - ";
         duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::high_resolution_clock::now() - start);
+            std::chrono::steady_clock::now() - start);
         cout << duration.count() << " milliseconds" << endl;
     }
 

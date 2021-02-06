@@ -22,7 +22,7 @@ pair<int, int> binary_search_operations(const vector<int> &v, const int key);
 
 int main() {
     // alias to "now" function
-    const auto &now = chrono::high_resolution_clock::now;
+    const auto &now = chrono::steady_clock::now;
 
     // Real time experiment
     cout << "n\t\tpos\t\t\tsequential\tsorting\tbinary" << endl;
