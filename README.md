@@ -1,3 +1,9 @@
+# Modern C++: Snippets and Examples
+
+We often need to copy and paste some snippets to code more productively. Snippets can help us when it's not easy to
+remember all high levels features Modern C++ has to offer. This repository contains lots of organized, reusable, and
+safe snippets for Modern C++. All snippets are available in GitHub pages in a way convenient for copying and pasting.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <details>
@@ -95,12 +101,6 @@
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Modern C++: Snippets and Examples
-
-We often need to copy and paste some snippets to code more productively. Snippets can help us when it's not easy to
-remember all high levels features Modern C++ has to offer. This repository contains lots of organized, reusable, and
-safe snippets for Modern C++. All snippets are available in GitHub pages in a way convenient for copying and pasting.
 
 ## Quick Start
 
@@ -373,7 +373,7 @@ We generate GitHub pages with all snippets:
                                                             
 ```
 
-### Memory resources
+### Memory resource
 
 ```cpp
                                                      
