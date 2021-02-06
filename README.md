@@ -129,10 +129,10 @@
 
 This is how this repository works:
 
-* The `snippets` directory has lots of short programs with useful C++20 snippets
-* The `examples` directory has lots of short tasks using these snippets
-* GitHub actions ensures all snippets are working on GCC, MSVC, and Clang
-* We generate GitHub pages with all snippets by groups of tasks
+* The [`snippets`](./snippets/CMakeLists.txt) directory has lots of short programs with useful C++20 snippets
+* The [`examples`](./examples/CMakeLists.txt) directory has lots of short tasks using these snippets
+* [GitHub actions](https://github.com/alandefreitas/moderncpp/actions?query=workflow%3ABuild) ensures all snippets are working on GCC, MSVC, and Clang
+* We generate GitHub pages with all snippets by groups of tasks using with [mkdocs material](https://squidfunk.github.io/mkdocs-material/) and [mdsplit](https://alandefreitas.github.io/mdsplit/)
 
 <br/>
 
@@ -140,9 +140,9 @@ This is how this repository works:
 
 We give preference to libraries in this order:
 
-1. Libraries supported by most C++ compilers
-2. Libraries accepted into the C++ standard
-3. Libraries likely to be accepted into the next C++ standard
+1. Libraries [supported](https://en.cppreference.com/w/cpp/compiler_support) by most C++ compilers
+2. Libraries [accepted](https://timsong-cpp.github.io/cppwp/n4861/) into the C++ standard
+3. Libraries [likely to be accepted](https://eel.is/c++draft/) into the next C++ standard
 4. Libraries representative of existing practice
 
 <br/>
@@ -151,8 +151,8 @@ We give preference to libraries in this order:
 
 For external libraries, we also include a short CMake snippet in the build script with:
 
-* `find_package` to find, setup, and link the large external libraries
-* `FetchContents` to download, build, and link the external library
+* [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) to find, setup, and link the large external libraries
+* [`FetchContents`](https://cmake.org/cmake/help/latest/module/FetchContent.html) to download, build, and link the external library
 
 <br/>
 
@@ -161,7 +161,7 @@ For external libraries, we also include a short CMake snippet in the build scrip
 We generate GitHub pages with all snippets:
 
 * The GitHub pages are generated with [mkdocs material](https://squidfunk.github.io/mkdocs-material/) and [mdsplit](https://alandefreitas.github.io/mdsplit/)
-* Snippets organized in sections by groups of tasks
+* Snippets organized are categorized by groups of tasks
 * Sections are easy to explore, copy, and paste
 
 ## Data types
@@ -893,3 +893,8 @@ The most recent version of Visual Studio should include C++20.
 
 !!! warning 
     We still don't know of a script for installing C++20 on Windows from the terminal.
+
+    This would be especially useful for our [build workflow](./.github/workflows/build.yml), which has not been testing MSVC since we moved to C++20.
+
+    Please let us know or open a PR if you know of such a script.
+
