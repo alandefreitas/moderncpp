@@ -138,73 +138,73 @@ We generate GitHub pages with all snippets:
 ### Fundamental Data Types
 
 ```cpp
-                                           
+--8<-- "snippets/data_types/data_types.cpp"
 ```
 
 ### Auto
 
 ```cpp
-                                     
+--8<-- "snippets/data_types/auto.cpp"
 ```
 
 ### Constants
 
 ```cpp
-                                          
+--8<-- "snippets/data_types/constants.cpp"
 ```
 
 ### Raw arrays
 
 ```cpp
-                                           
+--8<-- "snippets/data_types/raw_arrays.cpp"
 ```
 
 ### Arrays
 
 ```cpp
-                                       
+--8<-- "snippets/data_types/arrays.cpp"
 ```
 
 ### Vectors
 
 ```cpp
-                                        
+--8<-- "snippets/data_types/vectors.cpp"
 ```
 
 ### Strings
 
 ```cpp
-                                        
+--8<-- "snippets/data_types/strings.cpp"
 ```
 
 ### Raw Pointers
 
 ```cpp
-                                             
+--8<-- "snippets/data_types/raw_pointers.cpp"
 ```
 
 ### Smart pointers
 
 ```cpp
-                                               
+--8<-- "snippets/data_types/smart_pointers.cpp"
 ```
 
 ### Move
 
 ```cpp
-                                     
+--8<-- "snippets/data_types/move.cpp"
 ```
 
 ### Aggregate initialization
 
 ```cpp
-                                                         
+--8<-- "snippets/data_types/aggregate_initialization.cpp"
 ```
 
 ### Structured binding
 
 ```cpp
-                                                   
+--8<-- "snippets/data_types/structured_binding.cpp"
 ```
 
 ## Control flow
@@ -212,49 +212,49 @@ We generate GitHub pages with all snippets:
 ### Hello World
 
 ```cpp
-                                              
+--8<-- "snippets/control_flow/hello_world.cpp"
 ```
 
 ### Sequential
 
 ```cpp
-                                             
+--8<-- "snippets/control_flow/sequential.cpp"
 ```
 
 ### Input
 
 ```cpp
-                                      
+--8<-- "snippets/control_flow/cin.cpp"
 ```
 
 ### Output
 
 ```cpp
-                                           
+--8<-- "snippets/control_flow/printing.cpp"
 ```
 
 ### Format
 
 ```cpp
-                                         
+--8<-- "snippets/control_flow/format.cpp"
 ```
 
 ### Operators
 
 ```cpp
-                                            
+--8<-- "snippets/control_flow/operators.cpp"
 ```
 
 ### Conditional
 
 ```cpp
-                                              
+--8<-- "snippets/control_flow/conditional.cpp"
 ```
 
 ### Loops
 
 ```cpp
-                                        
+--8<-- "snippets/control_flow/loops.cpp"
 ```
 
 ## Functions
@@ -262,13 +262,13 @@ We generate GitHub pages with all snippets:
 ### Function
 
 ```cpp
-                                         
+--8<-- "snippets/functions/functions.cpp"
 ```
 
 ### Lambda
 
 ```cpp
-                                      
+--8<-- "snippets/functions/lambda.cpp"
 ```
 
 ## Files
@@ -276,13 +276,13 @@ We generate GitHub pages with all snippets:
 ### File streams
 
 ```cpp
-                                 
+--8<-- "snippets/files/files.cpp"
 ```
 
 ### Filesystem
 
 ```cpp
-                                      
+--8<-- "snippets/files/filesystem.cpp"
 ```
 
 ## Template
@@ -290,25 +290,25 @@ We generate GitHub pages with all snippets:
 ### Template function
 
 ```cpp
-                                                  
+--8<-- "snippets/templates/template_functions.cpp"
 ```
 
 ### Template aliases
 
 ```cpp
-                                              
+--8<-- "snippets/templates/template_alias.cpp"
 ```
 
 ### Concepts
 
 ```cpp
-                                        
+--8<-- "snippets/templates/concepts.cpp"
 ```
 
 ### SFINAE
 
 ```cpp
-                                      
+--8<-- "snippets/templates/sfinae.cpp"
 ```
 
 ## Date and time
@@ -316,13 +316,13 @@ We generate GitHub pages with all snippets:
 ### Clock
 
 ```cpp
-                                    
+--8<-- "snippets/datetime/clock.cpp"
 ```
 
 ### Datetime
 
 ```cpp
-                                       
+--8<-- "snippets/datetime/datetime.cpp"
 ```
 
 ## Random
@@ -330,7 +330,7 @@ We generate GitHub pages with all snippets:
 ### Random
 
 ```cpp
-                                   
+--8<-- "snippets/random/random.cpp"
 ```
 
 ## Algorithm
@@ -338,25 +338,25 @@ We generate GitHub pages with all snippets:
 ### Basic Algorithms
 
 ```cpp
-                                          
+--8<-- "snippets/algorithm/algorithms.cpp"
 ```
 
 ### Ranges
 
 ```cpp
-                                      
+--8<-- "snippets/algorithm/ranges.cpp"
 ```
 
 ### Sorting
 
 ```cpp
-                                       
+--8<-- "snippets/algorithm/sorting.cpp"
 ```
 
 ### Searching
 
 ```cpp
-                                         
+--8<-- "snippets/algorithm/searching.cpp"
 ```
 
 ## Data structures
@@ -364,55 +364,55 @@ We generate GitHub pages with all snippets:
 ### Sequential Containers
 
 ```cpp
-                                                           
+--8<-- "snippets/data_structures/sequential_containers.cpp"
 ```
 
 ### Associative Containers
 
 ```cpp
-                                                            
+--8<-- "snippets/data_structures/associative_containers.cpp"
 ```
 
 ### Memory resource
 
 ```cpp
-                                                     
+--8<-- "snippets/data_structures/memory_resource.cpp"
 ```
 
 ### Tuples
 
 ```cpp
-                                            
+--8<-- "snippets/data_structures/tuples.cpp"
 ```
 
 ### Any
 
 ```cpp
-                                         
+--8<-- "snippets/data_structures/any.cpp"
 ```
 
 ### Optional
 
 ```cpp
-                                              
+--8<-- "snippets/data_structures/optional.cpp"
 ```
 
 ### Variant
 
 ```cpp
-                                             
+--8<-- "snippets/data_structures/variant.cpp"
 ```
 
 ### Span
 
 ```cpp
-                                          
+--8<-- "snippets/data_structures/span.cpp"
 ```
 
 ### Bitset
 
 ```cpp
-                                            
+--8<-- "snippets/data_structures/bitset.cpp"
 ```
 
 ## Paradigms
@@ -420,31 +420,31 @@ We generate GitHub pages with all snippets:
 ### Polymorphism
 
 ```cpp
-                                            
+--8<-- "snippets/paradigms/polymorphism.cpp"
 ```
 
 ### Shared from this
 
 ```cpp
-                                                
+--8<-- "snippets/paradigms/shared_from_this.cpp"
 ```
 
 ### Metaprogramming
 
 ```cpp
-                                               
+--8<-- "snippets/paradigms/metaprogramming.cpp"
 ```
 
 ### CRTP
 
 ```cpp
-                                    
+--8<-- "snippets/paradigms/cRTP.cpp"
 ```
 
 ### SFINAE
 
 ```cpp
-                                      
+--8<-- "snippets/paradigms/sFINAE.cpp"
 ```
 
 ## Parallel
@@ -452,31 +452,31 @@ We generate GitHub pages with all snippets:
 ### Threads
 
 ```cpp
-                                             
+--8<-- "snippets/parallel/multithreading.cpp"
 ```
 
 ### Executors
 
 ```cpp
-                                        
+--8<-- "snippets/parallel/executors.cpp"
 ```
 
 ### Timers
 
 ```cpp
-                                     
+--8<-- "snippets/parallel/timers.cpp"
 ```
 
 ### Signals
 
 ```cpp
-                                      
+--8<-- "snippets/parallel/signals.cpp"
 ```
 
 ### Async++
 
 ```cpp
-                                          
+--8<-- "snippets/parallel/async_pools.cpp"
 ```
 
 ## Networking
@@ -484,13 +484,13 @@ We generate GitHub pages with all snippets:
 ### Network
 
 ```cpp
-                                        
+--8<-- "snippets/networking/network.cpp"
 ```
 
 ### Async Network
 
 ```cpp
-                                              
+--8<-- "snippets/networking/network_async.cpp"
 ```
 
 ### Http server
@@ -498,103 +498,103 @@ We generate GitHub pages with all snippets:
 main.cpp
 
 ```cpp
-                                            
+--8<-- "snippets/networking/server/main.cpp"
 ```
 
 server.hpp
 
 ```cpp
-                                              
+--8<-- "snippets/networking/server/server.hpp"
 ```
 
 connection_manager.hpp
 
 ```cpp
-                                                          
+--8<-- "snippets/networking/server/connection_manager.hpp"
 ```
 
 connection.hpp
 
 ```cpp
-                                                  
+--8<-- "snippets/networking/server/connection.hpp"
 ```
 
 header.hpp
 
 ```cpp
-                                              
+--8<-- "snippets/networking/server/header.hpp"
 ```
 
 reply.hpp
 
 ```cpp
-                                             
+--8<-- "snippets/networking/server/reply.hpp"
 ```
 
 request.hpp
 
 ```cpp
-                                               
+--8<-- "snippets/networking/server/request.hpp"
 ```
 
 request_parser.hpp
 
 ```cpp
-                                                      
+--8<-- "snippets/networking/server/request_parser.hpp"
 ```
 
 mime_types.hpp
 
 ```cpp
-                                                  
+--8<-- "snippets/networking/server/mime_types.hpp"
 ```
 
 request_handler.hpp
 
 ```cpp
-                                                       
+--8<-- "snippets/networking/server/request_handler.hpp"
 ```
 
 mime_types.cpp
 
 ```cpp
-                                                  
+--8<-- "snippets/networking/server/mime_types.cpp"
 ```
 
 request_parser.cpp
 
 ```cpp
-                                                      
+--8<-- "snippets/networking/server/request_parser.cpp"
 ```
 
 reply.cpp
 
 ```cpp
-                                             
+--8<-- "snippets/networking/server/reply.cpp"
 ```
 
 request_handler.cpp
 
 ```cpp
-                                                       
+--8<-- "snippets/networking/server/request_handler.cpp"
 ```
 
 connection.cpp
 
 ```cpp
-                                                  
+--8<-- "snippets/networking/server/connection.cpp"
 ```
 
 connection_manager.cpp
 
 ```cpp
-                                                          
+--8<-- "snippets/networking/server/connection_manager.cpp"
 ```
 
 server.cpp
 
 ```cpp
-                                              
+--8<-- "snippets/networking/server/server.cpp"
 ```
 
 ## Utilities
@@ -602,7 +602,7 @@ server.cpp
 ### Regex
 
 ```cpp
-                                     
+--8<-- "snippets/utilities/regex.cpp"
 ```
 
 ## GUI
@@ -610,37 +610,37 @@ server.cpp
 ### Qt
 
 ```cpp
-                                     
+--8<-- "snippets/gui/qt/qt_hello.cpp"
 ```
 
 ### OpenGL + SDL
 
 ```cpp
-                                              
+--8<-- "snippets/gui/opengl/sdl/sdl_hello.cpp"
 ```
 
 ### OpenGL + GLFW
 
 ```cpp
-                                                  
+--8<-- "snippets/gui/opengl/glfw/opengl_hello.cpp"
 ```
 
 ### IMGUI
 
 ```cpp
-                                           
+--8<-- "snippets/gui/imgui/imgui_hello.cpp"
 ```
 
 ### Webview
 
 ```cpp
-                                               
+--8<-- "snippets/gui/webview/webview_hello.cpp"
 ```
 
 ### System tray
 
 ```cpp
-                                         
+--8<-- "snippets/gui/tray/tray_hello.cpp"
 ```
 
 ## Tests
@@ -648,25 +648,25 @@ server.cpp
 ### Catch2
 
 ```cpp
-                                            
+--8<-- "snippets/tests/unit_tests_catch.cpp"
 ```
 
 ### boost.ut
 
 ```cpp
-                                         
+--8<-- "snippets/tests/unit_tests_ut.cpp"
 ```
 
 ### Source Location
 
 ```cpp
-                                           
+--8<-- "snippets/tests/source_location.cpp"
 ```
 
 ### Plots
 
 ```cpp
-                                 
+--8<-- "snippets/tests/plots.cpp"
 ```
 
 ## Installing C++20
