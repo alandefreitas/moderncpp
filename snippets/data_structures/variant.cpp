@@ -37,10 +37,13 @@ int main() {
     switch (v.index()) {
     case 0:
         cout << "This is a double" << endl;
+        break;
     case 1:
         cout << "This is a char" << endl;
+        break;
     case 2:
         cout << "This is a string" << endl;
+        break;
     }
 
     return 0;
