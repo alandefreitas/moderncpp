@@ -579,6 +579,12 @@ Build script:
 --8<-- "snippets/parallel/CMakeLists.txt"
 ```
 
+### Execution Policies
+
+```cpp
+--8<-- "snippets/parallel/policies.cpp"
+```
+
 ### Threads
 
 ```cpp
