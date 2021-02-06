@@ -13,7 +13,7 @@ This is how this repository works:
 * GitHub actions ensures all snippets are working on GCC, MSVC, and Clang
 * We generate GitHub pages with all snippets by groups of tasks
 
-*External Libraries*
+**External Libraries**
 
 For external libraries, we also include a short CMake snippet in the build script with:
 
@@ -27,7 +27,7 @@ We give preference for external libraries in this order:
 3) Libraries likely to be accepted into C++23
 4) Libraries representative of existing practice
 
-*GitHub Pages*
+**GitHub Pages**
 
 We generate GitHub pages with all snippets:
 
@@ -55,18 +55,16 @@ We generate GitHub pages with all snippets:
                                           
 ```
 
+### Raw arrays
+
+```cpp
+                                           
+```
+
 ### Arrays
 
 ```cpp
                                        
-```
-
-### Raw arrays
-
-```cpp`
---8<-- "snippets/data_types/raw_arrays.cpp"
-
-```
 ```
 
 ### Vectors
@@ -163,7 +161,7 @@ We generate GitHub pages with all snippets:
 
 ## Functions
 
-### Functions
+### Function
 
 ```cpp
                                          
@@ -189,9 +187,9 @@ We generate GitHub pages with all snippets:
                                       
 ```
 
-## Templates
+## Template
 
-### Template functions
+### Template function
 
 ```cpp
                                                   
@@ -277,16 +275,16 @@ We generate GitHub pages with all snippets:
                                                             
 ```
 
-### Tuples
-
-```cpp
-                                            
-```
-
 ### Memory resources
 
 ```cpp
                                                      
+```
+
+### Tuples
+
+```cpp
+                                            
 ```
 
 ### Any
@@ -321,10 +319,22 @@ We generate GitHub pages with all snippets:
 
 ## Paradigms
 
-### Polymorphism cast
+### Polymorphism
 
 ```cpp
-                                                 
+                                            
+```
+
+### Shared from this
+
+```cpp
+                                                
+```
+
+### Metaprogramming
+
+```cpp
+                                               
 ```
 
 ### CRTP
@@ -337,18 +347,6 @@ We generate GitHub pages with all snippets:
 
 ```cpp
                                       
-```
-
-### Polymorphism
-
-```cpp
-                                            
-```
-
-### Metaprogramming
-
-```cpp
-                                               
 ```
 
 ## Parallel
@@ -403,6 +401,60 @@ main.cpp
 
 ```cpp
                                             
+```
+
+server.hpp
+
+```cpp
+                                              
+```
+
+connection_manager.hpp
+
+```cpp
+                                                          
+```
+
+connection.hpp
+
+```cpp
+                                                  
+```
+
+header.hpp
+
+```cpp
+                                              
+```
+
+reply.hpp
+
+```cpp
+                                             
+```
+
+request.hpp
+
+```cpp
+                                               
+```
+
+request_parser.hpp
+
+```cpp
+                                                      
+```
+
+mime_types.hpp
+
+```cpp
+                                                  
+```
+
+request_handler.hpp
+
+```cpp
+                                                       
 ```
 
 mime_types.cpp
@@ -495,16 +547,16 @@ server.cpp
 
 ## Tests
 
-### boost.ut
-
-```cpp
-                                         
-```
-
 ### Catch2
 
 ```cpp
                                             
+```
+
+### boost.ut
+
+```cpp
+                                         
 ```
 
 ### Source Location
@@ -583,3 +635,5 @@ Or tell you IDE to pass these options to CMake:
 Update your [Visual Studio](https://visualstudio.microsoft.com) Compiler.
 
 The most recent version of Visual Studio should include C++20.
+
+!!! warning We still don't know of a script for installing C++20 on Windows from the terminal.
