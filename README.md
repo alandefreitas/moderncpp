@@ -135,6 +135,7 @@
   - [Linux](#linux)
   - [Mac OS](#mac-os)
   - [Windows](#windows)
+- [Get involved](#get-involved)
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
