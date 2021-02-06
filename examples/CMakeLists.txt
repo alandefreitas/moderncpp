@@ -1,2 +1,2 @@
 add_subdirectory(data_structures)
-add_subdirectory(oop)
+add_subdirectory(paradigms/oop)
