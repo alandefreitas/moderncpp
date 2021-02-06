@@ -29,6 +29,8 @@ jobs:
       matrix:
         config:
           # see: https://github.com/actions/virtual-environments
+          # I'm not aware of a way to setup a github actions environment for C++20 on windows
+          # Please let me know if you know how to do that
           - {
             name: "Ubuntu / GCC 10",
             os: ubuntu-20.04,
