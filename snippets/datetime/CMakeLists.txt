@@ -1,6 +1,6 @@
 add_executable(clock clock.cpp)
 
-find_package(CURL REQUIRED QUIET)
+find_package(CURL QUIET)
 if (NOT CURL_FOUND)
     set(USE_SYSTEM_TZ_DB ON CACHE BOOL "Build tz library" FORCE)
 else ()
