@@ -733,4 +733,5 @@ Update your [Visual Studio](https://visualstudio.microsoft.com) Compiler.
 
 The most recent version of Visual Studio should include C++20.
 
-!!! warning We still don't know of a script for installing C++20 on Windows from the terminal.
+!!! warning 
+    We still don't know of a script for installing C++20 on Windows from the terminal.
