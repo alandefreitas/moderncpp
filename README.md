@@ -108,6 +108,7 @@
   - [CRTP](#crtp)
   - [SFINAE](#sfinae-1)
 - [Parallel](#parallel)
+  - [Execution Policies](#execution-policies)
   - [Threads](#threads)
   - [Executors](#executors)
   - [Timers](#timers)
