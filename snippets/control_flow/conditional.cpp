@@ -3,24 +3,32 @@
 using namespace std;
 
 int main() {
+    // Declare constants and variables
     constexpr int number_of_numbers = 2;
     int first_number;
     int second_number;
     int n_even_numbers = 0;
 
+    // Input
     cout << "Type the first number: ";
     cin >> first_number;
-    n_even_numbers += (first_number % 2 == 0) ? 1 : 0;
-
     cout << "Type the second number: ";
     cin >> second_number;
-    n_even_numbers += second_number % 2 == 0;
+
+    // Simplest conditional
+    if (first_number % 2 == 0) {
+        ++n_even_numbers;
+    }
+
+    // Ternary Operator
+    // same as: n_even_numbers += second_number % 2 == 0;
+    n_even_numbers += (first_number % 2 == 0) ? 1 : 0;
 
     // Common conditional
     if (n_even_numbers == 0) {
         cout << "You typed 0 even numbers and 2 odd numbers" << endl;
     } else if (n_even_numbers == 1) {
-        cout << "You typed 1 número par e 1 odd number" << endl;
+        cout << "You typed 1 even number e 1 odd number" << endl;
     } else if (n_even_numbers == 2) {
         cout << "You typed 2 even numbers e 0 odd numbers" << endl;
     } else {
@@ -40,7 +48,7 @@ int main() {
         cout << "Two even numbers. No odd numbers." << endl;
         break;
     default:
-        cout << "Tem um erro sério no seu programa" << endl;
+        cout << "We found a serious error with your program" << endl;
         return 1;
     }
 
@@ -50,7 +58,7 @@ int main() {
     } else if (first_number % 2 == 0 && second_number % 2 == 0) {
         cout << "You typed 2 even numbers e 0 odd numbers" << endl;
     } else {
-        cout << "You typed 1 número par e 1 odd number" << endl;
+        cout << "You typed 1 even number e 1 odd number" << endl;
     }
 
     // Printing directly

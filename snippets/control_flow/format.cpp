@@ -47,5 +47,5 @@ int main() {
     // Format to memory
     memory_buffer out;
     format_to(out, "For a moment, {} happened.", "nothing");
-    out.data();
+    print(out.data());
 }
