@@ -2,9 +2,9 @@
 
 > GitHub Pages with snippets for Modern C++
 
+<!-- START mdsplit-ignore -->
 <br/>
 
-<!-- START mdsplit-ignore -->
 [![](docs/img/banner.png)](https://alandefreitas.github.io/moderncpp/)
 <!-- END mdsplit-ignore -->
 
@@ -123,22 +123,23 @@ This is how this repository works:
 
 <br/>
 
+**Libraries**
+
+We give preference to libraries in this order:
+
+1. Libraries supported by most C++ compilers
+2. Libraries accepted into the C++ standard
+3. Libraries likely to be accepted into the next C++ standard
+4. Libraries representative of existing practice
+
+<br/>
+
 **External Libraries**
 
 For external libraries, we also include a short CMake snippet in the build script with:
 
 * `find_package` to find, setup, and link the large external libraries
 * `FetchContents` to download, build, and link the external library
-
-We give preference for external libraries in this order:
-
-1) Libraries that supported by all C++ compilers in the build workflow
-   
-2) Libraries that have been accepted into the C++ standard
-   
-3) Libraries likely to be accepted into C++23
-   
-4) Libraries representative of existing practice
 
 <br/>
 
