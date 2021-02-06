@@ -437,13 +437,13 @@ We generate GitHub pages with all snippets:
 ### CRTP
 
 ```cpp
---8<-- "snippets/paradigms/cRTP.cpp"
+--8<-- "snippets/paradigms/CRTP.cpp"
 ```
 
 ### SFINAE
 
 ```cpp
---8<-- "snippets/paradigms/sFINAE.cpp"
+--8<-- "snippets/paradigms/SFINAE.cpp"
 ```
 
 ## Parallel
