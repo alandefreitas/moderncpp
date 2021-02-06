@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <functional>
 #include <future>
 #include <iostream>
 #include <numeric>
@@ -5,8 +7,6 @@
 #include <thread>
 #include <unordered_map>
 #include <vector>
-#include <functional>
-#include <algorithm>
 
 using namespace std;
 
@@ -19,27 +19,32 @@ template <typename RAIter> int parallel_sum(RAIter beg, RAIter end) {
 
     // Split large problems into two threads
     RAIter mid = beg + len / 2;
-    auto handle =
+    std::future<int> handle =
         std::async(std::launch::async, parallel_sum<RAIter>, mid, end);
     int sum = parallel_sum(beg, mid);
     return sum + handle.get();
 }
 
 int main() {
+    // Simple algorithms
+    std::vector<int> a(10000, 1);
+    std::cout << "The sum is " << std::accumulate(a.begin(), a.end(), 0)
+              << '\n';
+
     // Simple threads
     thread t1([]() { cout << "function 1" << endl; });
     thread t2([](int x) { cout << "function 2: number " << x << endl; }, 10);
-    thread t3(
-        bind([](int x) { cout << "function 3: number " << x << endl; }, 2));
-    cout << "main, foo and bar now execute concurrently...\n";
+    auto fn = [](int x) { cout << "function 3: number " << x << endl; };
+    thread t3(fn, 2);
+    cout << "main, t1, t2, and t3 now execute concurrently...\n";
     t1.join();
     t2.join();
     t3.join();
 
     // Thread vector
-    // This is probably inefficient because the cost of
-    // creating threads is higher than the work
-    // Vector container stores threads
+    // - A vector can store lots of reusable threads
+    // - This is probably inefficient because the cost of
+    //   creating threads is higher than the work they will do
     vector<thread> workers;
     for (int i = 0; i < 5; i++) {
         workers.emplace_back([i]() { cout << "Thread function " << i; });
@@ -62,6 +67,7 @@ int main() {
     cout << f2.get() << endl;
 
     // Parallel algorithm with async
+    // - Same overhead applies here
     std::vector<int> v(10000, 1);
     std::cout << "The sum is " << parallel_sum(v.begin(), v.end()) << '\n';
 
