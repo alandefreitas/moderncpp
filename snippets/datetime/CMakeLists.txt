@@ -1,5 +1,12 @@
 add_executable(clock clock.cpp)
 
+find_package(CURL REQUIRED QUIET)
+if (NOT CURL_FOUND)
+    set(USE_SYSTEM_TZ_DB ON CACHE BOOL "Build tz library" FORCE)
+else ()
+    set(USE_SYSTEM_TZ_DB OFF CACHE BOOL "Build tz library" FORCE)
+endif ()
+message("USE_SYSTEM_TZ_DB=${USE_SYSTEM_TZ_DB}")
 set(BUILD_TZ_LIB ON CACHE BOOL "Build tz library" FORCE)
 FetchContent_Declare(date GIT_REPOSITORY https://github.com/HowardHinnant/date.git GIT_TAG v3.0.0)
 FetchContent_MakeAvailable(date)
