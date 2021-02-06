@@ -27,10 +27,10 @@ void print(const B &a) {
 
 int main() {
     // Designated initializers
-    A a{.x = 1, .z = 2};
+    A a{.x = 1, .y = 4, .z = 2};
     print(a);
 
-    A b{.x = 1, .y = 2};
+    A b{.x = 1, .y = 2, .z = 6};
     print(b);
 
     // List initialization
