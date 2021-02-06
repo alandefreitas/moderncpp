@@ -1,25 +1,15 @@
-# Adapted from: https://github.com/scylladb/seastar/blob/master/cmake/FindConcepts.cmake
-
 include(CheckCXXSourceCompiles)
 
-# Set the concepts flag (we don't need it anymore)
-# set(CMAKE_REQUIRED_FLAGS -fconcepts)
-
-# Try to compile
 check_cxx_source_compiles("
-#include <concepts>
-#include <type_traits>
-template <typename T> concept Number = std::is_arithmetic_v<T>;
-int main() { return 0; }
+    #include <concepts>
+    #include <type_traits>
+    template <typename T> concept Number = std::is_arithmetic_v<T>;
+    int main() { return 0; }
 " Concepts_FOUND)
 
-# If compiled correctly (concepts found)
-if (Concepts_FOUND AND NOT (TARGET Concepts::concepts))
-    # Create concepts interface target
-    add_library (Concepts::concepts INTERFACE IMPORTED)
-
-    # Set -fconcepts flag publicly
-    set_target_properties (Concepts::concepts
+if (Concepts_FOUND AND NOT (TARGET std::concepts))
+    add_library (std::concepts INTERFACE IMPORTED)
+    set_target_properties (std::concepts
             PROPERTIES
             INTERFACE_COMPILE_OPTIONS $<$<COMPILE_LANGUAGE:CXX>:-fconcepts>)
 endif ()
