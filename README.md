@@ -120,7 +120,7 @@ For external libraries, we also include a short CMake snippet in the build scrip
 We give preference for external libraries in this order:
 
 1) Libraries that supported by all C++ compilers in the build workflow
-1) Libraries that have been accepted into the C++ standard
+2) Libraries that have been accepted into the C++ standard
 3) Libraries likely to be accepted into C++23
 4) Libraries representative of existing practice
 
