@@ -11,7 +11,7 @@
 * We often need to copy and paste some snippets to code more productively. 
 * Snippets can help us when it's not easy to remember all high levels features Modern C++ has to offer. 
 * This repository contains lots of organized, reusable, and safe snippets for Modern C++.
-* All snippets are available in [GitHub pages](https://alandefreitas.github.io/moderncpp/) in a way convenient for copying and pasting.
+* All snippets are available in [GitHub pages](https://alandefreitas.github.io/moderncpp/) in a convenient way for copying and pasting.
 
 <br/>
 
@@ -132,7 +132,7 @@ This is how this repository works:
 * The [`snippets`](./snippets/CMakeLists.txt) directory has lots of short programs with useful C++20 snippets
 * The [`examples`](./examples/CMakeLists.txt) directory has lots of short tasks using these snippets
 * [GitHub actions](https://github.com/alandefreitas/moderncpp/actions?query=workflow%3ABuild) ensures all snippets are working on GCC, MSVC, and Clang
-* We generate GitHub pages with all snippets by groups of tasks using with [mkdocs material](https://squidfunk.github.io/mkdocs-material/) and [mdsplit](https://alandefreitas.github.io/mdsplit/)
+* We generate GitHub pages with all snippets by groups of tasks using [mkdocs material](https://squidfunk.github.io/mkdocs-material/) and [mdsplit](https://alandefreitas.github.io/mdsplit/)
 
 <br/>
 
