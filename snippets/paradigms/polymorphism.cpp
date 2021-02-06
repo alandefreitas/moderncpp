@@ -1,83 +1,115 @@
-#include <cassert>
 #include <iostream>
 #include <memory>
-#include <optional>
-#include <string>
-#include <thread>
-#include <variant>
 #include <vector>
 
-class hello_printer : public std::enable_shared_from_this<hello_printer> {
+class shape {
   public:
-    void say_hello() { std::cout << "Hello, World!" << std::endl; }
+    shape() : _side1(0), _side2(0) {}
 
-    static std::shared_ptr<hello_printer> create() {
-        return std::make_shared<hello_printer>();
+    explicit shape(double side) : _side1(side), _side2(side) {}
+
+    shape(double side1, double side2) : _side1(side1), _side2(side2) {}
+
+    virtual ~shape() = default;
+
+    virtual double area() { return 0; }
+
+    double _side1;
+    double _side2;
+
+    bool operator==(const shape &rhs) const {
+        return _side1 == rhs._side1 && _side2 == rhs._side2;
     }
+
+    bool operator!=(const shape &rhs) const { return !(rhs == *this); }
 };
 
-class hello_class : public std::shared_ptr<hello_printer> {
+class triangle : public shape {
   public:
-    hello_class()
-        : std::shared_ptr<hello_printer>(std::make_shared<hello_printer>()) {}
+    using shape::shape;
 
-    hello_class(hello_class &rhs)
-        : std::shared_ptr<hello_printer>(rhs->shared_from_this()) {}
+    ~triangle() override = default;
+
+    double area() override { return this->_side1 * this->_side2 / 2; }
 };
+
+class square : public shape {
+  public:
+    using shape::shape;
+
+    ~square() override = default;
+
+    double area() override { return this->_side1 * this->_side2; }
+};
+
+std::vector<shape *> load_shapes_old_cpp() {
+    std::vector<shape *> v(30);
+    for (size_t i = 0; i < v.size(); ++i) {
+        if (i % 2) {
+            v[i] = new triangle(static_cast<double>(i + 30));
+        } else {
+            v[i] = new square(static_cast<double>(i + 30));
+        }
+    }
+    return v;
+}
+
+std::vector<std::shared_ptr<shape>> load_shapes_modern_cpp() {
+    std::vector<std::shared_ptr<shape>> v(30);
+    for (size_t i = 0; i < v.size(); ++i) {
+        if (i % 2) {
+            v[i] = std::make_shared<triangle>(i + 30);
+        } else {
+            v[i] = std::make_shared<square>(i + 30);
+        }
+    }
+    return v;
+}
 
 int main() {
-    // y points to a hello_printer
-    std::shared_ptr<hello_printer> y = std::make_shared<hello_printer>();
-    y->say_hello();
-    std::cout << "y.get() = " << y.get() << std::endl;
-    std::cout << "&y = " << &y << std::endl;
+    // using raw pointers
+    // - Don't do that
+    shape *rp = new square(42);
+    std::vector<shape *> rv = load_shapes_old_cpp();
 
-    // z will also point to the same object as y
-    std::shared_ptr<hello_printer> y2 = y->shared_from_this();
-    y2->say_hello();
-    std::cout << "y2.get() = " << y2.get() << std::endl;
-    std::cout << "&y2 = " << &y2 << std::endl;
-
-    // the create function makes it more convenient to create a new pointer to a
-    // hello_printer
-    auto z = hello_printer::create();
-    z->say_hello();
-    std::cout << "z.get() = " << z.get() << std::endl;
-    std::cout << "&z = " << &z << std::endl;
-
-    // x IS a hello_printer (instead of just pointing to one)
-    hello_printer x;
-    x.say_hello();
-    std::cout << "&x = " << &x << std::endl;
-
-    // We cannot get a shared pointer from x because x is not a pointer. It is
-    // an object on the stack.
-    try {
-        std::shared_ptr<hello_printer> x2 = x.shared_from_this();
-        x2->say_hello();
-        std::cout << "x2.get() = " << x2.get() << std::endl;
-        std::cout << "&x2 = " << &x2 << std::endl;
-    } catch (std::exception &e) {
-        std::cout << "Cannot create a pointer from x: " << e.what()
-                  << std::endl;
+    for (std::vector<shape *>::iterator i = rv.begin(); i != rv.end(); ++i) {
+        if (dynamic_cast<triangle *>(*i)) {
+            std::cout << "This is a triangle" << std::endl;
+        } else if (dynamic_cast<square *>(*i)) {
+            std::cout << "This is a square" << std::endl;
+        } else if (dynamic_cast<shape *>(*i)) {
+            std::cout << "This is a shape" << std::endl;
+        }
+        if (*i && **i == *rp) {
+            std::cout << "It has the same area as rp: " << (*i)->area()
+                      << std::endl;
+        }
     }
 
-    // However, we can encapsulate the basic hello_printer into another class
-    // This second class object in the stack will look like it's not a pointer
-    // But, in fact, it's just an usual pointer to a hello class
-    // This is making C++ only work with references without the user knowing
-    // about it
-    hello_class x2;
-    x2->say_hello();
-    std::cout << "x2.get() = " << x2.get() << std::endl;
-    std::cout << "&x2 = " << &x2 << std::endl;
+    /*
+    for (std::vector<shape *>::iterator i = rv.begin(); i != rv.end(); ++i) {
+        delete *i; // not exception safe
+    }
+    delete rp;
+    */
 
-    // x3 can now be copied from x2 because their are just wrappers from the
-    // shared_ptrs the real thing is implemented in hello_printer
-    hello_class x3 = x2;
-    x3->say_hello();
-    std::cout << "x3.get() = " << x3.get() << std::endl;
-    std::cout << "&x3 = " << &x3 << std::endl;
+    // Smart pointers
+    std::shared_ptr<shape> p = std::make_shared<square>(42);
+    std::vector<std::shared_ptr<shape>> v = load_shapes_modern_cpp();
+
+    for (std::shared_ptr<shape> &item : v) {
+        if (dynamic_cast<triangle *>(item.get())) {
+            std::cout << "This is a triangle" << std::endl;
+        } else if (dynamic_cast<square *>(item.get())) {
+            std::cout << "This is a square" << std::endl;
+        } else if (dynamic_cast<shape *>(item.get())) {
+            std::cout << "This is a shape" << std::endl;
+        }
+        if (item && *item == *p) {
+            std::cout << "It has the same area as p: " << item->area()
+                      << std::endl;
+        }
+    }
 
     return 0;
 }
