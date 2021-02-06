@@ -1,8 +1,9 @@
 # Modern C++: Snippets and Examples
 
-We often need to copy and paste some snippets to code more productively. Snippets can help us when it's not easy to
-remember all high levels features Modern C++ has to offer. This repository contains lots of organized, reusable, and
-safe snippets for Modern C++. All snippets are available in GitHub pages in a way convenient for copying and pasting.
+* We often need to copy and paste some snippets to code more productively. 
+* Snippets can help us when it's not easy to remember all high levels features Modern C++ has to offer. 
+* This repository contains lots of organized, reusable, and safe snippets for Modern C++. 
+* All snippets are available in [GitHub pages](https://alandefreitas.github.io/moderncpp/) in a way convenient for copying and pasting.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -120,8 +121,11 @@ For external libraries, we also include a short CMake snippet in the build scrip
 We give preference for external libraries in this order:
 
 1) Libraries that supported by all C++ compilers in the build workflow
+   
 2) Libraries that have been accepted into the C++ standard
+   
 3) Libraries likely to be accepted into C++23
+   
 4) Libraries representative of existing practice
 
 **GitHub Pages**
