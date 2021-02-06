@@ -15,6 +15,19 @@
 
 <br/>
 
+<!-- START mdsplit-ignore -->
+
+<h2>
+
+[EXPLORE THE SNIPPETS HERE](https://alandefreitas.github.io/moderncpp/)
+
+</h2>
+
+<!-- START mdsplit-ignore -->
+
+<br/>
+
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <details>
@@ -147,11 +160,17 @@ For external libraries, we also include a short CMake snippet in the build scrip
 
 We generate GitHub pages with all snippets:
 
-* The GitHub pages are generated with mkdocs material and mdsplit
+* The GitHub pages are generated with [mkdocs material](https://squidfunk.github.io/mkdocs-material/) and [mdsplit](https://alandefreitas.github.io/mdsplit/)
 * Snippets organized in sections by groups of tasks
 * Sections are easy to explore, copy, and paste
 
 ## Data types
+
+Build script:
+
+```cmake
+--8<-- "snippets/data_types/CMakeLists.txt"
+```
 
 ### Fundamental Data Types
 
@@ -227,6 +246,12 @@ We generate GitHub pages with all snippets:
 
 ## Control flow
 
+Build script:
+
+```cmake
+--8<-- "snippets/control_flow/CMakeLists.txt"
+```
+
 ### Hello World
 
 ```cpp
@@ -277,6 +302,12 @@ We generate GitHub pages with all snippets:
 
 ## Functions
 
+Build script:
+
+```cmake
+--8<-- "snippets/control_flow/CMakeLists.txt"
+```
+
 ### Function
 
 ```cpp
@@ -291,6 +322,12 @@ We generate GitHub pages with all snippets:
 
 ## Files
 
+Build script:
+
+```cmake
+--8<-- "snippets/files/CMakeLists.txt"
+```
+
 ### File streams
 
 ```cpp
@@ -304,6 +341,12 @@ We generate GitHub pages with all snippets:
 ```
 
 ## Template
+
+Build script:
+
+```cmake
+--8<-- "snippets/templates/CMakeLists.txt"
+```
 
 ### Template function
 
@@ -331,6 +374,12 @@ We generate GitHub pages with all snippets:
 
 ## Date and time
 
+Build script:
+
+```cmake
+--8<-- "snippets/datetime/CMakeLists.txt"
+```
+
 ### Clock
 
 ```cpp
@@ -345,6 +394,12 @@ We generate GitHub pages with all snippets:
 
 ## Random
 
+Build script:
+
+```cmake
+--8<-- "snippets/random/CMakeLists.txt"
+```
+
 ### Random
 
 ```cpp
@@ -352,6 +407,12 @@ We generate GitHub pages with all snippets:
 ```
 
 ## Algorithm
+
+Build script:
+
+```cmake
+--8<-- "snippets/algorithm/CMakeLists.txt"
+```
 
 ### Basic Algorithms
 
@@ -378,6 +439,12 @@ We generate GitHub pages with all snippets:
 ```
 
 ## Data structures
+
+Build script:
+
+```cmake
+--8<-- "snippets/data_structures/CMakeLists.txt"
+```
 
 ### Sequential Containers
 
@@ -435,6 +502,12 @@ We generate GitHub pages with all snippets:
 
 ## Paradigms
 
+Build script:
+
+```cmake
+--8<-- "snippets/paradigms/CMakeLists.txt"
+```
+
 ### Polymorphism
 
 ```cpp
@@ -467,6 +540,12 @@ We generate GitHub pages with all snippets:
 
 ## Parallel
 
+Build script:
+
+```cmake
+--8<-- "snippets/parallel/CMakeLists.txt"
+```
+
 ### Threads
 
 ```cpp
@@ -498,6 +577,12 @@ We generate GitHub pages with all snippets:
 ```
 
 ## Networking
+
+Build script:
+
+```cmake
+--8<-- "snippets/networking/CMakeLists.txt"
+```
 
 ### Network
 
@@ -617,6 +702,12 @@ server.cpp
 
 ## Utilities
 
+Build script:
+
+```cmake
+--8<-- "snippets/utilities/CMakeLists.txt"
+```
+
 ### Regex
 
 ```cpp
@@ -625,10 +716,22 @@ server.cpp
 
 ## GUI
 
+Build script:
+
+```cmake
+--8<-- "snippets/gui/CMakeLists.txt"
+```
+
 ### Qt
 
 ```cpp
 --8<-- "snippets/gui/qt/qt_hello.cpp"
+```
+
+Build script:
+
+```cmake
+--8<-- "snippets/gui/qt/CMakeLists.txt"
 ```
 
 ### OpenGL + SDL
@@ -637,10 +740,22 @@ server.cpp
 --8<-- "snippets/gui/opengl/sdl/sdl_hello.cpp"
 ```
 
+Build script:
+
+```cmake
+--8<-- "snippets/gui/opengl/sdl/CMakeLists.txt"
+```
+
 ### OpenGL + GLFW
 
 ```cpp
 --8<-- "snippets/gui/opengl/glfw/opengl_hello.cpp"
+```
+
+Build script:
+
+```cmake
+--8<-- "snippets/gui/opengl/glfw/CMakeLists.txt"
 ```
 
 ### IMGUI
@@ -649,10 +764,22 @@ server.cpp
 --8<-- "snippets/gui/imgui/imgui_hello.cpp"
 ```
 
+Build script:
+
+```cmake
+--8<-- "snippets/gui/imgui/CMakeLists.txt"
+```
+
 ### Webview
 
 ```cpp
 --8<-- "snippets/gui/webview/webview_hello.cpp"
+```
+
+Build script:
+
+```cmake
+--8<-- "snippets/gui/webview/CMakeLists.txt"
 ```
 
 ### System tray
@@ -661,7 +788,19 @@ server.cpp
 --8<-- "snippets/gui/tray/tray_hello.cpp"
 ```
 
+Build script:
+
+```cmake
+--8<-- "snippets/gui/tray/CMakeLists.txt"
+```
+
 ## Tests
+
+Build script:
+
+```cmake
+--8<-- "snippets/tests/CMakeLists.txt"
+```
 
 ### Catch2
 
