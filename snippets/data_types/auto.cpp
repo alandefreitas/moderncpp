@@ -1,5 +1,4 @@
 #include <iostream>
-#include <numeric>
 #include <string>
 #include <unordered_map>
 
@@ -11,19 +10,20 @@ int main() {
     // Example only: don't do that for fundamental data types!
     // This is a bad place for auto
     // - It does not avoid a long type name
-    // - There's ambiguity (87 could be any number type)
+    // - There's ambiguity
+    //   (87 could *semantically* be any number type)
     auto dont_do_that = 87;
     cout << "dont_do_that: " << dont_do_that << endl;
 
     // Data type alias
-    using hash_table = std::unordered_map<std::string, double>;
-    hash_table t;
+    std::unordered_map<std::string, double> t;
     t["zero"] = 0.0;
     t["pi"] = 3.14;
     t["ten"] = 10.0;
 
     // Without auto
-    hash_table::iterator it = t.find("pi");
+    // NOLINTNEXTLINE(modernize-use-auto)
+    std::unordered_map<std::string, double>::iterator it = t.find("pi");
     if (it != t.end()) {
         cout << it->first << ": " << it->second << endl;
     }
@@ -38,7 +38,8 @@ int main() {
     }
 
     // Get type from another variable
-    decltype(it) it3 = it;
+    decltype(it) it3;
+    it3 = it;
     ++it3;
     if (it3 != t.end()) {
         cout << it3->first << ": " << it3->second << endl;

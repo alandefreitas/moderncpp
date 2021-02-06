@@ -10,7 +10,9 @@ FetchContent_Declare(boost.ut GIT_REPOSITORY https://github.com/boost-ext/ut GIT
 FetchContent_MakeAvailable(boost.ut)
 add_executable(unit_tests unit_tests_ut.cpp)
 target_link_libraries(unit_tests PRIVATE boost.ut)
-target_compile_options(unit_tests PRIVATE -Wno-comma)
+if (NOT MSVC)
+    target_compile_options(unit_tests PRIVATE -Wno-comma)
+endif()
 
 # Unit tests
 FetchContent_Declare(Catch2 GIT_REPOSITORY https://github.com/catchorg/Catch2 GIT_TAG v3.0.0-preview3)

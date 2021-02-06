@@ -305,7 +305,7 @@ Build script:
 Build script:
 
 ```cmake
---8<-- "snippets/control_flow/CMakeLists.txt"
+--8<-- "snippets/functions/CMakeLists.txt"
 ```
 
 ### Function
@@ -326,6 +326,12 @@ Build script:
 
 ```cmake
 --8<-- "snippets/files/CMakeLists.txt"
+```
+
+FindFilesystem.cmake:
+
+```cmake
+--8<-- "cmake/FindFilesystem.cmake"
 ```
 
 ### File streams
@@ -364,6 +370,12 @@ Build script:
 
 ```cpp
 --8<-- "snippets/templates/concepts.cpp"
+```
+
+FindConcepts.cmake:
+
+```cmake
+--8<-- "cmake/FindConcepts.cmake"
 ```
 
 ### SFINAE
@@ -462,6 +474,12 @@ Build script:
 
 ```cpp
 --8<-- "snippets/data_structures/memory_resource.cpp"
+```
+
+FindPMR.cmake:
+
+```cmake
+--8<-- "cmake/FindPMR.cmake"
 ```
 
 ### Tuples

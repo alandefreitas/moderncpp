@@ -40,8 +40,9 @@ target_link_libraries(timers asio)
 add_executable(signals signals.cpp)
 target_link_libraries(signals asio)
 
-# async++ has good convenience functions but it's about to
-# be completely replaced by the traditional executors in C++23
+# async++ has good convenience functions/algorithms for parallel computing
+# But it's about to be completely replaced by the traditional executors in C++23
+# Replace this library as soon as we have an alternative based on executors
 if (EXPECTED_COMPILER)
     add_executable(async_pools async_pools.cpp)
     target_link_libraries(async_pools PUBLIC Async++)
