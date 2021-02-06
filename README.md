@@ -4,11 +4,13 @@
 
 <br/>
 
+<!-- START mdsplit-ignore -->
 [![](docs/img/banner.png)](https://alandefreitas.github.io/moderncpp/)
+<!-- END mdsplit-ignore -->
 
 * We often need to copy and paste some snippets to code more productively. 
 * Snippets can help us when it's not easy to remember all high levels features Modern C++ has to offer. 
-* This repository contains lots of organized, reusable, and safe snippets for Modern C++. 
+* This repository contains lots of organized, reusable, and safe snippets for Modern C++.
 * All snippets are available in [GitHub pages](https://alandefreitas.github.io/moderncpp/) in a way convenient for copying and pasting.
 
 <br/>
