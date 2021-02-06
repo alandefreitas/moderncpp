@@ -930,3 +930,44 @@ The most recent version of Visual Studio should include C++20.
 
     Please let us know or open a PR if you know of such a script.
 
+## Get involved
+
+* After getting started with this library, please complete this [survey](http://www.alandefreitas.com/survey/alandefreitas/moderncpp) to let us know how we can improve your experience.
+* Discussions are concentrated on our GitHub [discussions](https://github.com/alandefreitas/moderncpp/discussions) page. Don't refrain from asking questions and proposing ideas.
+* If you are a programmer with good ideas, please [share](https://github.com/alandefreitas/moderncpp/discussions/new) these ideas with us.
+* Academic collaboration is more than welcome.
+
+**Contributing**
+
+Feel free to contribute with new snippets to this repository. For complex features and changes, consider [getting feedback](https://github.com/alandefreitas/moderncpp/discussions/new) from the community first.
+
+There are many ways in which you can contribute to this library:
+
+* Testing the library in new environments
+* Contributing with interesting snippets and examples
+* Finding problems in the documentation
+* Finding bugs in general
+* Whatever idea seems interesting to you
+
+The only thing we ask you is to make sure your contribution is not destructive. Some contributions in which we are not interested are:
+
+* "I don't like this optional feature so I removed/deprecated it"
+* "I removed this feature to support older versions of C++" but have not provided an equivalent alternative. This repository is focused on Modern C++.
+* "I removed this feature so I don't have to install/update ______" but have not provided an equivalent alternative
+* "I'm creating this high-cost promise that we'll support ________ forever" but I'm not sticking around to keep that promise
+
+In doubt, please open a [discussion](https://github.com/alandefreitas/moderncpp/discussions) first
+
+**Guidelines**
+
+If contributing with code, please leave the OpenGL backend and pedantic mode ON (`-DBUILD_EXPERIMENTAL_OPENGL_BACKEND=ON -DBUILD_WITH_PEDANTIC_WARNINGS=ON`), use [cppcheck](http://cppcheck.sourceforge.net/), and [clang-format](https://clang.llvm.org/docs/ClangFormat.html).
+
+<details>
+    <summary>Example: CLion</summary>
+
+![CLion Settings with Pedantic Mode](docs/img/pedantic_clion.png)
+
+</details>
+
+If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](./docs) are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
+
