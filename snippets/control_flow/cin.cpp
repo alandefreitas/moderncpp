@@ -5,12 +5,12 @@ using namespace std;
 
 int main() {
     int age{60};
-    // std::cout << "How old are you? ";
-    // std::cin >> age;
+    std::cout << "How old are you? ";
+    std::cin >> age;
     if (age >= 18) {
-        std::cout << "Welcome!" << std::endl;
+        std::cout << "Welcome!\n";
     } else {
-        std::cout << "Sorry." << std::endl;
+        std::cout << "Sorry.\n";
         return 1;
     }
 
