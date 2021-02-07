@@ -1,180 +1,110 @@
+#include <algorithm>
 #include <array>
-#include <chrono>
-#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <memory>
 #include <random>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-void shuffle_vector(vector<int> &v);
-void sort_vector(vector<int> &v);
-int random_number(int low, int high);
-vector<int> generate_vector(int n);
-int sequential_search(const vector<int> &v, const int key);
-int binary_search(const vector<int> &v, const int key);
-pair<int, int> sequential_search_operations(const vector<int> &v,
-                                            const int key);
-pair<int, int> binary_search_operations(const vector<int> &v, const int key);
-
-int main() {
-    // alias to "now" function
-    const auto &now = chrono::steady_clock::now;
-
-    // Real time experiment
-    cout << "n\t\tpos\t\t\tsequential\tsorting\tbinary" << endl;
-    for (int i = 2; i < 100000000; i *= 2) {
-        // header
-        cout << "n=" << i << "\t";
-        if (i < 10) {
-            cout << "\t";
-        }
-
-        // create vector and key
-        vector<int> v = generate_vector(i);
-        int key = random_number(0, i - 1);
-
-        // measure time with sequential search
-        auto start_time = now();
-        int pos = sequential_search(v, key);
-        auto duration = now() - start_time;
-        cout << "pos=" << pos << "\t\t";
-        cout << duration.count() << "ms\t\t";
-
-        // measure time to sort
-        start_time = now();
-        sort_vector(v);
-        duration = now() - start_time;
-        cout << duration.count() << "ms\t\t";
-
-        // measure time with binary search
-        start_time = now();
-        pos = binary_search(v, key);
-        duration = now() - start_time;
-        cout << duration.count() << "ms\t";
-
-        cout << endl;
-    }
-
-    // Count operations
-    cout << "n\t\tpos\t\t\tsequential\tsorting\tbinary" << endl;
-    for (int i = 2; i < 100000000; i *= 2) {
-        // header
-        cout << "n=" << i << "\t";
-        if (i < 10) {
-            cout << "\t";
-        }
-
-        // create vector
-        vector<int> v = generate_vector(i);
-        int key = random_number(0, i - 1);
-
-        // count operations with sequential search
-        auto [pos, operations] = sequential_search_operations(v, key);
-        cout << "pos=" << pos << "\t\t";
-        cout << operations << "\t\t";
-
-        // estimate operations to sort
-        sort_vector(v);
-        cout << v.size() * log2(v.size()) << "\t\t";
-
-        // count operations with binary search
-        auto [pos2, operations2] = binary_search_operations(v, key);
-        cout << operations2 << "\t";
-
-        cout << endl;
-    }
-
-    return 0;
-}
-
-void shuffle_vector(vector<int> &v) {
-    static random_device r;
-    static default_random_engine generator(r());
-    shuffle(v.begin(), v.end(), generator);
-}
-
-void sort_vector(vector<int> &v) { sort(v.begin(), v.end()); }
-
-int random_number(int low, int high) {
-    static random_device r;
-    static default_random_engine generator(r());
-    uniform_int_distribution<int> ud(low, high);
-    return ud(generator);
-}
-
-vector<int> generate_vector(int n) {
-    vector<int> v(n);
-    for (int i = 0; i < n; ++i) {
-        v[i] = i;
-    }
-    shuffle_vector(v);
-    return v;
-}
-
-int sequential_search(const vector<int> &v, const int key) {
+// Usual implementation based on subscripts
+// - What you would probably learn in school
+size_t sequential_find(const vector<int> &v, const int key) {
     for (size_t i = 0; i < v.size(); ++i) {
         if (v[i] == key) {
             return i;
         }
     }
-    return -1;
+    // return a sentinel
+    return v.size();
 }
 
-int binary_search(const vector<int> &v, const int key) {
-    int esq = 0;
-    int dir = v.size() - 1;
-    int i;
+// Implementation based on iterators
+// - Example only. Use std::find instead.
+// - What works for more container types.
+template <class It, class T>
+constexpr It sequential_find(It first, It last, const T &value) {
+    for (; first != last; ++first) {
+        if (*first == value) {
+            return first;
+        }
+    }
+    // return a sentinel
+    return last;
+}
+
+// Usual implementation based on subscripts
+// - What you would probably learn in school
+size_t binary_find(const vector<int> &v, const int key) {
+    size_t left_idx = 0;
+    size_t right_idx = v.size() - 1;
+    size_t i;
     do {
-        i = (esq + dir) / 2;
+        i = (left_idx + right_idx) / 2;
         if (v[i] < key) {
-            esq = i + 1;
+            left_idx = i + 1;
         } else {
-            dir = i - 1;
+            right_idx = i - 1;
         }
-    } while (v[i] != key && esq <= dir);
-    if (v[i] == key) {
-        return i;
-    } else {
-        return -1;
-    }
+    } while (v[i] != key && left_idx <= right_idx);
+    return v[i] == key ? i : v.size();
 }
 
-pair<int, int> sequential_search_operations(const vector<int> &v,
-                                            const int key) {
-    int operations = 0;
-    for (size_t i = 0; i < v.size(); ++i) {
-        operations++;
-        if (v[i] == key) {
-            return {i, operations};
+// Example only. Use std::lower_bound instead.
+template <class It, class T>
+It binary_find(It first, It last, const T &value) {
+    typename std::iterator_traits<It>::difference_type count, step;
+    It it;
+    count = std::distance(first, last);
+    while (count > 0) {
+        it = first;
+        step = count / 2;
+        std::advance(it, step);
+        if (*it < value) {
+            first = ++it;
+            count -= step + 1;
+        } else {
+            count = step;
         }
-        operations++;
     }
-    return {-1, operations};
+    return first;
 }
 
-pair<int, int> binary_search_operations(const vector<int> &v, const int key) {
-    int esq = 0;
-    int dir = v.size() - 1;
-    int i;
-    int operations = 0;
-    do {
-        i = (esq + dir) / 2;
-        operations++;
-        if (v[i] < key) {
-            esq = i + 1;
-        } else {
-            dir = i - 1;
-        }
-        operations++;
-    } while (v[i] != key && esq <= dir);
-    operations++;
-    if (v[i] == key) {
-        return {i, operations};
-    } else {
-        return {-1, operations};
+int main() {
+    // Create vector for searching
+    vector v = {5, 4, 9, 8, 6, 3};
+
+    // Sequential search (vector / the C convention)
+    size_t pos1 = sequential_find(v, 6);
+    if (pos1 != v.size()) {
+        cout << "value: " << v[pos1] << '\n';
     }
+    cout << "position: " << pos1 << '\n';
+
+    // Sequential search (iterators / the C++ convention)
+    auto it1 = sequential_find(v.begin(), v.end(), 6);
+    if (it1 != v.end()) {
+        cout << "*it1: " << *it1 << '\n';
+    }
+    cout << "position: " << it1 - v.begin() << '\n';
+
+    // Prepare vector for binary search
+    sort(v.begin(), v.end());
+
+    // Binary search (vector / the C convention)
+    size_t pos2 = binary_find(v, 6);
+    if (pos2 != v.size()) {
+        cout << "value: " << v[pos2] << '\n';
+    }
+    cout << "position: " << pos2 << '\n';
+
+    // Binary search (iterators / the C++ convention)
+    auto it2 = binary_find(v.begin(), v.end(), 6);
+    if (it2 != v.end()) {
+        cout << "*it2: " << *it2 << '\n';
+    }
+    cout << "position: " << it2 - v.begin() << '\n';
+
+    return 0;
 }

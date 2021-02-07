@@ -472,6 +472,18 @@ FindConcepts.cmake:
 --8<-- "snippets/algorithm/CMakeLists.txt"
 ```
 
+### Searching
+
+```cpp
+--8<-- "snippets/algorithm/searching.cpp"
+```
+
+### Sorting
+
+```cpp
+--8<-- "snippets/algorithm/sorting.cpp"
+```
+
 ### Basic Algorithms
 
 ```cpp
@@ -482,18 +494,6 @@ FindConcepts.cmake:
 
 ```cpp
 --8<-- "snippets/algorithm/ranges.cpp"
-```
-
-### Sorting
-
-```cpp
---8<-- "snippets/algorithm/sorting.cpp"
-```
-
-### Searching
-
-```cpp
---8<-- "snippets/algorithm/searching.cpp"
 ```
 
 ## Data structures
