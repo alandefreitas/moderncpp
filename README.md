@@ -101,6 +101,7 @@
   - [Variant](#variant)
   - [Span](#span)
   - [Bitset](#bitset)
+  - [Spatial Containers](#spatial-containers)
 - [Paradigms](#paradigms)
   - [Polymorphism](#polymorphism)
   - [Shared from this](#shared-from-this)
