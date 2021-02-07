@@ -810,7 +810,7 @@ server.cpp
 --8<-- "snippets/gui/qt/qt_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/qt/CMakeLists.txt"
@@ -822,7 +822,7 @@ server.cpp
 --8<-- "snippets/gui/opengl/sdl/sdl_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/opengl/sdl/CMakeLists.txt"
@@ -834,7 +834,7 @@ server.cpp
 --8<-- "snippets/gui/opengl/glfw/opengl_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/opengl/glfw/CMakeLists.txt"
@@ -846,7 +846,7 @@ server.cpp
 --8<-- "snippets/gui/imgui/imgui_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/imgui/CMakeLists.txt"
@@ -858,7 +858,7 @@ server.cpp
 --8<-- "snippets/gui/webview/webview_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/webview/CMakeLists.txt"
@@ -870,7 +870,7 @@ server.cpp
 --8<-- "snippets/gui/tray/tray_hello.cpp"
 ```
 
-### Build script
+Build script: 
 
 ```cmake
 --8<-- "snippets/gui/tray/CMakeLists.txt"
