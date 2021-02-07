@@ -174,6 +174,12 @@ For external libraries, we also include a short CMake snippet in the build scrip
 
 <br/>
 
+**Snippets and Examples**
+
+The snippets, as they are, might seem like they are examples in the sense that they are in long files sometimes. What makes them snippets is that, at the source file level, they represent lots of independent short tasks separated by comments. Unlike in the examples, the tasks separated by comments are unrelated. You can just copy and paste the snippets between pairs of comments.
+
+<br/>
+
 **GitHub Pages**
 
 We generate GitHub pages with all snippets:
@@ -184,7 +190,7 @@ We generate GitHub pages with all snippets:
 
 ## Data types
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/data_types/CMakeLists.txt"
@@ -264,7 +270,7 @@ Build script:
 
 ## Control flow
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/control_flow/CMakeLists.txt"
@@ -320,7 +326,7 @@ Build script:
 
 ## Functions
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/functions/CMakeLists.txt"
@@ -340,7 +346,7 @@ Build script:
 
 ## Files
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/files/CMakeLists.txt"
@@ -366,7 +372,7 @@ FindFilesystem.cmake:
 
 ## Template
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/templates/CMakeLists.txt"
@@ -404,7 +410,7 @@ FindConcepts.cmake:
 
 ## Date and time
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/datetime/CMakeLists.txt"
@@ -424,7 +430,7 @@ Build script:
 
 ## Random
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/random/CMakeLists.txt"
@@ -444,7 +450,7 @@ Build script:
 
 ## Algorithm
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/algorithm/CMakeLists.txt"
@@ -476,7 +482,7 @@ Build script:
 
 ## Data structures
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/data_structures/CMakeLists.txt"
@@ -550,7 +556,7 @@ FindPMR.cmake:
 
 ## Paradigms
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/paradigms/CMakeLists.txt"
@@ -588,7 +594,7 @@ Build script:
 
 ## Parallel
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/parallel/CMakeLists.txt"
@@ -632,7 +638,7 @@ Build script:
 
 ## Networking
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/networking/CMakeLists.txt"
@@ -756,7 +762,7 @@ server.cpp
 
 ## Utilities
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/utilities/CMakeLists.txt"
@@ -770,7 +776,7 @@ Build script:
 
 ## GUI
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/CMakeLists.txt"
@@ -782,7 +788,7 @@ Build script:
 --8<-- "snippets/gui/qt/qt_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/qt/CMakeLists.txt"
@@ -794,7 +800,7 @@ Build script:
 --8<-- "snippets/gui/opengl/sdl/sdl_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/opengl/sdl/CMakeLists.txt"
@@ -806,7 +812,7 @@ Build script:
 --8<-- "snippets/gui/opengl/glfw/opengl_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/opengl/glfw/CMakeLists.txt"
@@ -818,7 +824,7 @@ Build script:
 --8<-- "snippets/gui/imgui/imgui_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/imgui/CMakeLists.txt"
@@ -830,7 +836,7 @@ Build script:
 --8<-- "snippets/gui/webview/webview_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/webview/CMakeLists.txt"
@@ -842,7 +848,7 @@ Build script:
 --8<-- "snippets/gui/tray/tray_hello.cpp"
 ```
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/gui/tray/CMakeLists.txt"
@@ -850,7 +856,7 @@ Build script:
 
 ## Tests
 
-Build script:
+### Build script
 
 ```cmake
 --8<-- "snippets/tests/CMakeLists.txt"
@@ -880,9 +886,9 @@ Build script:
 --8<-- "snippets/tests/plots.cpp"
 ```
 
-## Installing C++20
+## Installing a C++20 compiler
 
-Many operating systems don't use C++20 by default yet. Follow these instructions to install C++20.
+Many operating systems don't come with C++20 by default. Follow these instructions to install C++20.
 
 ### Linux
 
@@ -952,6 +958,46 @@ The most recent version of Visual Studio should include C++20.
 
     Please let us know or open a PR if you know of such a script.
 
+## FAQ
+
+**Where are the examples? Are the snippets examples?**
+
+The complete examples are in the [`examples`](./examples) directory, but they not explicitly replicated in the docs because they are much longer than the snippets.
+
+**What's the difference between snippets and examples?**
+
+Example are often long and don't represent independent tasks you can copy and paste. Snippets represent independent tasks between pairs of comments that you can copy and paste.
+
+**Shouldn't the snippet files be short files?**
+
+The snippets could go into a new category level and we could separate them at their lowest level by file, but that would make them difficult to explore if the resolution is too high, like 3-4 lines of code per file. Also, because snippets have pre-conditions and post-conditions, it would make it much harder to test all snippets.
+
+**Why not get my snippets directly from cppreference?**
+
+The cppreference is not meant for snippets and this repository is not meant to be a reference for the C++ standard. Some implications are:
+
+* The snippets:
+  * Meant to list the commands you most often need in a library.
+  * Lots of independent tasks for copying and pasting
+  * Include corresponding build scripts when something more complex is required
+  * Include external libraries when it's existing practice
+  * Organized roughly in the order someone learning C++ might need them
+* The examples in cppreference:
+  * Meant to make points about the internals of the libraries.
+  * A single task meant to prove a point
+  * Has nothing to do with build scripts
+  * Has nothing to do with external libraries
+  * Mix simple and complex concepts to make a point
+
+**Why do you use `std::endl` in the snippets? Isn't it evil?**
+
+The snippets usually use `std::endl` instead of `'\n'`:
+
+* Flushing *does* have a [semantic meaning](https://en.cppreference.com/w/cpp/io/manip/flush) different from `'\n` which is a nice convention for small snippets (please show me what's in the buffer vs. put a newline in the buffer)
+* Most snippets require creating variables first and using them later so that we can test the snippets with GitHub Actions. The flushing part is not what you are going to copy and paste in a snippet.
+* The time difference of flushing `std::cout` to the console (not files!) is [negligible](./examples/datetime/flushtime.cpp)
+* Almost no application is spending more time flushing than calculating things to flush. Unless it's a flushing benchmark.
+
 ## Get involved
 
 * After getting started with this library, please complete this [survey](http://www.alandefreitas.com/survey/alandefreitas/moderncpp) to let us know how we can improve your experience.
@@ -992,10 +1038,3 @@ If contributing with code, please leave the pedantic mode ON (`-DBUILD_WITH_PEDA
 </details>
 
 If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](./docs) are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
-
-*To flush or not to flush*: the snippets usually use `std::endl` instead of `'\n'`:
-
-* Flushing *does* have a [semantic meaning](https://en.cppreference.com/w/cpp/io/manip/flush) different from `'\n` which is a nice convention (please show me what's in the buffer vs. put a newline in the buffer)
-* The flushing part is not what you are going to copy and paste in a snippet
-* The time difference of flushing `cout` to the console (not files!) is [negligible](./examples/datetime/flushtime.cpp)
-* Almost no application is spending more time flushing than calculating things to flush
