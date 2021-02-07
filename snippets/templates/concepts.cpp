@@ -4,10 +4,11 @@
 #include <type_traits>
 #include <vector>
 
-// Define concept with a compile-time boolean predicate
-template<typename T> concept Number = std::is_arithmetic_v<T>;
+// Define concepts with a compile-time boolean predicate
+// - is_arithmetic_v might be misleading since it also includes bool
+// - is_arithmetic_v might be misleading since it doesn't include std::complex
+template <typename T> concept Number = std::is_arithmetic_v<T>;
 
-// Define concept from another concept as predicate
 template<typename T> concept NotNumber = !Number<T>;
 
 // Define concept from conjunction of constraints
