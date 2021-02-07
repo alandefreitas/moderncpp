@@ -4,8 +4,15 @@
 using namespace std;
 
 int main() {
-    // Use smart pointers whenever possible
-    // But you can't do it without understanding raw pointers
+    // Use smart pointers instead of raw pointer whenever possible
+    // - But you can't do it without understanding raw pointers
+    // - Recur to raw *non-owning* pointers if they are needed
+    // In general, use:
+    // 1) No pointers
+    // 2) Raw non-owning pointers if they are needed
+    // 3) Smart pointers IF owning pointers can not be averted
+    // 4) Owning raw pointers if you know exactly what you are doing
+    //        and need them (e.g. interfacing with C code).
 
     // Only one unique pointer can point to an address
     std::unique_ptr<int> c;

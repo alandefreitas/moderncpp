@@ -76,7 +76,7 @@ int main() {
     // - Point to a sequence of values
     // - Always use vectors instead of this
     // - If you need to access the raw data, use vector::data()
-    int* x2 = new int[10];
+    int *x2 = new int[10];
     for (int i2 = 0; i2 < 10; ++i2) {
         x2[i2] = 10 + i2 * 10;
     }

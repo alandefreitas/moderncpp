@@ -20,9 +20,11 @@ int main() {
     std::cout << std::endl;
 
     // Moving v
+    // - std::move casts v to an rvalue
     std::vector<double> v3 = std::move(v);
 
     std::cout << "v1: ";
+    // NOLINTNEXTLINE(bugprone-use-after-move): making a point
     std::for_each(v.begin(), v.end(),
                   [](const double c) { std::cout << c << " "; });
     std::cout << std::endl;
