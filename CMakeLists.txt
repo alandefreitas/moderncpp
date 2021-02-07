@@ -42,16 +42,14 @@ if (MSVC)
     add_compile_options(/EHsc)
 endif ()
 
-# Some external build script wrongly assume Win+MSVC, MacOS+Clang, Unix+GCC
+# Some external build scripts assume Win/MSVC, MacOS/Clang, Unix/GCC
 # This may cause problems, so we need to skip these examples
 set(EXPECTED_COMPILER OFF)
 if (WIN32 AND MSVC)
     set(EXPECTED_COMPILER ON)
-endif ()
-if (APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+elseif (APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(EXPECTED_COMPILER ON)
-endif ()
-if (APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "GCC")
+elseif (UNIX AND NOT APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "GCC")
     set(EXPECTED_COMPILER ON)
 endif ()
 
