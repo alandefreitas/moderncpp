@@ -435,6 +435,12 @@ Build script:
 --8<-- "snippets/random/random.cpp"
 ```
 
+### PCG
+
+```cpp
+--8<-- "snippets/random/pcg.cpp"
+```
+
 ## Algorithm
 
 Build script:
@@ -988,7 +994,7 @@ If contributing to the documentation, please edit [`README.md`](README.md) direc
 
 *To flush or not to flush*: the snippets usually use `std::endl` instead of `'\n'`:
 
-* Flushing does have a semantic meaning which is a nice convention
+* Flushing *does* have a [semantic meaning](https://en.cppreference.com/w/cpp/io/manip/flush) different from `'\n` which is a nice convention (please show me what's in the buffer vs. put a newline in the buffer)
 * The flushing part is not what you are going to copy and paste in a snippet
-* The time difference of flushing cout to the console (not files!) is [negligible](./examples/datetime/flushtime.cpp)
+* The time difference of flushing `cout` to the console (not files!) is [negligible](./examples/datetime/flushtime.cpp)
 * Almost no application is spending more time flushing than calculating things to flush

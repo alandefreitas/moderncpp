@@ -1,1 +1,11 @@
 add_executable(random random.cpp)
+
+FetchContent_Declare(pcg-cpp GIT_REPOSITORY https://github.com/imneme/pcg-cpp.git GIT_TAG v0.98.1)
+FetchContent_GetProperties(pcg-cpp)
+if (NOT pcg-cpp_POPULATED)
+    FetchContent_Populate(pcg-cpp)
+    add_library(pcg-cpp INTERFACE)
+    target_include_directories(pcg-cpp INTERFACE ${pcg-cpp_SOURCE_DIR}/include)
+endif ()
+add_executable(pcg pcg.cpp)
+target_link_libraries(pcg pcg-cpp)
