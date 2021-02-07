@@ -33,8 +33,6 @@ int main() {
     seed ^= static_cast<unsigned int>(reinterpret_cast<uintptr_t>(&std::chrono::system_clock::now));
     // - The exit function address
     seed ^= static_cast<unsigned int>(reinterpret_cast<uintptr_t>((void *) &_Exit));
-    // - A local function address
-    seed ^= static_cast<unsigned int>(reinterpret_cast<uintptr_t>((int *) &main));
     // - The generator type hash code
     seed ^= static_cast<unsigned int>(typeid(random_device).hash_code());
 
