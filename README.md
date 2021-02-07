@@ -1003,17 +1003,17 @@ The cppreference is not meant for snippets and this repository is not meant to b
 implications are:
 
 * The snippets:
-  * Meant to list the commands you most often need in a library.
-  * Lots of independent tasks for copying and pasting
-  * Include corresponding build scripts when something more complex is required
-  * Include external libraries when it's existing practice
-  * Organized roughly in the order someone learning C++ might need them
+    * Meant to list the commands you most often need in a library.
+    * Lots of independent tasks for copying and pasting
+    * Include corresponding build scripts when something more complex is required
+    * Include external libraries when it's existing practice
+    * Organized roughly in the order someone learning C++ might need them
 * The examples in cppreference or cplusplus.com:
-  * Meant to make points about the internals of the libraries.
-  * A single task meant to prove a point
-  * Has nothing to do with build scripts
-  * Has nothing to do with external libraries
-  * Mix simple and complex concepts to make a point
+    * Meant to make points about the internals of the libraries.
+    * A single task meant to prove a point
+    * Has nothing to do with build scripts
+    * Has nothing to do with external libraries
+    * Mix simple and complex concepts to make a point
 
 **Why do you use `std::endl` in the snippets? Isn't it evil?**
 
