@@ -534,6 +534,12 @@ FindPMR.cmake:
 --8<-- "snippets/data_structures/bitset.cpp"
 ```
 
+### Spatial Containers
+
+```cpp
+--8<-- "snippets/data_structures/spatial_containers.cpp"
+```
+
 ## Paradigms
 
 Build script:
