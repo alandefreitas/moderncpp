@@ -149,6 +149,7 @@
   - [boost.ut](#boostut)
   - [Source Location](#source-location)
   - [Plots](#plots)
+- [CMake functions](#cmake-functions)
 - [Installing a C++20 compiler](#installing-a-c20-compiler)
   - [Linux](#linux)
   - [Mac OS](#mac-os)
