@@ -970,7 +970,7 @@ The only thing we ask you is to make sure your contribution is not destructive. 
 * "I removed this feature so I don't have to install/update ______" but have not provided an equivalent alternative
 * "I'm creating this high-cost promise that we'll support ________ forever" but I'm not sticking around to keep that promise
 
-In doubt, please open a [discussion](https://github.com/alandefreitas/moderncpp/discussions) first
+In doubt, please open a [discussion](https://github.com/alandefreitas/moderncpp/discussions) first.
 
 **Guidelines**
 
@@ -985,3 +985,9 @@ If contributing with code, please leave the pedantic mode ON (`-DBUILD_WITH_PEDA
 
 If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](./docs) are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
 
+*To flush or not to flush*: the snippets usually use `std::endl` instead of `'\n'`:
+
+* Flushing does have a semantic meaning which is a nice convention
+* The flushing part is not what you are going to copy and paste in a snippet
+* The time difference of flushing cout to the console (not files!) is [negligible](./examples/datetime/flushtime.cpp)
+* Almost no application is spending more time flushing than calculating things to flush
