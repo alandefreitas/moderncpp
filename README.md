@@ -86,6 +86,7 @@
   - [Datetime](#datetime)
 - [Random](#random)
   - [Random](#random-1)
+  - [PCG](#pcg)
 - [Algorithm](#algorithm)
   - [Basic Algorithms](#basic-algorithms)
   - [Ranges](#ranges)
