@@ -75,7 +75,14 @@ int main() {
     // Create vector for searching
     vector v = {5, 4, 9, 8, 6, 3};
 
-    // Sequential search (vector / the C convention)
+    // Sequential search (std library)
+    auto i1 = find(v.begin(), v.end(), 6);
+    if (i1 != v.end()) {
+        cout << "*i1: " << *i1 << '\n';
+    }
+    cout << "position: " << i1 - v.begin() << '\n';
+
+    // Sequential search (vector / the textbook convention)
     size_t pos1 = sequential_find(v, 6);
     if (pos1 != v.size()) {
         cout << "value: " << v[pos1] << '\n';
@@ -92,7 +99,14 @@ int main() {
     // Prepare vector for binary search
     sort(v.begin(), v.end());
 
-    // Binary search (vector / the C convention)
+    // Binary search (std library)
+    auto i2 = lower_bound(v.begin(), v.end(), 6);
+    if (i2 != v.end()) {
+        cout << "*i2: " << *i2 << '\n';
+    }
+    cout << "position: " << i2 - v.begin() << '\n';
+
+    // Binary search (vector / the textbook convention)
     size_t pos2 = binary_find(v, 6);
     if (pos2 != v.size()) {
         cout << "value: " << v[pos2] << '\n';
