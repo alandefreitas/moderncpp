@@ -966,15 +966,19 @@ The complete examples are in the [`examples`](./examples) directory, but they no
 
 **What's the difference between snippets and examples?**
 
-Example are often long and don't represent independent tasks you can copy and paste. Snippets represent independent tasks between pairs of comments that you can copy and paste.
+Examples are often long and don't represent independent tasks you can copy and paste. Snippets represent independent
+tasks between pairs of comments that you can copy and paste.
 
 **Shouldn't the snippet files be short files?**
 
-The snippets could go into a new category level and we could separate them at their lowest level by file, but that would make them difficult to explore if the resolution is too high, like 3-4 lines of code per file. Also, because snippets have pre-conditions and post-conditions, it would make it much harder to test all snippets.
+The snippets could go into a new category level and we could separate them at their lowest level by file, but that would
+make them difficult to explore if the resolution is too high, like 3-4 lines of code per file. Also, because snippets
+have pre-conditions and post-conditions, it would make it much harder to test all snippets.
 
-**Why not get my snippets directly from cppreference?**
+**Why not get my snippets directly from cppreference or cplusplus.com?**
 
-The cppreference is not meant for snippets and this repository is not meant to be a reference for the C++ standard. Some implications are:
+The cppreference is not meant for snippets and this repository is not meant to be a reference for the C++ standard. Some
+implications are:
 
 * The snippets:
   * Meant to list the commands you most often need in a library.
@@ -982,7 +986,7 @@ The cppreference is not meant for snippets and this repository is not meant to b
   * Include corresponding build scripts when something more complex is required
   * Include external libraries when it's existing practice
   * Organized roughly in the order someone learning C++ might need them
-* The examples in cppreference:
+* The examples in cppreference or cplusplus.com:
   * Meant to make points about the internals of the libraries.
   * A single task meant to prove a point
   * Has nothing to do with build scripts
