@@ -70,7 +70,8 @@ template<typename T> concept RangeWithValueType = Range<T> && HasValueType<T>;
 template<typename T> concept RangeWithoutValueType = Range<T> && !HasValueType<T>;
 
 
-// Unconstrained function
+// Constrain with template type
+// Number, but nor SignedNumber neither UnsignedNumber
 template<Number T>
 void max_value(T a, T b) {
     if (a > b) {
@@ -80,6 +81,8 @@ void max_value(T a, T b) {
     }
 }
 
+// Constrain with template type
+// Number -> SignedNumber
 template<SignedNumber T>
 void max_value(T a, T b) {
     if (a > b) {
@@ -97,6 +100,8 @@ void max_value(T a, T b) {
     }
 }
 
+// Constrain with template type
+// Number -> UnsignedNumber
 template<UnsignedNumber T>
 void max_value(T a, T b) {
     if (a > b) {
@@ -107,19 +112,21 @@ void max_value(T a, T b) {
 }
 
 // Constrain with template type
+// NotNumber == !Number<T>
 template<NotNumber T>
 void max_value(T a, T b) {
     std::cout << "a: " << a << std::endl;
     std::cout << "b: " << b << std::endl;
 }
 
-// Unconstrained function
+// Unconstrained function (Not range)
 template<class T>
 void print_element(const T &c) {
     std::cout << c << std::endl;
 }
 
-// Constrain with template type (the most constrained concept is used)
+// Constrained with template type
+// - The most constrained concept is used
 template<Range T>
 void print_element(const T &c) {
     for (const auto &item : c) {
@@ -128,8 +135,8 @@ void print_element(const T &c) {
     std::cout << std::endl;
 }
 
-// Constrain the same function with a most constrained template type
-// (the most constrained concept is used in nested constraints)
+// Constrain the same function with a more constrained template type
+// - The most constrained concept is used in nested constraints
 template<RangeWithValueType T>
 void print_element(const T &c) {
     std::cout << typeid(typename T::value_type).name() << ": ";
@@ -150,7 +157,7 @@ void compare(const T &a, const T &b) {
     }
 }
 
-// Constrain with require-clause directly in function declaration
+// Unconstrained version
 template<typename T>
 void compare(const T &a, const T &b) {
     std::cout << typeid(T).name() << ": " << a.c << " == " << b.c << "?" << std::endl;
