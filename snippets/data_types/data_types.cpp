@@ -1,12 +1,16 @@
+#include <bit>
 #include <bitset>
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
-auto get_bits(auto v) {
-    return std::bitset<sizeof(v)*8>(*reinterpret_cast<unsigned long long*>(&v));
-}
+void print_endian();
+
+template <class T>
+std::bitset<sizeof(T)*8> get_bits(T v);
 
 int main() {
+    print_endian();
+
     // Basic types
     bool a = true;
     std::cout << "bool a: " << a << std::endl;
@@ -105,4 +109,25 @@ int main() {
     std::cout << std::endl;
 
     return 0;
+}
+
+void print_endian() {
+    if constexpr (std::endian::native == std::endian::big) {
+        std::cout << "big-endian" << '\n';
+    } else if constexpr (std::endian::native == std::endian::little) {
+        std::cout << "little-endian platform" << '\n';
+    } else {
+        std::cout << "mixed-endian" << '\n';
+    }
+}
+
+template <class T>
+std::bitset<sizeof(T)*8> get_bits(T v) {
+    auto ptr = reinterpret_cast<unsigned char *>(&v);
+    unsigned long long bytes = ptr[0];
+    for (size_t i = 1; i < sizeof(v); ++i) {
+        bytes <<= 8;
+        bytes += ptr[i];
+    }
+    return std::bitset<sizeof(v) * 8>(bytes);
 }
