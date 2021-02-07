@@ -1063,4 +1063,5 @@ If contributing with code, please leave the pedantic mode ON (`-DBUILD_WITH_PEDA
 
 </details>
 
-If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](./docs) are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
+If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](docs)
+are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
