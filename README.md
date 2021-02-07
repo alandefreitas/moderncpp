@@ -893,13 +893,21 @@ Build script:
 ### Source Location
 
 ```cpp
---8<-- "snippets/tests/source_location.cpp"
+                                           
 ```
 
 ### Plots
 
 ```cpp
---8<-- "snippets/tests/plots.cpp"
+                                 
+```
+
+## CMake functions
+
+Some useful CMake functions:
+
+```cmake
+--8<-- "cmake/functions.cmake"
 ```
 
 ## Installing a C++20 compiler
