@@ -9,7 +9,7 @@ int main() {
     if (age >= 18) {
         printf("Welcome! You are %d years old.", age);
     } else {
-        std::cout << "Sorry." << std::endl;
+        std::cout << "Sorry.\n";
     }
     return 0;
 }
