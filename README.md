@@ -319,6 +319,10 @@ Related examples:
 --8<-- "snippets/functions/functions.cpp"
 ```
 
+Related examples:
+
+* [`examples/functions/recursive_bench.cpp`](examples/functions/recursive_bench.cpp)
+
 #### Lambda
 
 ```cpp
