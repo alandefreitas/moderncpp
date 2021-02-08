@@ -1,24 +1,7 @@
 add_executable(data_types data_types.cpp)
 
-add_executable(constants constants.cpp)
+add_executable(operators operators.cpp)
 
 add_executable(auto auto.cpp)
 
-add_executable(raw_pointers raw_pointers.cpp)
-
-add_executable(smart_pointers smart_pointers.cpp)
-
-add_executable(raw_arrays raw_arrays.cpp)
-
-add_executable(arrays arrays.cpp)
-
-add_executable(vectors vectors.cpp)
-
-add_executable(strings strings.cpp)
-
-add_executable(move move.cpp)
-
-add_executable(aggregate_initialization aggregate_initialization.cpp)
-
-add_executable(structured_binding structured_binding.cpp)
-
+add_executable(constants constants.cpp)

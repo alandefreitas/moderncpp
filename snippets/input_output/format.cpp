@@ -10,6 +10,14 @@
 #include <fmt/ranges.h>
 
 int main() {
+    /*
+     * About fmt/format:
+     * - fmt/format has been accepted into C++20
+     * - It has the best of printf and cout
+     * - Many compilers don't implement it yet
+     * - We still depend on <fmt/format.h>
+     */
+
     using namespace std;
     using namespace fmt;
     using namespace std::literals::chrono_literals;

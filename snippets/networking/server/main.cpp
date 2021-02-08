@@ -13,6 +13,8 @@
 #include <string>
 
 int main(int argc, char *argv[]) {
+    // - Move this to examples
+    // - Replace these snippets with an http server library
     try {
         // Check command line arguments.
         if (argc != 4) {

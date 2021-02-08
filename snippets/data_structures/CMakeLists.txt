@@ -1,3 +1,4 @@
+# Data structures
 add_executable(sequential_containers sequential_containers.cpp)
 
 add_executable(associative_containers associative_containers.cpp)
@@ -11,15 +12,7 @@ endif ()
 
 add_executable(span span.cpp)
 
-add_executable(tuples tuples.cpp)
-
-add_executable(variant variant.cpp)
-
-add_executable(any any.cpp)
-
 add_executable(bitset bitset.cpp)
-
-add_executable(optional optional.cpp)
 
 set(BUILD_MATPLOT_TARGETS OFF CACHE BOOL "" FORCE)
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -27,3 +20,4 @@ FetchContent_Declare(pareto GIT_REPOSITORY https://github.com/alandefreitas/pare
 FetchContent_MakeAvailable(pareto)
 add_executable(spatial_containers spatial_containers.cpp)
 target_link_libraries(spatial_containers PUBLIC pareto)
+

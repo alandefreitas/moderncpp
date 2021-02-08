@@ -205,165 +205,195 @@ We generate GitHub pages with all snippets:
 * Snippets organized are categorized by groups of tasks
 * Sections are easy to explore, copy, and paste
 
-## Data types
+## Basic Syntax
 
-### Build script
+### Input / Output
+
+#### Build script
 
 ```cmake
---8<-- "snippets/data_types/CMakeLists.txt"
+--8<-- "snippets/input_output/CMakeLists.txt"
 ```
 
-### Fundamental Data Types
+#### Hello World
 
 ```cpp
---8<-- "snippets/data_types/data_types.cpp"
+--8<-- "snippets/input_output/hello_world.cpp"
 ```
 
-### Auto
+#### Input
 
 ```cpp
---8<-- "snippets/data_types/auto.cpp"
+--8<-- "snippets/input_output/cin.cpp"
 ```
 
-### Constants
+#### Output
 
 ```cpp
---8<-- "snippets/data_types/constants.cpp"
+--8<-- "snippets/input_output/printing.cpp"
 ```
 
-### Raw arrays
+Related examples:
+
+* [`examples/datetime/flushtime.cpp`](examples/datetime/flushtime.cpp)
+
+#### Format
 
 ```cpp
---8<-- "snippets/data_types/raw_arrays.cpp"
+--8<-- "snippets/input_output/format.cpp"
 ```
 
-### Arrays
+### Control flow
 
-```cpp
---8<-- "snippets/data_types/arrays.cpp"
-```
-
-### Vectors
-
-```cpp
---8<-- "snippets/data_types/vectors.cpp"
-```
-
-### Strings
-
-```cpp
---8<-- "snippets/data_types/strings.cpp"
-```
-
-### Raw Pointers
-
-```cpp
---8<-- "snippets/data_types/raw_pointers.cpp"
-```
-
-### Smart pointers
-
-```cpp
---8<-- "snippets/data_types/smart_pointers.cpp"
-```
-
-### Move
-
-```cpp
---8<-- "snippets/data_types/move.cpp"
-```
-
-### Aggregate initialization
-
-```cpp
---8<-- "snippets/data_types/aggregate_initialization.cpp"
-```
-
-### Structured binding
-
-```cpp
---8<-- "snippets/data_types/structured_binding.cpp"
-```
-
-## Control flow
-
-### Build script
+#### Build script
 
 ```cmake
 --8<-- "snippets/control_flow/CMakeLists.txt"
 ```
 
-### Hello World
-
-```cpp
---8<-- "snippets/control_flow/hello_world.cpp"
-```
-
-### Sequential
+#### Sequential
 
 ```cpp
 --8<-- "snippets/control_flow/sequential.cpp"
 ```
 
-### Input
-
-```cpp
---8<-- "snippets/control_flow/cin.cpp"
-```
-
-### Output
-
-```cpp
---8<-- "snippets/control_flow/printing.cpp"
-```
-
-### Format
-
-```cpp
---8<-- "snippets/control_flow/format.cpp"
-```
-
-### Operators
-
-```cpp
---8<-- "snippets/control_flow/operators.cpp"
-```
-
-### Conditional
+#### Conditional
 
 ```cpp
 --8<-- "snippets/control_flow/conditional.cpp"
 ```
 
-### Loops
+#### Loops
 
 ```cpp
 --8<-- "snippets/control_flow/loops.cpp"
 ```
 
-## Functions
+### Data types
 
-### Build script
+#### Build script
+
+```cmake
+--8<-- "snippets/data_types/CMakeLists.txt"
+```
+
+#### Fundamental Data Types
+
+```cpp
+--8<-- "snippets/data_types/data_types.cpp"
+```
+
+#### Operators
+
+```cpp
+--8<-- "snippets/data_types/operators.cpp"
+```
+
+#### Auto
+
+```cpp
+--8<-- "snippets/data_types/auto.cpp"
+```
+
+#### Constants
+
+```cpp
+--8<-- "snippets/data_types/constants.cpp"
+```
+
+### Basic Data Types
+
+#### Build script
+
+```cmake
+--8<-- "snippets/basic_types/CMakeLists.txt"
+```
+
+#### Raw arrays
+
+```cpp
+--8<-- "snippets/basic_types/raw_arrays.cpp"
+```
+
+#### Arrays
+
+```cpp
+--8<-- "snippets/basic_types/arrays.cpp"
+```
+
+#### Vectors
+
+```cpp
+--8<-- "snippets/basic_types/vectors.cpp"
+```
+
+#### Strings
+
+```cpp
+--8<-- "snippets/basic_types/strings.cpp"
+```
+
+#### Move
+
+```cpp
+--8<-- "snippets/basic_types/move.cpp"
+```
+
+#### Aggregate initialization
+
+```cpp
+--8<-- "snippets/basic_types/aggregate_initialization.cpp"
+```
+
+#### Structured binding
+
+```cpp
+--8<-- "snippets/basic_types/structured_binding.cpp"
+```
+
+### Pointers
+
+#### Build script
+
+```cmake
+--8<-- "snippets/pointers/CMakeLists.txt"
+```
+
+#### Raw Pointers
+
+```cpp
+--8<-- "snippets/pointers/raw_pointers.cpp"
+```
+
+#### Smart pointers
+
+```cpp
+--8<-- "snippets/pointers/smart_pointers.cpp"
+```
+
+### Functions
+
+#### Build script
 
 ```cmake
 --8<-- "snippets/functions/CMakeLists.txt"
 ```
 
-### Function
+#### Function
 
 ```cpp
 --8<-- "snippets/functions/functions.cpp"
 ```
 
-### Lambda
+#### Lambda
 
 ```cpp
 --8<-- "snippets/functions/lambda.cpp"
 ```
 
-## Files
+### Files
 
-### Build script
+#### Build script
 
 ```cmake
 --8<-- "snippets/files/CMakeLists.txt"
@@ -375,39 +405,85 @@ FindFilesystem.cmake:
 --8<-- "cmake/FindFilesystem.cmake"
 ```
 
-### File streams
+#### File streams
 
 ```cpp
 --8<-- "snippets/files/files.cpp"
 ```
 
-### Filesystem
+#### Filesystem
 
 ```cpp
 --8<-- "snippets/files/filesystem.cpp"
 ```
 
-## Template
+## Algorithms / Data Structures
 
-### Build script
+### Date and time
+
+#### Build script
+
+```cmake
+--8<-- "snippets/datetime/CMakeLists.txt"
+```
+
+#### Clock
+
+```cpp
+--8<-- "snippets/datetime/clock.cpp"
+```
+
+Related examples:
+
+* [`examples/datetime/flushtime.cpp`](examples/datetime/flushtime.cpp)
+
+#### Datetime
+
+```cpp
+--8<-- "snippets/datetime/datetime.cpp"
+```
+
+### Random
+
+#### Build script
+
+```cmake
+--8<-- "snippets/random/CMakeLists.txt"
+```
+
+#### Random
+
+```cpp
+--8<-- "snippets/random/random.cpp"
+```
+
+#### PCG
+
+```cpp
+--8<-- "snippets/random/pcg.cpp"
+```
+
+### Template
+
+#### Build script
 
 ```cmake
 --8<-- "snippets/templates/CMakeLists.txt"
 ```
 
-### Template function
+#### Template function
 
 ```cpp
 --8<-- "snippets/templates/template_functions.cpp"
 ```
 
-### Template aliases
+#### Template aliases
 
 ```cpp
 --8<-- "snippets/templates/template_alias.cpp"
 ```
 
-### Concepts
+#### Concepts
 
 ```cpp
 --8<-- "snippets/templates/concepts.cpp"
@@ -419,105 +495,66 @@ FindConcepts.cmake:
 --8<-- "cmake/FindConcepts.cmake"
 ```
 
-### SFINAE
+#### SFINAE
 
 ```cpp
 --8<-- "snippets/templates/sfinae.cpp"
 ```
 
-## Date and time
 
-### Build script
+### Algorithm
 
-```cmake
---8<-- "snippets/datetime/CMakeLists.txt"
-```
-
-### Clock
-
-```cpp
---8<-- "snippets/datetime/clock.cpp"
-```
-
-### Datetime
-
-```cpp
---8<-- "snippets/datetime/datetime.cpp"
-```
-
-## Random
-
-### Build script
-
-```cmake
---8<-- "snippets/random/CMakeLists.txt"
-```
-
-### Random
-
-```cpp
---8<-- "snippets/random/random.cpp"
-```
-
-### PCG
-
-```cpp
---8<-- "snippets/random/pcg.cpp"
-```
-
-## Algorithm
-
-### Build script
+#### Build script
 
 ```cmake
 --8<-- "snippets/algorithm/CMakeLists.txt"
 ```
 
-### Searching
+#### Searching
 
 ```cpp
 --8<-- "snippets/algorithm/searching.cpp"
 ```
 
-### Sorting
+#### Sorting
 
 ```cpp
 --8<-- "snippets/algorithm/sorting.cpp"
 ```
 
-### Basic Algorithms
+#### Basic Algorithms
 
 ```cpp
 --8<-- "snippets/algorithm/algorithms.cpp"
 ```
 
-### Ranges
+#### Ranges
 
 ```cpp
 --8<-- "snippets/algorithm/ranges.cpp"
 ```
 
-## Data structures
+### Data structures
 
-### Build script
+#### Build script
 
 ```cmake
 --8<-- "snippets/data_structures/CMakeLists.txt"
 ```
 
-### Sequential Containers
+#### Sequential Containers
 
 ```cpp
 --8<-- "snippets/data_structures/sequential_containers.cpp"
 ```
 
-### Associative Containers
+#### Associative Containers
 
 ```cpp
 --8<-- "snippets/data_structures/associative_containers.cpp"
 ```
 
-### Memory resource
+#### Memory resource
 
 ```cpp
 --8<-- "snippets/data_structures/memory_resource.cpp"
@@ -529,151 +566,177 @@ FindPMR.cmake:
 --8<-- "cmake/FindPMR.cmake"
 ```
 
-### Tuples
-
-```cpp
---8<-- "snippets/data_structures/tuples.cpp"
-```
-
-### Any
-
-```cpp
---8<-- "snippets/data_structures/any.cpp"
-```
-
-### Optional
-
-```cpp
---8<-- "snippets/data_structures/optional.cpp"
-```
-
-### Variant
-
-```cpp
---8<-- "snippets/data_structures/variant.cpp"
-```
-
-### Span
+#### Span
 
 ```cpp
 --8<-- "snippets/data_structures/span.cpp"
 ```
 
-### Bitset
+#### Bitset
 
 ```cpp
 --8<-- "snippets/data_structures/bitset.cpp"
 ```
 
-### Spatial Containers
+#### Spatial Containers
 
 ```cpp
 --8<-- "snippets/data_structures/spatial_containers.cpp"
 ```
 
-## Paradigms
+### Heterogeneous Types
 
-### Build script
+#### Build script
+
+```cmake
+--8<-- "snippets/heterogeneous_types/CMakeLists.txt"
+```
+
+#### Tuples
+
+```cpp
+--8<-- "snippets/heterogeneous_types/tuples.cpp"
+```
+
+#### Any
+
+```cpp
+--8<-- "snippets/heterogeneous_types/any.cpp"
+```
+
+#### Optional
+
+```cpp
+--8<-- "snippets/heterogeneous_types/optional.cpp"
+```
+
+#### Variant
+
+```cpp
+--8<-- "snippets/heterogeneous_types/variant.cpp"
+```
+
+## Programming Paradigms
+
+### Basic Paradigms
+
+#### Build script
 
 ```cmake
 --8<-- "snippets/paradigms/CMakeLists.txt"
 ```
 
-### Polymorphism
+#### Polymorphism
 
 ```cpp
 --8<-- "snippets/paradigms/polymorphism.cpp"
 ```
 
-### Shared from this
+#### Shared from this
 
 ```cpp
 --8<-- "snippets/paradigms/shared_from_this.cpp"
 ```
 
-### Metaprogramming
+#### Metaprogramming
 
 ```cpp
 --8<-- "snippets/paradigms/metaprogramming.cpp"
 ```
 
-### CRTP
+#### CRTP
 
 ```cpp
 --8<-- "snippets/paradigms/CRTP.cpp"
 ```
 
-### SFINAE
+#### SFINAE
 
 ```cpp
 --8<-- "snippets/paradigms/SFINAE.cpp"
 ```
 
-## Parallel
+### Parallelism
 
-### Build script
+#### Build script
 
 ```cmake
 --8<-- "snippets/parallel/CMakeLists.txt"
 ```
 
-### Execution Policies
+#### Execution Policies
 
 ```cpp
 --8<-- "snippets/parallel/policies.cpp"
 ```
 
-### Threads
+#### Threads
 
 ```cpp
 --8<-- "snippets/parallel/multithreading.cpp"
 ```
 
-### Executors
+#### Executors
 
 ```cpp
 --8<-- "snippets/parallel/executors.cpp"
 ```
 
-### Timers
+#### Timers
 
 ```cpp
 --8<-- "snippets/parallel/timers.cpp"
 ```
 
-### Signals
+#### Signals
 
 ```cpp
 --8<-- "snippets/parallel/signals.cpp"
 ```
 
-### Async++
+#### Async++
 
 ```cpp
 --8<-- "snippets/parallel/async_pools.cpp"
 ```
 
-## Networking
+## Utilities
 
-### Build script
+### Regular Expressions
+
+#### Build script
+
+```cmake
+--8<-- "snippets/utilities/CMakeLists.txt"
+```
+
+#### Regex
+
+```cpp
+--8<-- "snippets/utilities/regex.cpp"
+```
+
+### Networking
+
+#### Build script
 
 ```cmake
 --8<-- "snippets/networking/CMakeLists.txt"
 ```
 
-### Network
+#### Network
 
 ```cpp
 --8<-- "snippets/networking/network.cpp"
 ```
 
-### Async Network
+#### Async Network
 
 ```cpp
 --8<-- "snippets/networking/network_async.cpp"
 ```
 
-### Http server
+#### Http server
 
 main.cpp
 
@@ -777,21 +840,7 @@ server.cpp
 --8<-- "snippets/networking/server/server.cpp"
 ```
 
-## Utilities
-
-### Build script
-
-```cmake
---8<-- "snippets/utilities/CMakeLists.txt"
-```
-
-### Regex
-
-```cpp
---8<-- "snippets/utilities/regex.cpp"
-```
-
-## GUI
+## GUIs
 
 ### Build script
 
@@ -871,7 +920,7 @@ Build script:
 --8<-- "snippets/gui/tray/CMakeLists.txt"
 ```
 
-## Tests
+## Testing
 
 ### Build script
 
@@ -989,16 +1038,22 @@ The most recent version of Visual Studio should include C++20.
 
 The complete examples are in the [`examples`](./examples) directory, but they not explicitly replicated in the docs because they are much longer than the snippets.
 
+<br/>
+
 **What's the difference between snippets and examples?**
 
 Examples are often long and don't represent independent tasks you can copy and paste. Snippets represent independent
 tasks between pairs of comments that you can copy and paste.
+
+<br/>
 
 **Shouldn't the snippet files be short files?**
 
 The snippets could go into a new category level and we could separate them at their lowest level by file, but that would
 make them difficult to explore if the resolution is too high, like 3-4 lines of code per file. Also, because snippets
 have pre-conditions and post-conditions, it would make it much harder to test all snippets.
+
+<br/>
 
 **Why not get my snippets directly from cppreference or cplusplus.com?**
 
@@ -1018,7 +1073,9 @@ implications are:
     * Has nothing to do with external libraries
     * Mix simple and complex concepts to make a point
 
-**Why do you use `std::endl` in the snippets? Isn't it evil?**
+<br/>
+
+**Why do you use `std::endl` so much in the snippets? Isn't it evil?**
 
 The snippets usually use `std::endl` instead of `'\n'`:
 
@@ -1033,6 +1090,8 @@ The snippets usually use `std::endl` instead of `'\n'`:
 * Discussions are concentrated on our GitHub [discussions](https://github.com/alandefreitas/moderncpp/discussions) page. Don't refrain from asking questions and proposing ideas.
 * If you are a programmer with good ideas, please [share](https://github.com/alandefreitas/moderncpp/discussions/new) these ideas with us.
 * Academic collaboration is more than welcome.
+
+<br/>
 
 **Contributing**
 
@@ -1055,6 +1114,8 @@ The only thing we ask you is to make sure your contribution is not destructive. 
 
 In doubt, please open a [discussion](https://github.com/alandefreitas/moderncpp/discussions) first.
 
+<br/>
+
 **Guidelines**
 
 If contributing with code, please leave the pedantic mode ON (`-DBUILD_WITH_PEDANTIC_WARNINGS=ON`), use [cppcheck](http://cppcheck.sourceforge.net/), and [clang-format](https://clang.llvm.org/docs/ClangFormat.html).
@@ -1066,5 +1127,4 @@ If contributing with code, please leave the pedantic mode ON (`-DBUILD_WITH_PEDA
 
 </details>
 
-If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in [`./docs`](docs)
-are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
+If contributing to the documentation, please edit [`README.md`](README.md) directly, as the files in this documentation are automatically generated with [mdsplit](https://github.com/alandefreitas/mdsplit).
