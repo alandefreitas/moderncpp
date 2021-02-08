@@ -1,25 +1,51 @@
+#include <algorithm>
 #include <array>
 #include <chrono>
 #include <iostream>
 #include <memory>
-#include <algorithm>
 
 using namespace std;
 
-// Constexpr function
-constexpr double pi() { return 3.14159265358979323846; }
+// No return
 void show_menu();
+
+// Constexpr function - One return value
+constexpr double pi() { return 3.14159265358979323846; }
+
+// One parameter
 double power_three(double x);
+
+// Two parameters
 double power(double x, int y);
+
+// Parameters by reference
 void times_two(int &x);
-void maxmin(int a, int b, int c, int &minimum, int &maximum);
-pair<int, int> maxmin(int a, int b, int c);
-void sort(int a, int b, int c, int &minimum, int &middle, int &maximum);
-tuple<int, int, int> sort(int a, int b, int c);
-bool has_element(const array<int, 1000> &a, int element);
+
+// Parameters by reference - Default parameter
 void increment_all(array<int, 1000> &a, int increment_value = 1);
-void pointer_to_cube(const shared_ptr<int>& p);
+
+// Parameters by const reference
+bool has_element(const array<int, 1000> &a, int element);
+
+// "Return" two values by reference
+void maxmin(int a, int b, int c, int &minimum, int &maximum);
+
+// "Return" three values by reference
+void sort(int a, int b, int c, int &minimum, int &middle, int &maximum);
+
+// Return two values with a pair
+pair<int, int> maxmin(int a, int b, int c);
+
+// Return three+ values with a tuple
+tuple<int, int, int> sort(int a, int b, int c);
+
+// Parameter by pointer by value
+void pointer_to_cube(shared_ptr<int> p);
+
+// Iterative function
 int fibonacci_iterative(int n);
+
+// Recursive function
 int fibonacci_recursive(int n);
 
 int main() {
@@ -119,26 +145,6 @@ int main() {
     cout << "fibonacci_iterative(6) = " << fibonacci_iterative(6) << endl;
     cout << "fibonacci_recursive(6) = " << fibonacci_recursive(6) << endl;
 
-    // Comparing time
-    // - This is a classic case
-    // - Iterative algorithms are more efficient
-    // - Recursive algorithms are easier to write
-    for (int i = 3; i < 60; ++i) {
-        auto start = chrono::steady_clock::now();
-        cout << "fibonacci_iterative(" << i << ") = " << fibonacci_iterative(i)
-             << " - ";
-        auto duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::steady_clock::now() - start);
-        cout << duration.count() << " milliseconds" << endl;
-
-        start = chrono::steady_clock::now();
-        cout << "fibonacci_recursive(" << i << ") = " << fibonacci_recursive(i)
-             << " - ";
-        duration = chrono::duration_cast<chrono::milliseconds>(
-            std::chrono::steady_clock::now() - start);
-        cout << duration.count() << " milliseconds" << endl;
-    }
-
     return 0;
 }
 
@@ -231,7 +237,11 @@ void increment_all(array<int, 1000> &a, int increment_value) {
     }
 }
 
-void pointer_to_cube(const shared_ptr<int>& p) {
+// Pass pointers by value: https://youtu.be/xGDLkt-jBJ4?t=869
+// As small as the reference and no other level of indirection
+// NOLINTNEXTLINE(performance-unnecessary-value-param): Does not apply to
+// pointers
+void pointer_to_cube(shared_ptr<int> p) {
     if (p) {
         *p = *p * *p * *p;
     }
@@ -252,6 +262,7 @@ int fibonacci_iterative(int n) {
     return fn;
 }
 
+// NOLINTNEXTLINE(misc-no-recursion): making a point here
 int fibonacci_recursive(int n) {
     if (n > 2) {
         return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2);
