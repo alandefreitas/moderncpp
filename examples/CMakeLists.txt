@@ -1,3 +1,5 @@
+add_subdirectory(algorithm)
+add_subdirectory(functions)
 add_subdirectory(data_structures)
 add_subdirectory(datetime)
 add_subdirectory(paradigms/oop)
