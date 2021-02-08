@@ -177,6 +177,12 @@ Related examples:
 --8<-- "snippets/input_output/format.cpp"
 ```
 
+#### Tabulate
+
+```cpp
+--8<-- "snippets/input_output/tabulate.cpp"
+```
+
 ### Control flow
 
 #### Build script
