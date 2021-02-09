@@ -5,59 +5,58 @@ using namespace std;
 
 int main() {
     // Operators
-    int number_1 = 8;
-    int number_2 = 3;
-    std::cout << number_1 << " + " << number_2 << ": " << number_1 + number_2
-              << std::endl;
-    std::cout << number_1 << " - " << number_2 << ": " << number_1 - number_2
-              << std::endl;
-    std::cout << number_1 << " * " << number_2 << ": " << number_1 * number_2
-              << std::endl;
-    std::cout << number_1 << " / " << number_2 << ": " << number_1 / number_2
-              << std::endl;
-    std::cout << number_1 << " % " << number_2 << ": " << number_1 % number_2
-              << std::endl;
+    int n1 = 8;
+    int n2 = 3;
+    std::cout << n1 << " + " << n2 << ": " << n1 + n2 << '\n';
+    std::cout << n1 << " - " << n2 << ": " << n1 - n2 << '\n';
+    std::cout << n1 << " * " << n2 << ": " << n1 * n2 << '\n';
+    std::cout << n1 << " / " << n2 << ": " << n1 / n2 << '\n';
+    std::cout << n1 << " % " << n2 << ": " << n1 % n2 << '\n';
 
-    double number_3 = 8.;
-    double number_4 = 3.;
-    std::cout << number_3 << " + " << number_4 << ": " << number_3 + number_4
-              << std::endl;
-    std::cout << number_3 << " - " << number_4 << ": " << number_3 - number_4
-              << std::endl;
-    std::cout << number_3 << " * " << number_4 << ": " << number_3 * number_4
-              << std::endl;
-    std::cout << number_3 << " / " << number_4 << ": " << number_3 / number_4
-              << std::endl;
-    std::cout << "fmod(" << number_3 << ", " << number_4
-              << "): " << fmod(number_3, number_4) << std::endl;
+    // Operators for floating point types
+    double n3 = 8.;
+    double n4 = 3.;
+    std::cout << n3 << " + " << n4 << ": " << n3 + n4 << '\n';
+    std::cout << n3 << " - " << n4 << ": " << n3 - n4 << '\n';
+    std::cout << n3 << " * " << n4 << ": " << n3 * n4 << '\n';
+    std::cout << n3 << " / " << n4 << ": " << n3 / n4 << '\n';
+
+    // There is no % for floating point types
+    std::cout << "fmod(" << n3 << ", " << n4 << "): " << fmod(n3, n4) << '\n';
 
     // Attribution operator
-    number_1 += number_2; // number_1 = number_1 + number_2;
-    std::cout << "number_1 after += is " << number_1 << std::endl;
-    number_1 -= number_2;
-    std::cout << "number_1 after -= is " << number_1 << std::endl;
-    number_1 *= number_2;
-    std::cout << "number_1 after *= is " << number_1 << std::endl;
-    number_1 /= number_2;
-    std::cout << "number_1 after /= is " << number_1 << std::endl;
-    number_1 %= number_2;
-    std::cout << "number_1 after %= is " << number_1 << std::endl;
+    n1 += n2; // n1 = n1 + n2;
+    std::cout << "n1 after += is " << n1 << '\n';
+    n1 -= n2;
+    std::cout << "n1 after -= is " << n1 << '\n';
+    n1 *= n2;
+    std::cout << "n1 after *= is " << n1 << '\n';
+    n1 /= n2;
+    std::cout << "n1 after /= is " << n1 << '\n';
+    n1 %= n2;
+    std::cout << "n1 after %= is " << n1 << '\n';
 
     // Postfixed increment/decrement
-    number_1++; // or number_1 += 1; // or number_1 = number_1 + 1;
-    std::cout << "number_1 after ++ is " << number_1 << std::endl;
-    number_1--;
-    std::cout << "number_1 after -- is " << number_1 << std::endl;
+    n1++; // or n1 += 1; // or n1 = n1 + 1;
+    std::cout << "n1 after ++ is " << n1 << '\n';
+    n1--;
+    std::cout << "n1 after -- is " << n1 << '\n';
 
-    // Prefixed increment/decrement
-    ++number_1; // or number_1 += 1; // or number_1 = number_1 + 1;
-    std::cout << "number_1 after ++ is " << number_1 << std::endl;
-    --number_1;
-    std::cout << "number_1 after -- is " << number_1 << std::endl;
+    // Prefixed increment
+    // same as n1 += 1; // or n1 = n1 + 1;
+    ++n1;
+    std::cout << "n1 after ++ is " << n1 << '\n';
+
+    // Prefixed decrement
+    // same as n1 -= 1; // or n1 = n1 - 1;
+    --n1;
+    std::cout << "n1 after -- is " << n1 << '\n';
 
     // Inside an expression
-    std::cout << "number_1: " << number_1++ << std::endl;
-    std::cout << "number_1: " << ++number_1 << std::endl;
+    // - Postfixed: use and increment
+    std::cout << "n1: " << n1++ << '\n';
+    // - Prefixed: increment and use
+    std::cout << "n1: " << ++n1 << '\n';
 
     return 0;
 }
