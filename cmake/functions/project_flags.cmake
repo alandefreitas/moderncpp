@@ -24,7 +24,7 @@ macro(set_debug_booleans)
     endif ()
 endmacro()
 
-# @brief Create booleans GCC and CLANG to identify the compiler more easy
+# @brief Create booleans GCC and CLANG to identify the compiler more easily
 # - A boolean for MSVC already exists by default
 macro(set_compiler_booleans)
     set(CLANG OFF)

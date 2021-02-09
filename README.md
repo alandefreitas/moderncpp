@@ -161,7 +161,7 @@ C++ has always been a great language for Scientific Computing, High-Performance 
 * [Numerous compilers](https://www.stroustrup.com/compilers.html) with great [optimization](https://queue.acm.org/detail.cfm?id=3372264) options available; 
 * Innumerable target platforms, from [microcontrollers](https://www.arduino.cc), to [GPUs](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html), to [mobile](https://github.com/leetal/ios-cmake), to [webassembly](https://emscripten.org); 
 * Does not rely on any virtual machine; 
-* Easy bindings from/to virtually any other programming language _([Python](https://github.com/pybind/pybind11), [Javascript](https://github.com/Chobolabs/jsbind), [PHP](http://www.php-cpp.com), [R](http://www.rcpp.org), [Java](https://www.baeldung.com/jni), [Matlab](https://www.mathworks.com/solutions/matlab-and-c.html), [Rust](https://rust-lang.github.io/rust-bindgen/cpp.html), [Swift](https://medium.com/@anuragajwani/how-to-consume-c-code-in-swift-b4d64a04e989), [Julia](https://github.com/JuliaInterop/CxxWrap.jl), [C](https://isocpp.org/wiki/faq/mixing-c-and-cpp), ... you name it); 
+* Easy bindings from/to virtually any other programming language ([Python](https://github.com/pybind/pybind11), [Javascript](https://github.com/Chobolabs/jsbind), [PHP](http://www.php-cpp.com), [R](http://www.rcpp.org), [Java](https://www.baeldung.com/jni), [Matlab](https://www.mathworks.com/solutions/matlab-and-c.html), [Rust](https://rust-lang.github.io/rust-bindgen/cpp.html), [Swift](https://medium.com/@anuragajwani/how-to-consume-c-code-in-swift-b4d64a04e989), [Julia](https://github.com/JuliaInterop/CxxWrap.jl), [C](https://isocpp.org/wiki/faq/mixing-c-and-cpp), ... you name it); 
 * Great tools for [static analysis](https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis#C,_C++) to avoid bugs; 
 * Avoids the [two-languages problem](https://www.quora.com/What-is-the-2-language-problem-in-data-science) in scientific computing: one for prototyping and one to reimplement all the work once the experiments are successful;
 * No need for special licenses to distribute your compiled code, like it is common in technical languages that rely on virtual machines; 
@@ -261,7 +261,7 @@ Update your [Visual Studio](https://visualstudio.microsoft.com) Compiler.
 The most recent version of Visual Studio should include C++20.
 
 !!! warning "Help wanted"
-We still don't know of a script for installing C++20 on Windows from the terminal.
+    We still don't know of a script for installing C++20 on Windows from the terminal.
 
     This would be especially useful for our [build workflow](./.github/workflows/build.yml), which has not been testing MSVC since we moved to C++20.
 
@@ -279,13 +279,13 @@ Then follow [these instructions](https://emscripten.org/docs/getting_started/Tut
 
 If you are using C++ for scientific computing or learning C++, it's often useful to have a C++ interpreter for short experiments.
 
-You can install Cling from most package managers for [Linux](https://pkgs.org/download/cling) or [Mac OS](https://formulae.brew.sh/formula/cling). You can also follow the [instructions](https://root.cern/cling/cling_build_instructions/) on their website to download the binaries or to build it from source.
+You can install Cling from most package managers for [Linux](https://pkgs.org/download/cling) or [Mac OS](https://formulae.brew.sh/formula/cling). You can also follow the [instructions](https://root.cern/cling/cling_build_instructions/) on their website to download the binaries or build it from source.
 
 Although you can use `cling` directly, it is much more convenient to use the interpreter as a Jupyter notebook kernel. You can follow [these instructions](https://jupyter.org/install.html) to install Jupyter Lab, and [these instructions](https://xeus-cling.readthedocs.io/en/latest/installation.html) to install the `xeus-cling` kernel.
 
 ### IDEs
 
-These are the IDEs and text editors [mostly commonly used](http://blog.davidecoppola.com/2018/02/market-share-most-used-c-cpp-ides-in-2018-statistics-estimates/) for C++ programming:
+These are the IDEs and text editors [most commonly used](http://blog.davidecoppola.com/2018/02/market-share-most-used-c-cpp-ides-in-2018-statistics-estimates/) for C++ programming:
 
 | IDE or Text Editor | Users | Notes             |
 |--------------------|-------|-------------------|
@@ -1104,13 +1104,13 @@ Build script:
 ### Target Options
 
 ```cmake
---8<-- "cmake/functions/sanitizers.cmake"
+--8<-- "cmake/functions/target_options.cmake"
 ```
 
 ### Sanitizers
 
 ```cmake
---8<-- "cmake/functions/target_options.cmake"
+--8<-- "cmake/functions/sanitizers.cmake"
 ```
 
 ### Qt Helpers
