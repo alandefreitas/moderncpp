@@ -16,24 +16,26 @@ int main() {
     a[1] = 2;
     a[2] = 3;
 
+    cout << "a: " << a << '\n';
+
     // Implicit size
-    int temp[] = {1, 2, 3};
+    int b[] = {1, 2, 3};
     for (size_t i = 0; i < n; ++i) {
-        cout << "temp[" << i << "]: " << temp[i] << endl;
+        cout << "b[" << i << "]: " << b[i] << endl;
     }
 
     // Array is converted to its initial pointer
-    cout << "temp: " << temp << endl;
-    cout << "&temp: " << &temp << endl;
+    cout << "b: " << b << endl;
+    cout << "&b: " << &b << endl;
 
-    cout << "temp[0]: " << temp[0] << endl;
-    cout << "&temp[0]: " << &temp[0] << endl;
+    cout << "b[0]: " << b[0] << endl;
+    cout << "&b[0]: " << &b[0] << endl;
 
-    cout << "temp[1]: " << temp[1] << endl;
-    cout << "&temp[1]: " << &temp[1] << endl;
+    cout << "b[1]: " << b[1] << endl;
+    cout << "&b[1]: " << &b[1] << endl;
 
-    cout << "temp[2]: " << temp[2] << endl;
-    cout << "&temp[2]: " << &temp[2] << endl;
+    cout << "b[2]: " << b[2] << endl;
+    cout << "&b[2]: " << &b[2] << endl;
 
     return 0;
 }
