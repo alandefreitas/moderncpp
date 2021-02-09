@@ -1,21 +1,23 @@
 #include <iostream>
-#include <string>
 #include <unordered_map>
 
 int main() {
     using std::cout;
     using std::endl;
 
-    // Auto
-    // Example only: don't do that for fundamental data types!
-    // This is a bad place for auto
-    // - It does not avoid a long type name
-    // - There's ambiguity
-    //   (87 could *semantically* be any number type)
+    // Auto for fundamental data types
+    // - Example only: don't do that for fundamental data types!
+    // - This is a bad place for auto
+    //   - It does not avoid a long type name
+    //   - It creates ambiguity
+    //     - 87 could *semantically* be any number type
+    // - This is somewhat equivalent to:
+    //   - swift: let mut dont_do_that = 87
+    //   - rust:  var dont_do_that = 87
     auto dont_do_that = 87;
     cout << "dont_do_that: " << dont_do_that << endl;
 
-    // Data type alias
+    // Creating a hash table for the next example
     std::unordered_map<std::string, double> t;
     t["zero"] = 0.0;
     t["pi"] = 3.14;
@@ -31,7 +33,8 @@ int main() {
     // With auto
     // This is the perfect place for auto
     // - It avoids a long type name
-    // - There's no ambiguity (find always returns an iterator)
+    // - There's no ambiguity
+    //   - Find will always return an iterator
     auto it2 = t.find("zero");
     if (it2 != t.end()) {
         cout << it2->first << ": " << it2->second << endl;
@@ -52,5 +55,6 @@ int main() {
         }
     };
     print_map_container(t);
+
     return 0;
 }
