@@ -18,14 +18,33 @@ int main() {
     u = {'A'};
     u = {15};
 
+    // A union is as large as the largest type in the union
+    std::cout << "sizeof(double): " << sizeof(double) << '\n';
+    std::cout << "sizeof(char): " << sizeof(char) << '\n';
+    std::cout << "sizeof(int): " << sizeof(int) << '\n';
+    std::cout << "sizeof(my_union): " << sizeof(my_union) << '\n';
+
     // Variant types
-    // - Only use variant types if you really need it
+    // - Only use variant types if you really need them
     variant<double, char, string> v;
 
     // Settings values
+    // - If we defined a variant including lots of types, including
+    //   booleans and lists, this would be somewhat similar to:
+    //   - PHP:         $v = 3.14;    // see https://bit.ly/3cVuJvb
+    //   - Python:      v = 3.14;
+    //   - Javascript:  var v = 3.14;
     v = 3.14;
     v = 'A';
     v = "Some longer text";
+
+    // A variant is larger than the largest type in the variant
+    // - This happens because variants need a flag to indicate the current type
+    std::cout << "sizeof(double): " << sizeof(double) << '\n';
+    std::cout << "sizeof(char): " << sizeof(char) << '\n';
+    std::cout << "sizeof(string): " << sizeof(string) << '\n';
+    std::cout << "sizeof(variant<double, char, string>): "
+              << sizeof(variant<double, char, string>) << '\n';
 
     // Getting values
     v = 3.14;
