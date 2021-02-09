@@ -139,6 +139,117 @@ We generate GitHub pages with all snippets:
 * Snippets organized are categorized by groups of tasks
 * Sections are easy to explore, copy, and paste
 
+## Installing C++20
+
+### Linux / GCC
+
+Many operating systems don't come with a C++20 compiler by default. Follow these instructions to install C++20.
+
+Update GCC:
+
+```bash
+sudo apt install build-essential
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt install gcc-10
+sudo apt install g++-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 10
+```
+
+Set your default compiler with:
+
+```bash
+update-alternatives --config g++
+```
+
+### Mac OS / Clang
+
+Many operating systems don't come with a C++20 compiler by default. Follow these instructions to install C++20.
+
+Download a [recent version](https://releases.llvm.org/download.html) of Clang.
+
+```bash
+curl --output clang.tar.xz -L https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/clang+llvm-11.0.0-x86_64-apple-darwin.tar.xz
+mkdir clang
+tar -xvJf clang.tar.xz -C clang
+```
+
+Copy the files to `usr/local/`:
+
+```bash
+cd clang/clang+llvm-11.0.0-x86_64-apple-darwin
+sudo cp -R * /usr/local/
+```
+
+Let CMake know that's the compiler you want to use.
+
+If you want this to be your default compiler, you can set the `CXX` environment variable:
+
+```bash
+export CXX=/usr/local/bin/clang++
+```
+
+If you want to use this compiler in a single project, run CMake with these options:
+
+```bash
+-DCMAKE_C_COMPILER=/usr/local/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/bin/clang++
+```
+
+Or tell you IDE to pass these options to CMake:
+
+![](docs/img/set_compiler.png)
+
+### Windows / MSVC
+
+Many operating systems don't come with a C++20 compiler by default. Follow these instructions to install C++20.
+
+Update your [Visual Studio](https://visualstudio.microsoft.com) Compiler.
+
+The most recent version of Visual Studio should include C++20.
+
+!!! warning "Help wanted"
+We still don't know of a script for installing C++20 on Windows from the terminal.
+
+    This would be especially useful for our [build workflow](./.github/workflows/build.yml), which has not been testing MSVC since we moved to C++20.
+
+    Please let us know or open a PR if you know of such a script.
+
+### WebAssembly / Emscripten
+
+If you are programming for the web, a common option for C++ and WebAssembly is [emscripten](https://emscripten.org/docs/getting_started/index.html).
+
+You can install emscripten from most package managers for [Windows](https://chocolatey.org/packages/emscripten), [Linux](https://pkgs.org/search/?q=emscripten), or [Mac OS](https://formulae.brew.sh/formula/emscripten). You can also follow the [instructions](https://emscripten.org/docs/getting_started/downloads.html) on their website to build from source.
+
+Then follow [these instructions](https://emscripten.org/docs/getting_started/Tutorial.html) to compile your first "Hello World!" for the web.
+
+### Interpreter / Cling
+
+If you are using C++ for scientific computing or learning C++, it's often useful to have a C++ interpreter for short experiments.
+
+You can install Cling from most package managers for [Linux](https://pkgs.org/download/cling) or [Mac OS](https://formulae.brew.sh/formula/cling). You can also follow the [instructions](https://root.cern/cling/cling_build_instructions/) on their website to download the binaries or to build it from source.
+
+Although you can use `cling` directly, it is much more convenient to use the interpreter as a Jupyter notebook kernel. You can follow [these instructions](https://jupyter.org/install.html) to install Jupyter Lab, and [these instructions](https://xeus-cling.readthedocs.io/en/latest/installation.html) to install the `xeus-cling` kernel.
+
+### IDEs
+
+These are the IDEs and text editors [mostly commonly used](http://blog.davidecoppola.com/2018/02/market-share-most-used-c-cpp-ides-in-2018-statistics-estimates/) for C++ programming:
+
+| IDE or Text Editor | Users | Notes             |
+|--------------------|-------|-------------------|
+| Visual Studio      | 28%   | Windows           |
+| Vim                | 17%   | (Text Editor)     |
+| Qt Creator         | 12%   | Best for Qt Users |
+| Visual Studio Code | 10%   |                   |
+| CLion              | 9%    |                   |
+| Emacs              | 7%    | (Text Editor)     |
+| Xcode              | 4%    | Mac OS            |
+| Eclipse            | 4%    |                   |
+| Others             | 9%    |                   |
+
+!!! warning
+    These numbers are constantly changing.
+
 ## Basic Syntax
 
 ### Input / Output
@@ -930,85 +1041,31 @@ Build script:
 --8<-- "snippets/tests/plots.cpp"
 ```
 
-## CMake functions
+## CMake Functions
 
-Some useful CMake functions:
+### Project Flags
 
 ```cmake
---8<-- "cmake/functions.cmake"
+--8<-- "cmake/functions/project_flags.cmake"
 ```
 
-## Installing a C++20 compiler
+### Target Options
 
-Many operating systems don't come with C++20 by default. Follow these instructions to install C++20.
-
-### Linux
-
-Update GCC:
-
-```bash
-sudo apt install build-essential
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt install gcc-10
-sudo apt install g++-10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 10
+```cmake
+--8<-- "cmake/functions/sanitizers.cmake"
 ```
 
-Set your default compiler with:
+### Sanitizers
 
-```bash
-update-alternatives --config g++
+```cmake
+--8<-- "cmake/functions/target_options.cmake"
 ```
 
-### Mac OS
+### Qt Helpers
 
-Download a [recent version](https://releases.llvm.org/download.html) of Clang.
-
-```bash
-curl --output clang.tar.xz -L https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/clang+llvm-11.0.0-x86_64-apple-darwin.tar.xz
-mkdir clang
-tar -xvJf clang.tar.xz -C clang
+```cmake
+--8<-- "cmake/functions/qt_helpers.cmake"
 ```
-
-Copy the files to `usr/local/`:
-
-```bash
-cd clang/clang+llvm-11.0.0-x86_64-apple-darwin
-sudo cp -R * /usr/local/
-```
-
-Let CMake know that's the compiler you want to use.
-
-If you want this to be your default compiler, you can set the `CXX` environment variable:
-
-```bash
-export CXX=/usr/local/bin/clang++
-```
-
-If you want to use this compiler in a single project, run CMake with these options:
-
-```bash
--DCMAKE_C_COMPILER=/usr/local/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/bin/clang++
-```
-
-Or tell you IDE to pass these options to CMake:
-
-![](docs/img/set_compiler.png)
-
-### Windows
-
-Update your [Visual Studio](https://visualstudio.microsoft.com) Compiler.
-
-The most recent version of Visual Studio should include C++20.
-
-!!! warning 
-    We still don't know of a script for installing C++20 on Windows from the terminal.
-
-    This would be especially useful for our [build workflow](./.github/workflows/build.yml), which has not been testing MSVC since we moved to C++20.
-
-    Please let us know or open a PR if you know of such a script.
 
 ## FAQ
 
