@@ -67,3 +67,11 @@ if (BUILD_EXAMPLES)
     message("Configuring examples")
     add_subdirectory(examples)
 endif ()
+
+#######################################################
+### Final messages if everything is OK              ###
+#######################################################
+message(STATUS "🥳 Project configured successfully")
+message(STATUS "❤️ Would you like to show some love by starring the repo?")
+message(STATUS "🟡 Visit https://github.com/alandefreitas/moderncpp ⭐️")
+message(STATUS "🙏 Thanks! It means a lot to me!")
