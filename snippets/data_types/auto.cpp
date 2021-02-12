@@ -12,8 +12,8 @@ int main() {
     //   - It creates ambiguity
     //     - 87 could *semantically* be any number type
     // - This is somewhat equivalent to:
-    //   - swift: let mut dont_do_that = 87
-    //   - rust:  var dont_do_that = 87
+    //   - swift:  var dont_do_that = 87
+    //   - rust:   let mut dont_do_that = 87
     auto dont_do_that = 87;
     cout << "dont_do_that: " << dont_do_that << endl;
 
