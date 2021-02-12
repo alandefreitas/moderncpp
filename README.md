@@ -103,6 +103,8 @@
 
 ## Quick Start
 
+### How this repository works
+
 This is how this repository works:
 
 * The [`snippets`](./snippets/CMakeLists.txt) directory has lots of short programs with useful C++20 snippets
@@ -148,7 +150,9 @@ We generate GitHub pages with all snippets:
 
 <br/>
 
-**Why use C++20**
+### Why Modern C++
+
+**Why use C++**
 
 C++ has always been a great language for Scientific Computing, High-Performance Computing, and Data Analysis:
 
@@ -380,6 +384,9 @@ Related examples:
 --8<-- "snippets/input_output/tabulate.cpp"
 ```
 
+!!! note
+    While this library is not very representative of existing practice, we use it in lots of examples to report results. An alternative could be snippets with `std::setw` and `std::setfill` to manually create tables.
+
 ### Control flow
 
 #### Build script
@@ -494,6 +501,12 @@ Related examples:
 
 ```cmake
 --8<-- "snippets/pointers/CMakeLists.txt"
+```
+
+#### Address Operator
+
+```cpp
+--8<-- "snippets/pointers/address_operator.cpp"
 ```
 
 #### Raw Pointers
@@ -810,6 +823,9 @@ FindPMR.cmake:
 ```cpp
 --8<-- "snippets/parallel/policies.cpp"
 ```
+
+!!! Help wanted
+    Clang requires a CMake script to link TBB with this target to make this work.
 
 #### Threads
 
