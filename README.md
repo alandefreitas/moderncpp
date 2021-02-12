@@ -48,6 +48,8 @@
 <summary>Table of Contents</summary>
 
 - [Quick Start](#quick-start)
+  - [How this repository works](#how-this-repository-works)
+  - [Why Modern C++](#why-modern-c)
 - [Installing C++20](#installing-c20)
   - [Linux / GCC](#linux--gcc)
   - [Mac OS / Clang](#mac-os--clang)
