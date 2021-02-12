@@ -1,8 +1,9 @@
 #include <iostream>
 
-using namespace std;
-
 int main() {
+    using std::cout;
+    using std::cin;
+
     // Declare constants and variables
     constexpr int number_of_numbers = 2;
     int first_number;
@@ -26,44 +27,56 @@ int main() {
 
     // Common conditional
     if (n_even_numbers == 0) {
-        cout << "You typed 0 even numbers and 2 odd numbers" << endl;
+        cout << "You typed 0 even numbers and 2 odd numbers\n";
+
     } else if (n_even_numbers == 1) {
-        cout << "You typed 1 even number e 1 odd number" << endl;
+        cout << "You typed 1 even number e 1 odd number\n";
+
     } else if (n_even_numbers == 2) {
-        cout << "You typed 2 even numbers e 0 odd numbers" << endl;
+        cout << "You typed 2 even numbers e 0 odd numbers\n";
+
     } else {
-        cout << "Tem um erro sério no seu programa" << endl;
+        cout << "There's a serious problem here\n";
+
         return 1;
     }
 
     // Switch on fundamental data types
     switch (n_even_numbers) {
     case 0:
-        cout << "Zero even numbers. Two odd numbers." << endl;
+        cout << "Zero even numbers. Two odd numbers.\n";
+
         break;
     case 1:
-        cout << "One even number and one odd number." << endl;
+        cout << "One even number and one odd number.\n";
+
         break;
     case 2:
-        cout << "Two even numbers. No odd numbers." << endl;
+        cout << "Two even numbers. No odd numbers.\n";
+
         break;
     default:
-        cout << "We found a serious error with your program" << endl;
+        cout << "We found a serious error with your program\n";
+
         return 1;
     }
 
     // Common conditional without n_even_numbers
     if (first_number % 2 != 0 && second_number % 2 != 0) {
-        cout << "You typed 0 even numbers e 2 odd numbers" << endl;
+        cout << "You typed 0 even numbers e 2 odd numbers\n";
+
     } else if (first_number % 2 == 0 && second_number % 2 == 0) {
-        cout << "You typed 2 even numbers e 0 odd numbers" << endl;
+        cout << "You typed 2 even numbers e 0 odd numbers\n";
+
     } else {
-        cout << "You typed 1 even number e 1 odd number" << endl;
+        cout << "You typed 1 even number e 1 odd number\n";
+
     }
 
     // Printing directly
     cout << "You typed " << n_even_numbers << " even numbers and "
-         << number_of_numbers - n_even_numbers << " odd numbers" << endl;
+         << number_of_numbers - n_even_numbers << " odd numbers\n";
+
 
     // Ternary operators for fixing plurals
     cout << "You typed " << n_even_numbers << " even number";
@@ -73,22 +86,24 @@ int main() {
 
     // Common conditional
     if (n_even_numbers > number_of_numbers - n_even_numbers) {
-        cout << "You have more even numbers" << endl;
+        cout << "You have more even numbers\n";
     } else {
-        cout << "You don't have more even numbers" << endl;
+        cout << "You don't have more even numbers\n";
+
     }
 
     // Ternary operator
     cout << "You "
          << ((n_even_numbers > number_of_numbers - n_even_numbers) ? ("")
                                                                    : ("don't"));
-    cout << " have more even numbers than odd numbers" << endl;
+    cout << " have more even numbers than odd numbers\n";
 
     // Testing constants
     if constexpr (number_of_numbers > 2) {
-        cout << "You're program is not adapted to that yet" << endl;
+        cout << "You're program is not adapted to that yet\n";
+
     } else {
-        cout << "Program for testing up to two numbers" << endl;
+        cout << "Program for testing up to two numbers\n";
     }
 
     return 0;
