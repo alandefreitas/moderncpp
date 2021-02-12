@@ -1,3 +1,4 @@
+add_subdirectory(basic_types)
 add_subdirectory(algorithm)
 add_subdirectory(functions)
 add_subdirectory(data_structures)
