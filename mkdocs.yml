@@ -7,6 +7,7 @@ site_description: Modern C++ Snippets
 
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     scheme: preference
   features:
@@ -16,6 +17,7 @@ theme:
     # - header.autohide # this has caused problems for some mobile devices
   icon:
     repo: fontawesome/brands/git-alt
+    logo: fontawesome/solid/code
 
 edit_uri: ""
 
@@ -27,7 +29,7 @@ google_analytics:
   - UA-109858331-3
   - auto
 
-copyright: Copyright &copy; 2020 Alan Freitas
+copyright: Copyright &copy; Alan Freitas
 
 markdown_extensions:
   - admonition
