@@ -8,8 +8,6 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 // Selection sort
 template <class It, class C> void selection_sort(It first, It last, C comp) {
     for (auto it = first; it != last - 1; ++it) {
@@ -73,10 +71,14 @@ template <class It> void quick_sort(It first, It last) {
 }
 
 int main() {
+    using namespace std;
+
     // Create vector for searching
     vector v = {5, 4, 9, 8, 6, 3};
 
     // Sort
+    // - std::sort is what you would use daily
+    // - don't implement your own version unless you're studying the algorithms
     sort(v.begin(), v.end());
     copy(v.begin(), v.end(), ostream_iterator<int>{cout, " "});
     cout << endl;

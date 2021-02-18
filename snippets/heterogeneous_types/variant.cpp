@@ -2,8 +2,6 @@
 #include <numeric>
 #include <variant>
 
-using namespace std;
-
 union my_union {
     double a;
     char b;
@@ -11,6 +9,8 @@ union my_union {
 };
 
 int main() {
+    using namespace std;
+
     // The "old" union
     // - It only works with fundamental data type
     // - It doesn't have many convenience function

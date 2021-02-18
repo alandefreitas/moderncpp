@@ -1,11 +1,13 @@
 #include <array>
 #include <iostream>
 
-// Never do that on header files
-// Probably not a good idea in other files
-using namespace std;
-
 int main() {
+    // Using namespace std in the main scope
+    // - Almost never do that in a global scope
+    // - Never do that in the global scope of a header file
+    // - Probably not a good idea in other files too
+    using namespace std;
+
     // Variable
     int a = 2;
     cout << "a : " << a << endl;

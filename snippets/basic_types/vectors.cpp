@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // Dynamic size vector
     vector<int> v = {1, 2, 3};
     for (size_t i = 0; i < v.size(); ++i) {

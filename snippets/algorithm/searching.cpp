@@ -6,11 +6,10 @@
 #include <random>
 #include <vector>
 
-using namespace std;
-
 // Usual implementation based on subscripts
 // - What you would probably learn in school
-size_t sequential_find(const vector<int> &v, const int key) {
+// - Example only. Use std::find instead.
+size_t sequential_find(const std::vector<int> &v, const int key) {
     for (size_t i = 0; i < v.size(); ++i) {
         if (v[i] == key) {
             return i;
@@ -36,7 +35,7 @@ constexpr It sequential_find(It first, It last, const T &value) {
 
 // Usual implementation based on subscripts
 // - What you would probably learn in school
-size_t binary_find(const vector<int> &v, const int key) {
+size_t binary_find(const std::vector<int> &v, const int key) {
     size_t left_idx = 0;
     size_t right_idx = v.size() - 1;
     size_t i;
@@ -72,10 +71,14 @@ It binary_find(It first, It last, const T &value) {
 }
 
 int main() {
+    using namespace std;
+
     // Create vector for searching
     vector v = {5, 4, 9, 8, 6, 3};
 
     // Sequential search (std library)
+    // - std::find is what you would use daily
+    // - don't implement your own version unless you're studying the algorithms
     auto i1 = find(v.begin(), v.end(), 6);
     if (i1 != v.end()) {
         cout << "*i1: " << *i1 << '\n';
@@ -100,6 +103,8 @@ int main() {
     sort(v.begin(), v.end());
 
     // Binary search (std library)
+    // - std::lower_bound is what you would use daily
+    // - don't implement your own version unless you're studying the algorithms
     auto i2 = lower_bound(v.begin(), v.end(), 6);
     if (i2 != v.end()) {
         cout << "*i2: " << *i2 << '\n';

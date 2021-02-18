@@ -1,8 +1,9 @@
 #include <iostream>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     int age;
     std::cout << "How old are you? ";
     std::cin >> age;

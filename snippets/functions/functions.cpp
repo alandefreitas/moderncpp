@@ -4,8 +4,6 @@
 #include <iostream>
 #include <memory>
 
-using namespace std;
-
 // No return
 void show_menu();
 
@@ -22,10 +20,10 @@ double power(double x, int y);
 void times_two(int &x);
 
 // Parameters by reference - Default parameter
-void increment_all(array<int, 1000> &a, int increment_value = 1);
+void increment_all(std::array<int, 1000> &a, int increment_value = 1);
 
 // Parameters by const reference
-bool has_element(const array<int, 1000> &a, int element);
+bool has_element(const std::array<int, 1000> &a, int element);
 
 // "Return" two values by reference
 void maxmin(int a, int b, int c, int &minimum, int &maximum);
@@ -34,13 +32,13 @@ void maxmin(int a, int b, int c, int &minimum, int &maximum);
 void sort(int a, int b, int c, int &minimum, int &middle, int &maximum);
 
 // Return two values with a pair
-pair<int, int> maxmin(int a, int b, int c);
+std::pair<int, int> maxmin(int a, int b, int c);
 
 // Return three+ values with a tuple
-tuple<int, int, int> sort(int a, int b, int c);
+std::tuple<int, int, int> sort(int a, int b, int c);
 
 // Parameter by pointer by value
-void pointer_to_cube(shared_ptr<int> p);
+void pointer_to_cube(std::shared_ptr<int> p);
 
 // Iterative function
 int fibonacci_iterative(int n);
@@ -49,6 +47,8 @@ int fibonacci_iterative(int n);
 int fibonacci_recursive(int n);
 
 int main() {
+    using namespace std;
+
     // No return function
     int opt = 3;
     do {
@@ -149,11 +149,11 @@ int main() {
 }
 
 void show_menu() {
-    cout << "Options:\n"
-            "[0] Exit\n"
-            "[1] Sum\n"
-            "[2] Multiply"
-         << endl;
+    std::cout << "Options:\n"
+                 "[0] Exit\n"
+                 "[1] Sum\n"
+                 "[2] Multiply"
+              << std::endl;
 }
 
 double power_three(double x) { return x * x * x; }
@@ -184,7 +184,7 @@ void maxmin(int a, int b, int c, int &minimum, int &maximum) {
     }
 }
 
-pair<int, int> maxmin(int a, int b, int c) {
+std::pair<int, int> maxmin(int a, int b, int c) {
     int minimum;
     int maximum;
     if (a > b) {
@@ -200,7 +200,7 @@ pair<int, int> maxmin(int a, int b, int c) {
     if (c < minimum) {
         minimum = c;
     }
-    return make_pair(minimum, maximum);
+    return std::make_pair(minimum, maximum);
 }
 
 void sort(int a, int b, int c, int &minimum, int &middle, int &maximum) {
@@ -216,23 +216,24 @@ void sort(int a, int b, int c, int &minimum, int &middle, int &maximum) {
     middle = c;
 }
 
-tuple<int, int, int> sort(int a, int b, int c) {
+std::tuple<int, int, int> sort(int a, int b, int c) {
     auto [minimum, maximum] = maxmin(a, b, c);
     if (a != minimum && a != maximum) {
-        return make_tuple(minimum, a, maximum);
+        return std::make_tuple(minimum, a, maximum);
     }
     if (b != minimum && b != maximum) {
-        return make_tuple(minimum, b, maximum);
+        return std::make_tuple(minimum, b, maximum);
     }
-    return make_tuple(minimum, b, maximum);
+    return std::make_tuple(minimum, b, maximum);
 }
 
-bool has_element(const array<int, 1000> &a, int element) {
-    return std::any_of(a.begin(), a.end(), [element](int x) { return x == element; });
+bool has_element(const std::array<int, 1000> &a, int element) {
+    return std::any_of(a.begin(), a.end(),
+                       [element](int x) { return x == element; });
 }
 
-void increment_all(array<int, 1000> &a, int increment_value) {
-    for (int & x : a) {
+void increment_all(std::array<int, 1000> &a, int increment_value) {
+    for (int &x : a) {
         x += increment_value;
     }
 }
@@ -241,7 +242,7 @@ void increment_all(array<int, 1000> &a, int increment_value) {
 // As small as the reference and no other level of indirection
 // NOLINTNEXTLINE(performance-unnecessary-value-param): Does not apply to
 // pointers
-void pointer_to_cube(shared_ptr<int> p) {
+void pointer_to_cube(std::shared_ptr<int> p) {
     if (p) {
         *p = *p * *p * *p;
     }

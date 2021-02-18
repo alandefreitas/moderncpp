@@ -2,9 +2,10 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     constexpr int n = 3;
 
     // Raw arrays

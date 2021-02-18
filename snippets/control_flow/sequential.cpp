@@ -1,8 +1,9 @@
 #include <iostream>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     double l = 4;
     double area = l * l;
     cout << "Area: " << area << endl;

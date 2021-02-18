@@ -4,11 +4,14 @@
 #include <random>
 #include <string>
 
-using namespace std;
 
 int main() {
-    // Raw pointers are dangerous
-    // Try to avoid them (few exceptions)
+    using namespace std;
+
+    // Raw pointers
+    // - They might be dangerous
+    // - Try to avoid them, with a few exceptions
+    // - See the smart pointer snippets
 
     // Pointer to an int
     int *x = new int(5);

@@ -8,8 +8,6 @@
 #include <unordered_map>
 #include <vector>
 
-using namespace std;
-
 template <typename RAIter> int parallel_sum(RAIter beg, RAIter end) {
     typename RAIter::difference_type len = end - beg;
     // Solve small problems in one thread
@@ -26,6 +24,8 @@ template <typename RAIter> int parallel_sum(RAIter beg, RAIter end) {
 }
 
 int main() {
+    using namespace std;
+
     // Simple algorithms
     std::vector<int> a(10000, 1);
     std::cout << "The sum is " << std::accumulate(a.begin(), a.end(), 0)

@@ -12,9 +12,9 @@ class add {
     double operator()(double left, double right) { return left + right; }
 };
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // The old way: Functors
     // - Function objects overload operator() to hold functions
     double number = add()(2, 3);

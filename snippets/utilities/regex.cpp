@@ -3,9 +3,10 @@
 #include <sstream>
 #include <string>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // Test single expression
     if (regex_match("subject", regex("(sub)(.*)"))) {
         cout << "subject matches expression (sub)(.*)" << endl;

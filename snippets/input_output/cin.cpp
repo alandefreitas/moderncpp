@@ -1,9 +1,10 @@
 #include <cmath>
 #include <iostream>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // User input
     int age;
     std::cout << "How old are you? ";

@@ -3,9 +3,9 @@
 #include <numeric>
 #include <vector>
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // any is a container for single values of any type
     // - be careful when using it
     cout << boolalpha;

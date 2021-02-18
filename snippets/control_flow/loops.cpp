@@ -2,9 +2,10 @@
 #include <iostream>
 #include <map>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // Basic loop
     for (int i = 0; i < 10; ++i) {
         cout << "Hello world!" << '\n';

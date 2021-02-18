@@ -2,9 +2,10 @@
 #include <iostream>
 #include <cstddef>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // Get type size
     cout << "sizeof(char) = " << sizeof(char) << " bytes" << endl;
     cout << "sizeof(unsigned char) = " << sizeof(unsigned char) << " bytes"

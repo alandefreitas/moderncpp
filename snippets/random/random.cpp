@@ -2,13 +2,13 @@
 #include <random>
 #include <chrono>
 
-using namespace std;
-
 static constexpr uint32_t fnv(uint32_t hash, const char *pos) {
     return *pos == '\0' ? hash : fnv((hash * 16777619U) ^ *pos, pos + 1);
 }
 
 int main() {
+    using namespace std;
+
     // Operating system number generator (usually high-cost)
     random_device rd;
 
@@ -17,7 +17,8 @@ int main() {
 
     // Mix seed with some more imaginable cross-platform entropy sources
     // - Current time
-    seed ^= static_cast<unsigned int>(chrono::system_clock::now().time_since_epoch().count());
+    seed ^= static_cast<unsigned int>(
+        chrono::system_clock::now().time_since_epoch().count());
     // - Compile stamp
     constexpr uint32_t compile_stamp = fnv(2166136261U, __DATE__ __TIME__ __FILE__);
     seed ^= static_cast<unsigned int>(compile_stamp);

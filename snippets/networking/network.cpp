@@ -3,17 +3,17 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 // Create the string to be sent back to the client
-string make_daytime_string() {
+std::string make_daytime_string() {
     time_t now = time(nullptr);
-    string r = ctime(&now);
+    std::string r = ctime(&now);
     std::cout << "Time requested: " << r;
     return r;
 }
 
 int main() {
+    using namespace std;
+
     try {
         // Object for network input and output
         // - All networking programs at least one io_context

@@ -1,8 +1,6 @@
 #include <iomanip>
 #include <iostream>
 
-using namespace std;
-
 struct A {
     int x;
     int y;
@@ -26,6 +24,8 @@ void print(const B &a) {
 }
 
 int main() {
+    using namespace std;
+
     // Designated initializers
     A a{.x = 1, .y = 4, .z = 2};
     print(a);

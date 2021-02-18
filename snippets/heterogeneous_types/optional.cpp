@@ -5,26 +5,26 @@
 #include <ctime>
 #include <cmath>
 
-using namespace std;
-
 // Clearly mark optional values
-optional<int> get_even_random_number() {
+std::optional<int> get_even_random_number() {
     // std::rand() has limited randomness (use C++ <random> instead>
     int i = std::rand();
     if (i % 2 == 0) {
         return i;
     } else {
-        return nullopt;
+        return std::nullopt;
     }
 }
 
-optional<int> get_even_random_number2() {
+std::optional<int> get_even_random_number2() {
     // std::rand() has limited randomness (use C++ <random> instead>
     int i = std::rand();
-    return make_optional(int(i % 2 == 0));
+    return std::make_optional(int(i % 2 == 0));
 }
 
 int main() {
+    using namespace std;
+
     auto entropy_source = static_cast<unsigned int>(std::time(nullptr));
     std::srand(entropy_source);
 

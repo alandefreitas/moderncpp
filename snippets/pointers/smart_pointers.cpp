@@ -1,9 +1,10 @@
 #include <iostream>
 #include <memory>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // Use smart pointers instead of raw pointer whenever possible
     // - But you can't do it without understanding raw pointers
     // - Recur to raw *non-owning* pointers if they are needed

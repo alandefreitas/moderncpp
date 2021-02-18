@@ -5,9 +5,9 @@
 
 void very_expensive_function();
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // Old C Clock
     // - The only method specified in the standard to measure CPU time
     // - It's up to the user to keep track of the duration unit
@@ -117,8 +117,8 @@ int main() {
 
 void very_expensive_function() {
     for (int i = 0; i < 5; ++i) {
-        cout << '*' << flush;
-        this_thread::sleep_for(chrono::seconds(1));
+        std::cout << '*' << std::flush;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
-    cout << endl;
+    std::cout << std::endl;
 }

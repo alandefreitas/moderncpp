@@ -1,9 +1,9 @@
 #include <cmath>
 #include <iostream>
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // Operators
     int n1 = 8;
     int n2 = 3;

@@ -7,8 +7,6 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 struct Foo {
     int i;
     char c;
@@ -19,10 +17,10 @@ struct Foo {
 /// \param v Vector
 /// \return Min
 /// \return Max
-pair<int, int> minmax(vector<int> &v) {
+std::pair<int, int> minmax(std::vector<int> &v) {
     // unpack tuple of iterators with min and max
     auto [min_iter, max_iter] = minmax_element(v.begin(), v.end());
-    return make_pair(*min_iter, *max_iter);
+    return std::make_pair(*min_iter, *max_iter);
 }
 
 /// Mean, variance, and std deviation
@@ -31,7 +29,7 @@ pair<int, int> minmax(vector<int> &v) {
 /// \return Mean
 /// \return Variance
 /// \return Deviation
-tuple<int, double, double, double> stats(vector<int> &v) {
+std::tuple<int, double, double, double> stats(std::vector<int> &v) {
     int total = accumulate(v.begin(), v.end(), 0);
     double mean = static_cast<double>(total) / v.size();
     double variance =
@@ -42,10 +40,12 @@ tuple<int, double, double, double> stats(vector<int> &v) {
                    }) /
         (v.size() - 1);
     double stddev = sqrt(variance);
-    return make_tuple(total, mean, variance, stddev);
+    return std::make_tuple(total, mean, variance, stddev);
 }
 
 int main() {
+    using namespace std;
+
     // Unpacking pairs
     vector<int> v = {7, 3, 9, 3, 1, 7, 4, 9};
     auto [min_value, max_value] = minmax(v);

@@ -2,9 +2,9 @@
 #include <random>
 #include <pcg_random.hpp>
 
-using namespace std;
-
 int main() {
+    using namespace std;
+
     // Initialize with two fixed seeds
     pcg32 rng(42u, 54u);
 

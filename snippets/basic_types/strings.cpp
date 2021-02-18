@@ -2,9 +2,10 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 int main() {
+    using namespace std;
+
     // Strings are dynamic arrays of chars
     string str = "avocado";
 
