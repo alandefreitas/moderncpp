@@ -533,12 +533,11 @@ Related examples:
 
 #### Function
 
-!!! warning These snippets are about the syntax for creating functions. They are *not* about how to achieve the tasks in
-these functions. The tasks are just placeholders and the C++ STL already provides much better alternatives for most of
-these [algorithms](#basic-algorithms).
+!!! warning
+    These snippets are about the syntax for creating functions. They are *not* about how to achieve the tasks in these functions. The tasks are just placeholders and the C++ STL already provides much better alternatives for most of these [algorithms](#basic-algorithms).
 
 ```cpp
-                                         
+--8<-- "snippets/functions/functions.cpp"
 ```
 
 Related examples:
@@ -661,6 +660,7 @@ FindConcepts.cmake:
 --8<-- "snippets/templates/sfinae.cpp"
 ```
 
+
 ### Algorithm
 
 #### Build script
@@ -680,25 +680,26 @@ FindConcepts.cmake:
     These snippets include extra functions describing how these algorithms can be implemented. They are mostly relevant for people studying these algorithms for the first time. 
 
 ```cpp
-                                         
+--8<-- "snippets/algorithm/searching.cpp"
 ```
 
 #### Sorting
 
 !!! hint
-
+    
     The standard [algorithm](#basic-algorithms) for sorting containers are `std::sort` and `std::standard_sort`.
 
     These snippets include extra functions describing how these tasks can be implemented with many other classic sorting algorithms. They are mostly relevant for people studying these algorithms for the first time. 
 
+
 ```cpp
-                                       
+--8<-- "snippets/algorithm/sorting.cpp"
 ```
 
 #### Basic Algorithms
 
 ```cpp
-                                          
+--8<-- "snippets/algorithm/algorithms.cpp"
 ```
 
 #### Ranges
