@@ -674,6 +674,7 @@ FindConcepts.cmake:
 !!! hint
 
     The standard [algorithms](#basic-algorithms) for searching elements in a container are:
+
     * `std::find` for linear search
     * `std::lower_bound` and `std::upper_bound` for binary search
     
@@ -687,9 +688,9 @@ FindConcepts.cmake:
 
 !!! hint
     
-    The standard [algorithms](#basic-algorithms) for sorting containers are `std::sort` and `std::standard_sort`.
+    The standard [algorithms](#basic-algorithms) for sorting containers are `std::sort` and `std::stable_sort`.
 
-    These snippets include extra functions describing how these tasks can be implemented with many other classic sorting algorithms. They are mostly relevant for people studying these algorithms for the first time. 
+    These snippets include extra functions describing how these tasks can be implemented with many other classic sorting algorithms. They are mostly relevant for people studying sorting algorithms for the first time.
 
 
 ```cpp
@@ -739,6 +740,10 @@ FindPMR.cmake:
 ```cmake
 --8<-- "cmake/FindPMR.cmake"
 ```
+
+!!! warning "PMR"
+
+    Not all compilers implement PMR yet, even though it's a C++17 feature. We need the CMake script [`FindPMR.cmake`](cmake/FindPMR.cmake) to identify if your compiler implements it. 
 
 #### Span
 
@@ -844,7 +849,7 @@ FindPMR.cmake:
 --8<-- "snippets/parallel/policies.cpp"
 ```
 
-!!! Help wanted
+!!! warning "Help wanted"
     Clang requires a CMake script to link TBB with this target to make this work.
 
 #### Threads
