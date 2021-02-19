@@ -279,7 +279,9 @@ If you are programming for the web, a common option for C++ and WebAssembly is [
 
 You can install emscripten from most package managers for [Windows](https://chocolatey.org/packages/emscripten), [Linux](https://pkgs.org/search/?q=emscripten), or [Mac OS](https://formulae.brew.sh/formula/emscripten). You can also follow the [instructions](https://emscripten.org/docs/getting_started/downloads.html) on their website to build from source.
 
-Then follow [these instructions](https://emscripten.org/docs/getting_started/Tutorial.html) to compile your first "Hello World!" for the web.
+Then follow [these instructions](https://emscripten.org/docs/getting_started/Tutorial.html) to compile your first "Hello World!" for the web. Your C++ program will become this beautiful webpage:
+
+![](docs/img/hello_emscripten.png)
 
 ### Interpreter / Cling
 
@@ -287,11 +289,15 @@ If you are using C++ for scientific computing or learning C++, it's often useful
 
 You can install Cling from most package managers for [Linux](https://pkgs.org/download/cling) or [Mac OS](https://formulae.brew.sh/formula/cling). You can also follow the [instructions](https://root.cern/cling/cling_build_instructions/) on their website to download the binaries or build it from source.
 
-Although you can use `cling` directly, it is much more convenient to use the interpreter as a Jupyter notebook kernel. You can follow [these instructions](https://jupyter.org/install.html) to install Jupyter Lab, and [these instructions](https://xeus-cling.readthedocs.io/en/latest/installation.html) to install the `xeus-cling` kernel.
+Although you can use `cling` directly, it is much more convenient to use the interpreter as a Jupyter notebook kernel. You can follow [these instructions](https://jupyter.org/install.html) to install Jupyter Lab, and [these instructions](https://xeus-cling.readthedocs.io/en/latest/installation.html) to install the `xeus-cling` kernel. 
+
+This creates a beautiful environment for playing with C++ interactively:
+
+![](docs/img/hello_cling.png)
 
 ### IDEs
 
-These are the IDEs and text editors [most commonly used](http://blog.davidecoppola.com/2018/02/market-share-most-used-c-cpp-ides-in-2018-statistics-estimates/) for C++ programming:
+These are the most common IDEs and text editors [most commonly used](http://blog.davidecoppola.com/2018/02/market-share-most-used-c-cpp-ides-in-2018-statistics-estimates/) for C++ programming:
 
 | IDE or Text Editor | Users | Notes             |
 |--------------------|-------|-------------------|
