@@ -687,7 +687,7 @@ FindConcepts.cmake:
 
 !!! hint
     
-    The standard [algorithm](#basic-algorithms) for sorting containers are `std::sort` and `std::standard_sort`.
+    The standard [algorithms](#basic-algorithms) for sorting containers are `std::sort` and `std::standard_sort`.
 
     These snippets include extra functions describing how these tasks can be implemented with many other classic sorting algorithms. They are mostly relevant for people studying these algorithms for the first time. 
 
