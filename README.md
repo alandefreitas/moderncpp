@@ -421,6 +421,16 @@ Related examples:
 --8<-- "snippets/control_flow/loops.cpp"
 ```
 
+Examples:
+
+[`examples/control_flow/calculator.cpp`](examples/control_flow/calculator.cpp)
+
+#### Scopes
+
+```cpp
+--8<-- "snippets/control_flow/scopes.cpp"
+```
+
 ### Data types
 
 #### Build script
@@ -517,10 +527,16 @@ Related examples:
 --8<-- "snippets/pointers/address_operator.cpp"
 ```
 
-#### Raw Pointers
+#### Raw pointers
 
 ```cpp
 --8<-- "snippets/pointers/raw_pointers.cpp"
+```
+
+#### References
+
+```cpp
+--8<-- "snippets/pointers/references.cpp"
 ```
 
 #### Smart pointers
