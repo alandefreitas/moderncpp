@@ -44,22 +44,18 @@ int main() {
 
     // Pointers to dynamic arrays
     // Very dangerous if you forget to deallocate
-    int i = 0;
-    while (i < 1000000) {
+    for (int i = 0; i < 1000000; ++i) {
         // Point to a new value
         x = new int(i);
-
         // Deallocate the value pointed by x
         // - Forget to do that and we'll have a big problem!
         delete x;
         x = nullptr;
-
-        ++i;
     }
 
     // Another danger: pointer arithmetic
     // We might access invalid addresses
-    x = new int(i);
+    x = new int(1000);
     int *tmp = x;
     for (int i = 0; i < 30; ++i) {
         // Go to new address
@@ -72,7 +68,7 @@ int main() {
 
     // Use tmp, which is fortunately pointing to the address we need to delete
     delete tmp;
-    delete x;
+    // delete x; // <- this would not work
 
     // Raw dynamic arrays
     // - This is what existed before vectors
@@ -94,6 +90,7 @@ int main() {
     // Deallocate sequence
     // - Different command - more danger
     delete[] x2;
+    x2 = nullptr;
 
     return 0;
 }
