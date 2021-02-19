@@ -62,12 +62,6 @@ int main() {
         cout << i << '\n';
     }
 
-    // Do-While loop
-    int option = 0;
-    do {
-        ++option;
-    } while (option < 4);
-
     // Index-based loop for containers with subscript operator[]
     constexpr int n = 100;
     array<double, n> prices{};
@@ -87,11 +81,17 @@ int main() {
     }
     cout << "Average price: " << sum / n << '\n';
 
-    // Range-based loop with value pairs
     map<int, int> t;
     t[7] = 2;
     t[8] = 4;
     t[4] = 6;
+
+    // Range-based loop with maps
+    for (const auto &p : t) {
+        cout << p.first << ": " << p.second << '\n';
+    }
+
+    // Range-based loop with value pairs
     for (const auto &[key, value] : t) {
         cout << key << ": " << value << '\n';
     }
@@ -114,7 +114,7 @@ int main() {
         for (const auto &col : row) {
             row_sum += col;
         }
-        cout << "Average student grade: " << row_sum / grades.size() << '\n';
+        cout << "Average student grade: " << row_sum / row.size() << '\n';
     }
 
     // Columns in the external for
@@ -126,6 +126,21 @@ int main() {
         cout << "Average score on test " << j + 1 << ": " << col_sum / n1
              << '\n';
     }
+
+    // While loop
+    int num = 1;
+    while (num != 0) {
+        cout << "Enter a number: ";
+        cin >> num;
+        cout << num << "^2 = " << num * num << endl;
+    }
+
+    // Do-while loop
+    do {
+        cout << "Enter a number: ";
+        cin >> num;
+        cout << num << "^2 = " << num * num << endl;
+    } while (num != 0);
 
     return 0;
 }
