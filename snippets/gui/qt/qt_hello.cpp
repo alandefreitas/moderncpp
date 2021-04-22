@@ -19,5 +19,5 @@ int main(int argc, char **argv) {
                           [] { QApplication::quit(); });
 
     window.show();
-    return QApplication::exec();
+    return app.exec();
 }
