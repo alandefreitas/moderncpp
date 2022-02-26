@@ -2,59 +2,54 @@
 #include <unordered_map>
 
 int main() {
-    using std::cout;
-    using std::endl;
-
-    // Auto for fundamental data types
-    // - Example only: don't do that for fundamental data types!
-    // - This is a bad place for auto
-    //   - It does not avoid a long type name
-    //   - It creates ambiguity
-    //     - 87 could *semantically* be any number type
-    // - This is somewhat equivalent to:
-    //   - swift:  var dont_do_that = 87
-    //   - rust:   let mut dont_do_that = 87
+    //[auto_pod Auto for fundamental data types
     auto dont_do_that = 87;
-    cout << "dont_do_that: " << dont_do_that << endl;
+    std::cout << "dont_do_that: " << dont_do_that << '\n';
+    //]
 
-    // Creating a hash table for the next example
+    //[container Creating a hash table for the next snippet
     std::unordered_map<std::string, double> t;
     t["zero"] = 0.0;
     t["pi"] = 3.14;
     t["ten"] = 10.0;
+    //]
 
-    // Without auto
+    //[no_auto Accessing container without `auto`
     // NOLINTNEXTLINE(modernize-use-auto)
     std::unordered_map<std::string, double>::iterator it = t.find("pi");
     if (it != t.end()) {
-        cout << it->first << ": " << it->second << endl;
+        std::cout << it->first << ": " << it->second << '\n';
     }
+    //]
 
-    // With auto
+    //[with_auto Accessing container with `auto`
     // This is the perfect place for auto
     // - It avoids a long type name
     // - There's no ambiguity
     //   - Find will always return an iterator
     auto it2 = t.find("zero");
     if (it2 != t.end()) {
-        cout << it2->first << ": " << it2->second << endl;
+        std::cout << it2->first << ": " << it2->second << '\n';
     }
+    //]
 
-    // Get type from another variable
+    //[decltype Get type from another variable
     decltype(it) it3;
     it3 = it;
     ++it3;
     if (it3 != t.end()) {
-        cout << it3->first << ": " << it3->second << endl;
+        std::cout << it3->first << ": " << it3->second << '\n';
     }
+    //]
 
-    // Auto is also very useful for generic functions
+    //[functions `auto` in generic functions
     auto print_map_container = [](const auto &m) {
         for (auto &&item : m) {
-            std::cout << item.first << ": " << item.second << std::endl;
+            std::cout << item.first << ": " << item.second << '\n';
         }
     };
     print_map_container(t);
+    //]
 
     return 0;
 }

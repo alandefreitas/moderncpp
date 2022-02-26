@@ -19,9 +19,12 @@
 
 namespace http::server {
 
+    //[request_handler Request handler constructor
     request_handler::request_handler(const std::string &doc_root)
         : doc_root_(doc_root) {}
+    //]
 
+    //[handle_request Handle a parsed request and generate reply
     void request_handler::handle_request(const request &req, reply &rep) {
         // Decode url to path.
         std::string request_path;
@@ -71,7 +74,9 @@ namespace http::server {
         rep.headers[1].name = "Content-Type";
         rep.headers[1].value = mime_types::extension_to_type(extension);
     }
+    //]
 
+    //[url_decode Decode url string
     bool request_handler::url_decode(const std::string &in, std::string &out) {
         out.clear();
         out.reserve(in.size());
@@ -97,5 +102,6 @@ namespace http::server {
         }
         return true;
     }
+    //]
 
 } // namespace http::server

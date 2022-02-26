@@ -1,9 +1,13 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <forward_list>
+//[headers Headers
 #include <map>
 #include <set>
-#include <string>
 #include <unordered_map>
 #include <unordered_set>
+//]
 
 template <class CONTAINER> void print_container_size(const CONTAINER &c) {
     if (c.empty()) {
@@ -47,20 +51,24 @@ void print_container(const std::unordered_map<std::string, double> &c) {
 }
 
 int main() {
-    using namespace std;
-
-    std::set<int> a = {1, 2, 3, 4, 5};
+    //[construct Construct associative containers
+    std::set<int> a = {2, 3, 1, 5, 4};
     std::unordered_set<int> a2 = {1, 2, 3, 4, 5};
+    //]
 
-    std::map<string, double> m;
+    //[subscript Subscript Operator (Ordered maps)
+    std::map<std::string, double> m;
     m["PI"] = 3.14;
     m["ZERO"] = 0.0;
     m["IRPF"] = 0.15;
+    //]
 
-    std::unordered_map<string, double> m2;
+    //[subscript Subscript Operator (Unordered maps)
+    std::unordered_map<std::string, double> m2;
     m2["PI"] = 3.14;
     m2["ZERO"] = 0.0;
     m2["IRPF"] = 0.15;
+    //]
 
     std::cout << "Print sizes:" << std::endl;
     print_container_size(a);
@@ -68,15 +76,29 @@ int main() {
     print_container_size(m);
     print_container_size(m2);
 
+    //[print_size Container size
+    std::cout << a.size() << '\n';
+    std::cout << a2.size() << '\n';
+    std::cout << m.size() << '\n';
+    std::cout << m2.size() << '\n';
+    //]
+
     std::cout << "Insertion:" << std::endl;
+
+    //[insert Insert values in sets
     a.insert(8);
     a2.insert(8);
+    //]
 
-    m["CEM"] = 100.0;
-    m.insert(std::make_pair("MIL", 1000.0));
+    //[insert_subscript Insert values in maps with subscript operator
+    m["hundred"] = 100.0;
+    m2["hundred"] = 100.0;
+    //]
 
-    m2["CEM"] = 100.0;
-    m2.insert(std::make_pair("MIL", 1000.0));
+    //[insert_subscript Insert values in maps
+    m.insert(std::make_pair("thousand", 1000.0));
+    m2.insert(std::make_pair("thousand", 1000.0));
+    //]
 
     std::cout << "Print containers" << std::endl;
     print_container(a);
@@ -85,10 +107,12 @@ int main() {
     print_container(m2);
 
     std::cout << "Removal:" << std::endl;
+    //[erase Erase elements
     a.erase(2);
     a2.erase(2);
-    m.erase("MIL");
-    m2.erase("MIL");
+    m.erase("thousand");
+    m2.erase("thousand");
+    //]
 
     std::cout << "Print containers" << std::endl;
     print_container(a);

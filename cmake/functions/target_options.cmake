@@ -1,12 +1,14 @@
 # @brief Enable pedantic warnings for a target
 # - This does not propagate to other targets
 function(target_pedantic_warnings TARGET_NAME)
+    #[target_pedantic_warnings Enable pedantic warnings for a target
     # Set warning levels to about the same level for MSVC, GCC, and Clang
     if (MSVC)
         target_compile_options(${TARGET_NAME} PRIVATE /W4 /WX)
     else ()
         target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
     endif ()
+    #]
 endfunction()
 
 # @brief Sets pedantic compiler options for all target
@@ -14,11 +16,13 @@ endfunction()
 # - Setting it for all targets unfortunately affects
 # external libraries, which often lead to some warnings.
 macro(add_pedantic_warnings)
+    #[target_pedantic_warnings Enable pedantic compiler options for all targets
     if (MSVC)
         add_compile_options(/W4 /WX)
     else ()
         add_compile_options(-Wall -Wextra -pedantic -Werror)
     endif ()
+    #]
 endmacro()
 
 # @brief Enable compile options for MSVC only

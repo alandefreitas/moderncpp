@@ -6,71 +6,31 @@
 
 
 int main() {
-    using namespace std;
-
-    // Raw pointers
-    // - They might be dangerous
-    // - Try to avoid them, with a few exceptions
-    // - See the smart pointer snippets
-
-    // Pointer to an int
+    //[alloc Pointer to an int on the heap
     int *x = new int(5);
-    std::cout << "x: " << x << std::endl;
-    if (x) {
-        std::cout << "*x: " << *x << std::endl;
-    } else {
-        std::cout << "*x: empty" << std::endl;
-    }
+    //]
 
-    // Delete x
+    //[print Print pointer address
+    std::cout << "x: " << x << '\n';
+    //]
+
+    //[print_value Print pointed value if any
+    if (x) {
+        std::cout << "*x: " << *x << '\n';
+    } else {
+        std::cout << "*x: empty" << '\n';
+    }
+    //]
+
+    //[delete Delete value pointed
     // - Forgetting to delete causes memory leaks
-    // - Smart pointers delete the data automatically
-    delete x;
-
-    // Update to nullptr
-    // - Nullptr indicates the pointer is free
-    // - It means the pointer points to no one
     // - Forgetting to update to nullptr might lead to segmentation faults
-    // - Smart pointers do that automatically
+    // - Use smart pointers to delete the data automatically
+    delete x;
     x = nullptr;
+    //]
 
-    // Testing pointer again
-    std::cout << "x: " << x << std::endl;
-    if (x) {
-        std::cout << "*x: " << *x << std::endl;
-    } else {
-        std::cout << "*x: empty" << std::endl;
-    }
-
-    // Pointers to dynamic arrays
-    // Very dangerous if you forget to deallocate
-    for (int i = 0; i < 1000000; ++i) {
-        // Point to a new value
-        x = new int(i);
-        // Deallocate the value pointed by x
-        // - Forget to do that and we'll have a big problem!
-        delete x;
-        x = nullptr;
-    }
-
-    // Another danger: pointer arithmetic
-    // We might access invalid addresses
-    x = new int(1000);
-    int *tmp = x;
-    for (int i = 0; i < 30; ++i) {
-        // Go to new address
-        // - But what's in there?
-        std::cout << "x++: " << x++ << std::endl;
-    }
-
-    // This would cause an error now:
-    // delete x;
-
-    // Use tmp, which is fortunately pointing to the address we need to delete
-    delete tmp;
-    // delete x; // <- this would not work
-
-    // Raw dynamic arrays
+    //[arrays_raw Raw dynamic arrays
     // - This is what existed before vectors
     // - Point to a sequence of values
     // - Always use vectors instead of this
@@ -79,18 +39,25 @@ int main() {
     for (int i2 = 0; i2 < 10; ++i2) {
         x2[i2] = 10 + i2 * 10;
     }
-    std::cout << "x2: " << x2 << std::endl;
-    std::cout << "&x2[0]: " << &x2[0] << std::endl;
-    std::cout << "x2[0]: " << x2[0] << std::endl;
-    // x2 is pointing to the first number in the sequence
-    std::cout << "*x2: " << *x2 << std::endl;
-    std::cout << "x2[3]: " << x2[3] << std::endl;
-    std::cout << "*(x2+3): " << *(x2 + 3) << std::endl;
+    //]
 
-    // Deallocate sequence
-    // - Different command - more danger
+    //[print_dyn Print addresses
+    std::cout << "x2: " << x2 << '\n';
+    std::cout << "&x2[0]: " << &x2[0] << '\n';
+    std::cout << "x2[0]: " << x2[0] << '\n';
+    //]
+
+    //[print_first Points to the first number in the sequence
+    std::cout << "*x2: " << *x2 << '\n';
+    std::cout << "x2[3]: " << x2[3] << '\n';
+    std::cout << "*(x2+3): " << *(x2 + 3) << '\n';
+    //]
+
+    //[deallocate Deallocate sequence
+    // - Slightly different command: more danger
     delete[] x2;
     x2 = nullptr;
+    //]
 
     return 0;
 }

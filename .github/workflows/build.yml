@@ -28,21 +28,28 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          # see: https://github.com/actions/virtual-environments
-          # I'm not aware of a way to setup a github actions environment for C++20 on windows
-          # Please let me know if you know how to do that
           - {
-            name: "Ubuntu / GCC 10",
+            name: "Windows / MSVC 16",
+            os: windows-2019,
+            config: Release,
+            cxx_standard: 20,
+            cmake_extra_args: -G "Visual Studio 16 2019" -A x64 -DCMAKE_CXX_FLAGS="/O2",
+            sudocmd: "",
+            artifact_name: "Windows x64",
+            cores: 2,
+          }
+          - {
+            name: "Ubuntu / GCC 11",
             os: ubuntu-20.04,
             config: Release,
             cxx_standard: 20,
-            cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-10 -DCMAKE_CXX_COMPILER=/usr/bin/g++-10  -DCMAKE_CXX_FLAGS=\"-O2\"",
+            cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-11 -DCMAKE_CXX_COMPILER=/usr/bin/g++-11  -DCMAKE_CXX_FLAGS=\"-O2\"",
             sudocmd: "sudo",
             artifact_name: "Linux",
             cores: 2,
           }
           - {
-            name: "Mac OS / Clang 11",
+            name: "Mac OS / Clang 13",
             os: macos-11.0,
             config: Release,
             cxx_standard: 20,
@@ -56,16 +63,16 @@ jobs:
       - name: Update GCC
         if: matrix.config.os == 'ubuntu-20.04'
         run: |
-          sudo apt-get install -y g++-10 g++-10-multilib
-          name=CC::gcc-10
-          name=CXX::g++-10
+          sudo apt-get install -y gcc-11 gcc-11-multilib g++-11 g++-11-multilib
+          name=CC::gcc-11
+          name=CXX::g++-11
       - name: Update Clang
         if: matrix.config.os == 'macos-11.0'
         run: |
-          curl --output clang.tar.xz -L https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/clang+llvm-11.0.0-x86_64-apple-darwin.tar.xz
+          curl --output clang.tar.xz -L https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/clang+llvm-13.0.1-x86_64-apple-darwin.tar.xz
           mkdir clang
           tar -xvJf clang.tar.xz -C clang
-          cd clang/clang+llvm-11.0.0-x86_64-apple-darwin
+          cd clang/clang+llvm-13.0.1-x86_64-apple-darwin
           sudo cp -R * /usr/local/
           export CC=/usr/local/bin/clang
           export CXX=/usr/local/bin/clang++

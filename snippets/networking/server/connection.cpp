@@ -16,43 +16,54 @@
 
 namespace http::server {
 
+    //[connection Construct a connection
     connection::connection(asio::ip::tcp::socket socket,
                            connection_manager &manager,
                            request_handler &handler)
         : socket_(std::move(socket)), connection_manager_(manager),
           request_handler_(handler) {}
+    //]
 
-    void connection::start() { do_read(); }
+    //[start Start connection by reading
+    void connection::start() { schedule_read(); }
+    //]
 
+    //[stop Stop connection by closing socket
     void connection::stop() { socket_.close(); }
+    //]
 
-    void connection::do_read() {
+    //[schedule_read Schedule read operation
+    void connection::schedule_read() {
         auto self(shared_from_this());
         socket_.async_read_some(
             asio::buffer(buffer_),
             [this, self](std::error_code ec, std::size_t bytes_transferred) {
                 if (!ec) {
+                    // Parse as an HTTP request
                     request_parser::result_type result;
                     std::tie(result, std::ignore) = request_parser_.parse(
                         request_, buffer_.data(),
                         buffer_.data() + bytes_transferred);
 
+                    // Generate reply with the request handler and write it
                     if (result == request_parser::good) {
                         request_handler_.handle_request(request_, reply_);
-                        do_write();
+                        schedule_write();
                     } else if (result == request_parser::bad) {
                         reply_ = reply::stock_reply(reply::bad_request);
-                        do_write();
+                        schedule_write();
                     } else {
-                        do_read();
+                        schedule_read();
                     }
                 } else if (ec != asio::error::operation_aborted) {
                     connection_manager_.stop(shared_from_this());
                 }
             });
     }
+    //]
 
-    void connection::do_write() {
+    //[schedule_write schedule_write operation
+    void connection::schedule_write() {
         auto self(shared_from_this());
         asio::async_write(socket_, reply_.to_buffers(),
                           [this, self](std::error_code ec, std::size_t) {
@@ -69,5 +80,6 @@ namespace http::server {
                               }
                           });
     }
+    //]
 
 } // namespace http::server

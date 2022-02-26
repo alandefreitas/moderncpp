@@ -12,6 +12,7 @@
 
 namespace http::server::mime_types {
 
+    //[mappings Map MIME types
     constexpr struct mapping {
         const char *extension;
         const char *mime_type;
@@ -20,7 +21,9 @@ namespace http::server::mime_types {
                     {"html", "text/html"},
                     {"jpg", "image/jpeg"},
                     {"png", "image/png"}};
+    //]
 
+    //[extension_to_type Convert file extension to type
     std::string extension_to_type(const std::string &extension) {
         for (mapping m : mappings) {
             if (m.extension == extension) {
@@ -30,5 +33,6 @@ namespace http::server::mime_types {
 
         return "text/plain";
     }
+    //]
 
 } // namespace http::server::mime_types

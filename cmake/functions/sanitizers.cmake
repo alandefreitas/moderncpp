@@ -2,6 +2,7 @@
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_sanitizer flag)
+    #[add_sanitizer Add sanitizer flag to all targets
     include(CheckCXXCompilerFlag)
     if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         message("Looking for -fsanitize=${flag}")
@@ -17,47 +18,60 @@ macro(add_sanitizer flag)
             message("-fsanitize=${flag} unavailable")
         endif ()
     endif ()
+    #]
 endmacro()
 
 # @brief Add address sanitizer to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_address_sanitizer)
+    #[add_address_sanitizer Add address sanitizer to all targets
     add_sanitizer("address")
+    #]
 endmacro()
 
 # @brief Add thread sanitizer to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_thread_sanitizer)
+    #[add_thread_sanitizer Add thread sanitizer to all targets
     add_sanitizer("thread")
+    #]
 endmacro()
 
 # @brief Add undefined sanitizer to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_undefined_sanitizer)
+    #[add_undefined_sanitizer Add undefined sanitizer to all targets
     add_sanitizer("undefined")
+    #]
 endmacro()
 
 # @brief Add memory sanitizer to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_memory_sanitizer)
+    #[add_memory_sanitizer Add memory sanitizer to all targets
     add_sanitizer("memory")
+    #]
 endmacro()
 
 # @brief @brief Add leak sanitizer to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_leak_sanitizer)
+    #[add_leak_sanitizer Add leak sanitizer to all targets
     add_sanitizer("leak")
+    #]
 endmacro()
 
 # @brief Add all sanitizers to all targets
 # - You shouldn't use sanitizers in Release Mode
 # - It's usually best to do that per target
 macro(add_sanitizers)
+    #[add_sanitizers Add all sanitizers to all targets
+    # Choose a subset of sanitizers not in conflict
     add_address_sanitizer()
     add_leak_sanitizer()
     add_undefined_sanitizer()
@@ -65,4 +79,5 @@ macro(add_sanitizers)
     # add_thread_sanitizer()
     # not supported
     # add_memory_sanitizer()
+    #]
 endmacro()

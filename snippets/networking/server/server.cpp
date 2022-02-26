@@ -14,6 +14,7 @@
 
 namespace http::server {
 
+    //[server_construct Server constructor
     server::server(const std::string &address, const std::string &port,
                    const std::string &doc_root)
         : io_context_(1), signals_(io_context_), acceptor_(io_context_),
@@ -21,12 +22,15 @@ namespace http::server {
         setup_signals();
         setup_acceptor(address, port);
     }
+    //]
 
+    //[setup_acceptor Setup server acceptor
     void server::setup_acceptor(
         const std::string &address,
-        const std::string &port) { // Open the acceptor with the option to
-                                   // reuse the address (i.e.
-        // SO_REUSEADDR).
+        const std::string &port) {
+
+        // Open the acceptor with the option to
+        // reuse the address (i.e. SO_REUSEADDR).
         asio::ip::tcp::resolver resolver(io_context_);
         asio::ip::tcp::endpoint endpoint =
             *resolver.resolve(address, port).begin();
@@ -35,10 +39,13 @@ namespace http::server {
         acceptor_.bind(endpoint);
         acceptor_.listen();
 
-        do_accept();
+        schedule_accept();
     }
-    void server::setup_signals() { // Register to handle the signals that
-        // indicate when the server
+    //]
+
+    //[server_setup_signals Server setup_signals
+    void server::setup_signals() {
+        // Register to handle the signals that indicate when the server
         // should exit. It is safe to register for the same signal multiple
         // times in a program, provided all registration for the specified
         // signal is made through Asio.
@@ -47,21 +54,25 @@ namespace http::server {
 #if defined(SIGQUIT)
         signals_.add(SIGQUIT);
 #endif // defined(SIGQUIT)
-        do_await_stop();
+        schedule_await_stop();
     }
+    //]
 
+    //[server_run Server run
     void server::run() {
         // The io_context::run() call will block until all asynchronous
         // operations have finished. While the server is running, there is
         // always at least one asynchronous operation outstanding: the
         // asynchronous accept call waiting for new incoming connections.
         for (size_t i = 0; i < std::thread::hardware_concurrency(); ++i) {
-            asio::post(pool_, [&] { io_context_.run(); });
+            asio::post(pool_, [this] { io_context_.run(); });
         }
         pool_.join();
     }
+    //]
 
-    void server::do_accept() {
+    //[server_schedule_accept Server schedule_accept
+    void server::schedule_accept() {
         acceptor_.async_accept([this](std::error_code ec,
                                       asio::ip::tcp::socket socket) {
             // Check whether the server was stopped by a signal before
@@ -75,11 +86,13 @@ namespace http::server {
                     std::move(socket), connection_manager_, request_handler_));
             }
 
-            do_accept();
+            schedule_accept();
         });
     }
+    //]
 
-    void server::do_await_stop() {
+    //[server_schedule_await_stop Server schedule_await_stop
+    void server::schedule_await_stop() {
         signals_.async_wait([this](std::error_code /*ec*/, int /*signo*/) {
             // The server is stopped by cancelling all outstanding
             // asynchronous operations. Once all operations have finished
@@ -88,5 +101,6 @@ namespace http::server {
             connection_manager_.stop_all();
         });
     }
+    //]
 
 } // namespace http::server

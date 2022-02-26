@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 int main() {
     using namespace std;
@@ -19,7 +20,7 @@ int main() {
         while (!cin.good() || !valid_range) {
             if (!cin.good()) {
                 cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
                 cout << "!! Enter a NUMERIC option: ";
                 cin >> option;
             } else {

@@ -12,12 +12,15 @@ endif ()
 # - So far, there is no good C++ library for the same task
 # - The library is quite simple though
 # - This can serve as inspiration for a C++ implementation
+#[fetch_tray Fetch tray library
 FetchContent_Declare(
         tray
         GIT_REPOSITORY https://github.com/wormyrocks/tray.git
         GIT_TAG 3e4a1447bff413e6907c5e43ac8d65e36866fdfd
 )
 FetchContent_GetProperties(tray)
+#]
+#[tray_target Create tray target
 if (NOT tray_POPULATED)
     FetchContent_Populate(tray)
     add_library(tray INTERFACE)
@@ -43,14 +46,17 @@ if (NOT tray_POPULATED)
         target_compile_options(tray INTERFACE -Wno-misleading-indentation)
     endif ()
 endif ()
+#]
 
-# Create example
+#[link Link tray library
 add_executable(tray_helloworld tray_hello.cpp)
 target_link_libraries(tray_helloworld tray)
+#]
 
-# Copy icons
+#[icons Copy tray icons
 if (WIN32)
     file(COPY ${tray_SOURCE_DIR}/icon.ico DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 elseif (APPLE)
     file(COPY ${tray_SOURCE_DIR}/icon.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 endif ()
+#]

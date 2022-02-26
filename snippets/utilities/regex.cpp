@@ -1,109 +1,129 @@
 #include <iostream>
-#include <regex>
 #include <sstream>
 #include <string>
-
+//[headers Headers
+#include <regex>
+//]
 
 int main() {
-    using namespace std;
-
-    // Test single expression
-    if (regex_match("subject", regex("(sub)(.*)"))) {
-        cout << "subject matches expression (sub)(.*)" << endl;
+    //[match Match single expression
+    if (std::regex_match("subject", std::regex("(sub)(.*)"))) {
+        std::cout << "subject matches expression (sub)(.*)" << '\n';
     }
+    //]
 
-    // Test string
+    //[match_string Match string
     const char cstr[] = "subject";
-    string s("subject");
-    regex e("(sub)(.*)");
+    std::string s("subject");
+    std::regex e("(sub)(.*)");
     if (regex_match(s, e)) {
-        cout << "subject matches expression (sub)(.*)" << endl;
+        std::cout << "subject matches expression (sub)(.*)" << '\n';
     }
+    //]
 
-    // Test range
-    if (regex_match(s.begin(), s.end(), e)) {
-        cout << "subject matches expression (sub)(.*)" << endl;
+    //[match_range Match char range
+    if (std::regex_match(s.begin(), s.end(), e)) {
+        std::cout << "subject matches expression (sub)(.*)" << '\n';
     }
+    //]
 
-    // Get match results for char*
-    // cmatch is the same as match_results<const char*> cm;
-    cmatch cm;
-    regex_match(cstr, cm, e);
-    cout << "literal string with " << cm.size() << " matches" << endl;
-    cout << "The literal string matches were: ";
+    //[match_result Store match results
+    std::cmatch cm; // same as `match_results<const char*>`
+    std::regex_match(cstr, cm, e);
+    //]
+
+    //[match_result_inspect Access match results
+    std::cout << "literal string with " << cm.size() << " matches" << '\n';
+    std::cout << "The literal string matches were: ";
     for (const auto &i : cm) {
-        cout << "[" << i << "] ";
+        std::cout << "[" << i << "] ";
     }
-    cout << endl;
+    std::cout << '\n';
+    //]
 
-    // Get match results for string
-    // same as match_results<string::const_iterator> sm;
-    smatch sm;
-    regex_match(s, sm, e);
-    cout << "string object with " << sm.size() << " matches" << endl;
-    cout << "The string matches were: ";
+    //[match_result_string Store string match results
+    std::smatch sm; // match_results<string::const_iterator>
+    std::regex_match(s, sm, e);
+    //]
+
+    //[match_result_inspect_string Access string match results
+    std::cout << "string object with " << sm.size() << " matches" << '\n';
+    std::cout << "The string matches were: ";
     for (const auto &i : sm) {
-        cout << "[" << i << "] ";
+        std::cout << "[" << i << "] ";
     }
-    cout << endl;
+    std::cout << '\n';
+    //]
 
-    // Get match results for string range
+    //[match_result_string Store char range match results
     regex_match(s.cbegin(), s.cend(), sm, e);
-    cout << sm.size() << " matches" << endl;
+    std::cout << sm.size() << " matches" << '\n';
+    //]
 
-    // Using flags to determine behavior
-    regex_match(cstr, cm, e, regex_constants::match_default);
+    //[flags Using flags to determine behavior
+    std::regex_match(cstr, cm, e, std::regex_constants::match_default);
+    //]
 
-    // Iterate substrings with matches
+    //[iterate Iterate substrings with matches
     std::string ss = "foo bar 123";
     std::regex r("([a-zA-Z]+)|(d+)");
-    std::sregex_iterator first_str_match =
-        std::sregex_iterator(ss.begin(), ss.end(), r);
-    for (auto i = first_str_match; i != std::sregex_iterator(); ++i) {
-        std::smatch m = *i;
-        std::cout << "Match value: " << m.str() << " at Position "
+    std::sregex_iterator match_it(ss.begin(), ss.end(), r);
+    for (; match_it != std::sregex_iterator(); ++match_it) {
+        std::smatch m = *match_it;
+        // Match
+        std::cout << "Match value: " << m.str() << " at position "
                   << m.position() << '\n';
+        // Groups
         for (size_t index = 1; index < m.size(); ++index) {
             if (!m[index].str().empty()) {
-                std::cout << "Capture group ID: " << index - 1 << std::endl;
+                std::cout << "Capture group ID: " << index - 1 << '\n';
                 break;
             }
         }
     }
+    //]
 
-    // Concatenate regexes: conjunction
-    string var = "first second third forth";
-    if (regex_match(var, sm, regex("(.*) (.*) (.*) (.*)"))) {
+    //[concat Regex expression conjunction
+    std::string var = "first second third forth";
+    if (regex_match(var, sm, std::regex("(.*) (.*) (.*) (.*)"))) {
         for (size_t i = 1; i < sm.size(); i++) {
-            cout << "Match " << i << ": " << sm[i] << " at position "
-                 << sm.position(i) << endl;
+            std::cout << "Match " << i << ": " << sm[i] << " at position "
+                      << sm.position(i) << '\n';
         }
     }
+    //]
 
-    // Concatenate regexes: disjunction
-    // This strategy does not work when there are internal capture groups
-    var = "user/32";
-    smatch sm2;
+    //[implode Helper function to implode strings
     auto implode = [](const std::vector<std::string> &strs,
                       const std::string &delim) {
         std::stringstream s;
         copy(strs.begin(), strs.end(),
-             ostream_iterator<string>(s, delim.c_str()));
+             std::ostream_iterator<std::string>(s, delim.c_str()));
         return s.str();
     };
+    //]
+
+    //[disjunction Regex expression string disjunction
+    var = "user/32";
+    std::smatch sm2;
     std::vector<std::string> routes = {"welcome", "user/\\d+", "post/[a-zA-Z]+",
                                        "about"};
-    regex disjunction("(" + implode(routes, ")|(") + ")");
-    if (regex_match(var, sm2, disjunction, regex_constants::match_not_null)) {
+    std::regex disjunction("(" + implode(routes, ")|(") + ")");
+    //]
+
+    //[match_disjunction Match disjunction
+    if (std::regex_match(var, sm2, disjunction,
+                         std::regex_constants::match_not_null)) {
         for (size_t index = 1; index < sm2.size(); ++index) {
             if (sm2[index].length() > 0) {
-                std::cout << "Capture group index: " << index - 1 << std::endl;
+                std::cout << "Capture group index: " << index - 1 << '\n';
                 std::cout << var << " matched route " << routes[index - 1]
-                          << std::endl;
+                          << '\n';
                 break;
             }
         }
     }
+    //]
 
     return 0;
 }

@@ -1,59 +1,64 @@
 #include <chrono>
+#include <iostream>
 #include <string>
 #include <tuple>
 #include <vector>
 
-#include <fmt/chrono.h>
-#include <fmt/color.h>
-#include <fmt/format.h>
-#include <fmt/ostream.h>
-#include <fmt/ranges.h>
+//[headers Headers
+#include <fmt/chrono.h>  // time formatters
+#include <fmt/color.h>   // color formatters
+#include <fmt/format.h>  // main header
+#include <fmt/ostream.h> // ostream formatters
+#include <fmt/ranges.h>  // range formatters
+//]
 
 int main() {
-    /*
-     * About fmt/format:
-     * - fmt/format has been accepted into C++20
-     * - It has the best of printf and cout
-     * - Many compilers don't implement it yet
-     * - We still depend on <fmt/format.h>
-     */
+    //[print Simple print
+    fmt::print("Hello, world!\n");
+    //]
 
-    using namespace std;
-    using namespace fmt;
+    //[to_string Format to string
+    std::cout << fmt::format("The answer is {}.\n", 42);
+    //]
+
+    //[ordered Format with order
+    std::cout << fmt::format("I'd rather be {1} than {0}.\n", "right", "happy");
+    //]
+
+    //[chrono Chrono literals
     using namespace std::literals::chrono_literals;
+    fmt::print("Default format: {} {}\n", 42s, 100ms);
+    //]
 
-    // Simple print
-    print("Hello, world!\n");
+    //[custom_chrono strftime-like format
+    fmt::print("strftime-like format: {:%H:%M:%S}\n", 3h + 15min + 30s);
+    //]
 
-    // Format to string
-    string s = format("The answer is {}.\n", 42);
-    print(s);
+    //[ranges Format ranges
+    std::vector<int> v = {1, 2, 3};
+    fmt::print("{}\n", v);
+    //]
 
-    // Format with order
-    s = format("I'd rather be {1} than {0}.\n", "right", "happy");
-    print(s);
+    //[tuple Format tuple
+    std::tuple<char, int, float> t2{'a', 1, 2.0f};
+    fmt::print("{}", t2);
+    //]
 
-    // Chrono literals
-    print("Default format: {} {}\n", 42s, 100ms);
-    print("strftime-like format: {:%H:%M:%S}\n", 3h + 15min + 30s);
-    time_t t = time(nullptr);
-    print("The date is {:%Y-%m-%d}.", localtime(t));
+    //[color Color support
+    fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold, "Hello, {}!\n",
+               "world");
+    auto style = fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) |
+                 fmt::emphasis::underline;
+    fmt::print(style, "Hello, {}!\n", "мир");
+    //]
 
-    // Format ranges
-    vector<int> v = {1, 2, 3};
-    print("{}\n", v);
+    //[utf8 UTF-8
+    print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "Hello, {}!\n", "世界");
+    //]
 
-    tuple<char, int, float> t2{'a', 1, 2.0f};
-    print("{}", t2);
-
-    // Color support
-    print(fg(color::crimson) | emphasis::bold, "Hello, {}!\n", "world");
-    print(fg(color::floral_white) | bg(color::slate_gray) | emphasis::underline,
-          "Hello, {}!\n", "мир");
-    print(fg(color::steel_blue) | emphasis::italic, "Hello, {}!\n", "世界");
-
-    // Format to memory
-    memory_buffer out;
-    format_to(out, "For a moment, {} happened.", "nothing");
-    print(out.data());
+    //[memory Format to memory
+    std::vector<char> out;
+    fmt::format_to(std::back_inserter(out), "For a moment, {} happened.", "nothing");
+    fmt::print("{}", out.data());
+    //]
 }

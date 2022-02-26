@@ -9,7 +9,7 @@ namespace std {
     class source_location {
     public:
         [[nodiscard]] static constexpr auto current(
-#if (__has_builtin(__builtin_FILE) and __has_builtin(__builtin_LINE))
+#if defined(__has_builtin) && __has_builtin(__builtin_FILE) && __has_builtin(__builtin_LINE)
                 const char* file = __builtin_FILE(), int line = __builtin_LINE()
 #else
                 const char *file = "unknown", int line = {}

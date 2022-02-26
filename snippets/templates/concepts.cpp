@@ -1,186 +1,205 @@
 #include <array>
+//[headers Headers
 #include <concepts>
+//]
 #include <iostream>
 #include <type_traits>
 #include <vector>
 
-// Define concepts with a compile-time boolean predicate
-// - is_arithmetic_v might be misleading since it also includes bool
-// - is_arithmetic_v might be misleading since it doesn't include std::complex
+//[boolean Define concept from a compile-time boolean predicate
 template <typename T> concept Number = std::is_arithmetic_v<T>;
 
+// is_arithmetic_v might be misleading since it also includes bool
+// is_arithmetic_v might be misleading since it doesn't include std::complex
+//]
+
+//[from_concept Define concept from a another concepts as a boolean predicate
 template<typename T> concept NotNumber = !Number<T>;
+//]
 
-// Define concept from conjunction of constraints
+//[conjunction Define concept from a conjunction of constraints
 template<typename T> concept SignedNumber = Number<T> && std::is_signed_v<T>;
+//]
 
+//[conjunction_2 Define alternative mutually exclusive Number concept
 template<typename T>
 concept UnsignedNumber = Number<T> && !std::is_signed_v<T>;
+//]
 
-// Define concept from disjunction of constraints
+//[disjunction Define concept from disjunction of constraints
 template<typename T1, typename T2>
 concept Equivalent = std::is_convertible_v<T1, T2> || std::is_same_v<T1, T2>;
+//]
 
-// Define concept from simple requires-expression
+//[requires Define concept from requires-expression
 // These expressions must be something that will compile
 template<typename T> concept Range = requires(T r) {
     *r.begin();
     *r.end();
 };
+//]
 
-// Typename requirement (e.g. check type exists)
-// Define concept from typename requires-expression
+//[require_typename Define concept from typename requirement
 // These expressions must something that will compile
 template<typename T> concept HasValueType = requires(T r) {
     typename T::value_type; // required nested name
 };
+//]
 
-// Compound requirement
+//[compound Compound requirement
 // Two requirements at the same time
 template<typename T> concept Pair = requires(T p) {
     { p.first };
     { p.second };
 };
+//]
 
-// Typename requirement with type constraint
-// The expression should not only compile but it should also have
+//[typename Typename requirement from expression type constraint
+// The expression should not only compile, but it should also have
 // a type that passes the concept after ->
 template<typename T> concept IntPair = requires(T p) {
     { p.first } -> std::same_as<int>;
     { p.second } -> std::same_as<int>;
 };
+//]
 
-// Requirement with two parameters
+//[two_params Requirement with two parameters
 template<typename T>
 concept EqualityComparable = requires(T a, T b) {
     { a == b };
     { a != b };
 };
+//]
 
-
-// Nested requirements
+//[nested_require Nested requirements
 // Additional constraint to existing constraints
-// Functions can use Range or RangeSameType now without
-// ambiguity
+// Functions can use Range or RangeSameType now without ambiguity
 template<typename T> concept PairSameType = Pair<T> && requires(T p) {
     { p.first } -> std::same_as<decltype(p.second)>;
 };
+//]
 
-// Nested requirements without requires
+//[nested_requirement_no_require Nested requirements without requires
 template<typename T> concept RangeWithValueType = Range<T> && HasValueType<T>;
 template<typename T> concept RangeWithoutValueType = Range<T> && !HasValueType<T>;
+//]
 
-
-// Constrain with template type
+//[number_fn Constrain function to numbers
 // Number, but nor SignedNumber neither UnsignedNumber
 template<Number T>
 void max_value(T a, T b) {
     if (a > b) {
-        std::cout << "max_value: " << a << std::endl;
+        std::cout << "max_value: " << a << '\n';
     } else {
-        std::cout << "max_value: " << b << std::endl;
+        std::cout << "max_value: " << b << '\n';
     }
 }
+//]
 
-// Constrain with template type
-// Number -> SignedNumber
-template<SignedNumber T>
+//[signed_fn Constrain function to signed numbers
+// This function is used when Number is SignedNumber
+template <SignedNumber T>
 void max_value(T a, T b) {
     if (a > b) {
         if (a > 0) {
-            std::cout << "max_value: positive " << a << std::endl;
+            std::cout << "max_value: positive " << a << '\n';
         } else {
-            std::cout << "max_value: negative " << -a << std::endl;
+            std::cout << "max_value: negative " << -a << '\n';
         }
     } else {
         if (b > 0) {
-            std::cout << "max_value: positive " << b << std::endl;
+            std::cout << "max_value: positive " << b << '\n';
         } else {
-            std::cout << "max_value: negative " << -b << std::endl;
+            std::cout << "max_value: negative " << -b << '\n';
         }
     }
 }
+//]
 
-// Constrain with template type
-// Number -> UnsignedNumber
+//[unsigned_fn Constrain function to unsigned numbers
+// This function is used when Number is UnsignedNumber
 template<UnsignedNumber T>
 void max_value(T a, T b) {
     if (a > b) {
-        std::cout << "max_value: +" << a << std::endl;
+        std::cout << "max_value: +" << a << '\n';
     } else {
-        std::cout << "max_value: +" << b << std::endl;
+        std::cout << "max_value: +" << b << '\n';
     }
 }
+//]
 
-// Constrain with template type
+//[not_num_fn Constrain function to non-numbers
 // NotNumber == !Number<T>
 template<NotNumber T>
 void max_value(T a, T b) {
-    std::cout << "a: " << a << std::endl;
-    std::cout << "b: " << b << std::endl;
+    std::cout << "a: " << a << '\n';
+    std::cout << "b: " << b << '\n';
 }
+//]
 
-// Unconstrained function (Not range)
-template<class T>
+//[unconstrained_fn Unconstrained function
+template <class T>
 void print_element(const T &c) {
-    std::cout << c << std::endl;
+    std::cout << c << '\n';
 }
+//]
 
-// Constrained with template type
-// - The most constrained concept is used
+//[range_fn Constrain function to Ranges
+// - The most constrained concept is always used
 template<Range T>
 void print_element(const T &c) {
     for (const auto &item : c) {
         std::cout << item << ' ';
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
+//]
 
-// Constrain the same function with a more constrained template type
-// - The most constrained concept is used in nested constraints
+//[range_value_fn Constrain function to ranges with value type member
+// The most constrained concept is used in nested constraints
 template<RangeWithValueType T>
 void print_element(const T &c) {
     std::cout << typeid(typename T::value_type).name() << ": ";
     for (const auto &item : c) {
         std::cout << item << ' ';
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
+//]
 
-// Constrain with require-clause directly in function declaration
+//[equal_compare_fn Constrain with require-clause directly in function declaration
 template<typename T>
 requires EqualityComparable<T>
 void compare(const T &a, const T &b) {
     if (a == b) {
-        std::cout << a << " == " << b << " is " << (a == b ? "true" : "false") << std::endl;
+        std::cout << a << " == " << b << " is " << (a == b ? "true" : "false") << '\n';
     } else {
-        std::cout << a << " != " << b << " is " << (a != b ? "true" : "false") << std::endl;
+        std::cout << a << " != " << b << " is " << (a != b ? "true" : "false") << '\n';
     }
 }
+//]
 
-// Unconstrained version
+//[compare_fn_unconstrained Unconstrained function
 template<typename T>
 void compare(const T &a, const T &b) {
-    std::cout << typeid(T).name() << ": " << a.c << " == " << b.c << "?" << std::endl;
+    std::cout << typeid(T).name() << ": " << a.c << " == " << b.c << "?" << '\n';
 }
+//]
 
-struct nonComparableStruct {
-    double c{0.};
-};
-
-// Constrain with template type
+//[pair_fn Constrain function to pairs
 template<Pair T>
 void print_pair(const T &p) {
-    std::cout << typeid(p.first).name() << ": " << p.first << " == " << typeid(p.second).name() << ": " << p.second
-              << std::endl;
+    std::cout << typeid(p.first).name() << ": " << p.first << ", " << typeid(p.second).name() << ": " << p.second
+              << '\n';
 }
+//]
 
-// Constrain again with more specific requirement
+//[pair_same_fn Constrain function to pairs of same type
 template<PairSameType T>
 void print_pair(const T &p) {
-    std::cout << typeid(p.first).name() << ": " << p.first << " == " << p.second << std::endl;
+    std::cout << typeid(p.first).name() << ": " << p.first << ", " << p.second << '\n';
 }
-
+//]
 
 int main() {
     /*
@@ -194,6 +213,10 @@ int main() {
     print_element(56);
 
     compare(4, 7);
+
+    struct nonComparableStruct {
+        double c{0.};
+    };
     compare(nonComparableStruct{1.0}, nonComparableStruct{2.0});
 
     print_pair(std::make_pair(1, 2));

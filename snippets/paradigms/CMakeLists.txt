@@ -1,6 +1,3 @@
-add_executable(metaprogramming metaprogramming.cpp)
-
-add_executable(SFINAE SFINAE.cpp)
 
 add_executable(polymorphism polymorphism.cpp)
 

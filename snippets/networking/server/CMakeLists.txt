@@ -1,5 +1,6 @@
 # This is just an example of how an HTTP server could be implemented with asio
 # For proper HTTP servers, it's more recommendable to use a library for that
+#[server http_server
 add_executable(http_server
         connection.cpp
         connection.hpp
@@ -19,3 +20,4 @@ add_executable(http_server
         server.cpp
         server.hpp)
 target_link_libraries(http_server asio)
+#]

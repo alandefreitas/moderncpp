@@ -3,6 +3,7 @@
 # - If you fail to do so, this macro will look for this path
 #   using reasonable hints
 macro(add_qt_to_cmake_paths)
+    #[qt Try to find and add the QT directories to CMAKE_PREFIX_PATH
     # This script looks for Qt5 only
     # - Change this variable to adapt the script
     set(QT_VERSION 5)
@@ -56,4 +57,5 @@ macro(add_qt_to_cmake_paths)
             endforeach ()
         endif ()
     endforeach ()
+    #]
 endmacro()

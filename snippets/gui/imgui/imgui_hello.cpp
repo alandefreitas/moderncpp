@@ -4,9 +4,14 @@
 // purpose library for handling windows, inputs, OpenGL/Vulkan/Metal graphics
 // context creation, etc.)
 
+//[headers Headers
+#include "imgui.h"
+//]
+//[headers_glfw GLFW backend headers
 #include "examples/imgui_impl_glfw.h"
 #include "examples/imgui_impl_opengl3.h"
-#include "imgui.h"
+//]
+
 #include <stdio.h>
 
 // About Desktop OpenGL function loaders:
@@ -15,6 +20,7 @@
 //  Here we are supporting a few common ones (gl3w, glew, glad). You may use
 //  another loader/header of your choice (glext, glLoadGen, etc.), or chose to
 //  manually implement your own.
+//[load_glad Load OpenGL functions
 #if defined(IMGUI_IMPL_OPENGL_LOADER_GL3W)
 #include <GL/gl3w.h> // Initialize with gl3wInit()
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLEW)
@@ -26,6 +32,8 @@
                           // multiple definition errors.
 #include <glbinding/Binding.h> // Initialize with glbinding::Binding::initialize()
 #include <glbinding/gl/gl.h>
+//]
+
 using namespace gl;
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLBINDING3)
 #define GLFW_INCLUDE_NONE // GLFW including OpenGL headers causes ambiguity or
@@ -56,7 +64,7 @@ static void glfw_error_callback(int error, const char *description) {
 }
 
 int main(int, char **) {
-    // Setup window
+    //[setup Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
         return 1;
@@ -85,6 +93,7 @@ int main(int, char **) {
         return 1;
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); // Enable vsync
+    //]
 
     // Initialize OpenGL loader
 #if defined(IMGUI_IMPL_OPENGL_LOADER_GL3W)
@@ -110,7 +119,7 @@ int main(int, char **) {
         return 1;
     }
 
-    // Setup Dear ImGui context
+    //[setup_imgui Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
@@ -126,6 +135,7 @@ int main(int, char **) {
     // Setup Platform/Renderer bindings
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
+    //]
 
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can
@@ -170,16 +180,19 @@ int main(int, char **) {
         // those two flags.
         glfwPollEvents();
 
-        // Start the Dear ImGui frame
+        //[loop_frame Start the Dear ImGui frame for the iteration
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+        //]
 
         // 1. Show the big demo window (Most of the sample code is in
         // ImGui::ShowDemoWindow()! You can browse its code to learn more about
         // Dear ImGui!).
+        //[show_demo Render demo
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
+        //]
 
         // 2. Show a simple window that we create ourselves. We use a Begin/End
         // pair to created a named window.
@@ -231,7 +244,7 @@ int main(int, char **) {
             ImGui::End();
         }
 
-        // Rendering
+        //[imgui_render Rendering
         ImGui::Render();
         int display_w, display_h;
         glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -240,14 +253,16 @@ int main(int, char **) {
                      clear_color.w);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        //]
 
         glfwSwapBuffers(window);
     }
 
-    // Cleanup
+    //[imgui_terminate Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+    //]
 
     glfwDestroyWindow(window);
     glfwTerminate();

@@ -6,111 +6,120 @@
 void very_expensive_function();
 
 int main() {
-    using namespace std;
-
-    // Old C Clock
-    // - The only method specified in the standard to measure CPU time
-    // - It's up to the user to keep track of the duration unit
-    // - It doesn't work well with threads though
-    // - Note how the example ignores the time spent this_thread::sleep_for
+    //[clock_fn std::clock function
     clock_t start, end;
     double cpu_time_used;
     start = clock();
     very_expensive_function();
     end = clock();
     cpu_time_used = static_cast<float>(end - start) / CLOCKS_PER_SEC;
-    cout << "cpu_time_used: " << cpu_time_used << " seconds" << endl;
+    std::cout << "cpu_time_used: " << cpu_time_used << " seconds" << '\n';
+    //]
 
-    // Modern C++
-    // - System Clocks
-    auto start2 = chrono::system_clock::now();
+    //[system_clock Modern C++ System Clock
+    auto start2 = std::chrono::system_clock::now();
     very_expensive_function();
-    auto end2 = chrono::system_clock::now();
+    auto end2 = std::chrono::system_clock::now();
+    //]
 
-    // Duration represented with the default duration type
+    //[dur Duration represented with the default duration type
     auto auto_duration = end2 - start2;
-    cout << "auto_duration.count() : " << auto_duration.count()
-         << " nanoseconds" << endl;
+    std::cout << "auto_duration.count() : " << auto_duration.count() << " ticks"
+              << '\n'; // usually nanoseconds
+    //]
 
-    // Duration represented with double, ratio in seconds
-    chrono::duration<double> seconds_as_double = end2 - start2;
-    cout << "seconds_as_double.count() : " << seconds_as_double.count()
-         << " seconds" << endl;
+    //[double_dur Duration represented with double, ratio in seconds
+    std::chrono::duration<double> seconds_as_double = end2 - start2;
+    std::cout << "seconds_as_double.count() : " << seconds_as_double.count()
+              << " seconds" << '\n';
+    //]
 
-    // Duration represented with int, ratio in milliseconds
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-    chrono::duration<int, milli> milliseconds_as_int_;
+    //[int_milli Duration represented with int, ratio in milliseconds
+    std::chrono::duration<int, std::milli> milliseconds_as_int_;
+    //]
 
-    // Cast duration (double, seconds) to duration (int, milliseconds)
+    //[cast_dur Cast duration (double, seconds) to duration (int, milliseconds)
     milliseconds_as_int_ =
-        chrono::duration_cast<chrono::duration<int, milli>>(seconds_as_double);
-    cout << "milliseconds_as_int_.count() : " << milliseconds_as_int_.count()
-         << " milliseconds" << endl;
+        std::chrono::duration_cast<std::chrono::duration<int, std::milli>>(
+            seconds_as_double);
+    std::cout << "milliseconds_as_int_.count() : "
+              << milliseconds_as_int_.count() << " milliseconds" << '\n';
+    //]
 
-    // Using ratio directly
+    //[ratio Using ratio directly
     // Same as using hours
     constexpr int seconds_per_hour = 60 * 60;
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-    chrono::duration<int, ratio<seconds_per_hour>> hours_as_int;
-    hours_as_int = chrono::duration_cast<chrono::duration<int, ratio<60 * 60>>>(
-        seconds_as_double);
-    cout << "hours_as_int.count() : " << hours_as_int.count() << " hours"
-         << endl;
+    std::chrono::duration<int, std::ratio<seconds_per_hour>> hours_as_int;
+    hours_as_int =
+        std::chrono::duration_cast<std::chrono::duration<int, std::ratio<60 * 60>>>(
+            seconds_as_double);
+    std::cout << "hours_as_int.count() : " << hours_as_int.count() << " hours"
+              << '\n';
+    //]
 
-    // Modern C++
-    // - Steady Clock
-    auto start3 = chrono::steady_clock::now();
+    //[steady Modern C++ Steady Clock
+    auto start3 = std::chrono::steady_clock::now();
     very_expensive_function();
-    auto end3 = chrono::steady_clock::now();
+    auto end3 = std::chrono::steady_clock::now();
+    //]
 
-    // Duration represented with the default duration type
-    auto auto_duration_3 = end2 - start2;
-    cout << "auto_duration_3.count() : " << auto_duration_3.count()
-         << " nanoseconds" << endl;
+    //[dur_steady Duration represented with the default duration type
+    auto d3 = end2 - start2;
+    std::cout << "auto_duration_3.count() : " << d3.count()
+              << " ticks" << '\n'; // usually nanoseconds
+    //]
 
-    // Time in seconds as double
-    chrono::duration<double> seconds_as_double_3 = end3 - start3;
-    cout << "seconds_as_double_3.count() : " << seconds_as_double_3.count()
-         << " seconds" << endl;
+    //[time_double Time in seconds as double
+    std::chrono::duration<double> seconds_as_double_3 = end3 - start3;
+    std::cout << "seconds_as_double_3.count() : " << seconds_as_double_3.count()
+              << " seconds" << '\n';
+    //]
 
-    // Time in milliseconds as int
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-    chrono::duration<int, milli> milliseconds_as_int_3;
-    milliseconds_as_int_3 = chrono::duration_cast<chrono::duration<int, milli>>(
-        seconds_as_double_3);
-    cout << "milliseconds_as_int_3.count() : " << milliseconds_as_int_3.count()
-         << " milliseconds" << endl;
-
-    // Time in hours as int
-    // NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init)
-    chrono::duration<int, ratio<seconds_per_hour>>
-        hours_as_int3; // same as using hours
-    hours_as_int3 =
-        chrono::duration_cast<chrono::duration<int, ratio<seconds_per_hour>>>(
+    //[time_milli_steady Time in milliseconds as int
+    std::chrono::duration<int, std::milli> milliseconds_as_int_3;
+    milliseconds_as_int_3 =
+        std::chrono::duration_cast<std::chrono::duration<int, std::milli>>(
             seconds_as_double_3);
-    cout << "hours_as_int3.count() : " << hours_as_int3.count() << " hours"
-         << endl;
+    std::cout << "milliseconds_as_int_3.count() : "
+              << milliseconds_as_int_3.count() << " milliseconds" << '\n';
+    //]
 
-    // "Parsing" time
-    // While std::chrono::parse is not available in all main compilers
-    auto hours = chrono::duration_cast<chrono::hours>(auto_duration_3);
+    //[ratio_steady Time in hours as int
+    std::chrono::duration<int, std::ratio<seconds_per_hour>>
+        hours_as_int3; // same as using std::hours
+    hours_as_int3 = std::chrono::duration_cast<
+        std::chrono::duration<int, std::ratio<seconds_per_hour>>>(
+        seconds_as_double_3);
+    std::cout << "hours_as_int3.count() : " << hours_as_int3.count() << " hours"
+              << '\n';
+    //]
+
+    //[parsing "Parsing" time
+    // While std::std::chrono::parse is not available in all main compilers
+    auto hours =
+        std::chrono::duration_cast<std::chrono::hours>(d3);
     if (hours.count() > 0) {
-        cout << hours.count() << " hours";
+        std::cout << hours.count() << " hours";
     }
-    auto seconds = chrono::duration_cast<chrono::seconds>(auto_duration_3);
+    d3 -= hours;
+    auto seconds =
+        std::chrono::duration_cast<std::chrono::seconds>(d3);
     if (seconds.count() > 0) {
-        cout << seconds.count() << " seconds";
+        std::cout << seconds.count() << " seconds";
     }
+    d3 -= seconds;
     auto milliseconds =
-        chrono::duration_cast<chrono::milliseconds>(auto_duration_3);
+        std::chrono::duration_cast<std::chrono::milliseconds>(d3);
     if (milliseconds.count() > 0) {
-        cout << milliseconds.count() << " milliseconds";
+        std::cout << milliseconds.count() << " milliseconds";
     }
+    d3 -= milliseconds;
     auto nanoseconds =
-        chrono::duration_cast<chrono::nanoseconds>(auto_duration_3);
+        std::chrono::duration_cast<std::chrono::nanoseconds>(d3);
     if (nanoseconds.count() > 0) {
-        cout << nanoseconds.count() << " nanoseconds";
+        std::cout << nanoseconds.count() << " nanoseconds";
     }
+    //]
 
     return 0;
 }
@@ -120,5 +129,5 @@ void very_expensive_function() {
         std::cout << '*' << std::flush;
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }

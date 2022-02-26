@@ -11,17 +11,22 @@ project(moderncpp
 set(CMAKE_CXX_STANDARD 20)
 
 #######################################################
-### Include CMake Functions                         ###
+### CMake Functions                                 ###
 #######################################################
+# Put ./cmake directory in our include paths
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-include(FetchContent)
+# Include our custom cmake functions
 include(cmake/functions.cmake)
-find_package(Threads)
+# Include FetchContent scripts
+include(FetchContent)
 
 #######################################################
 ### Options                                         ###
 #######################################################
 set_debug_booleans()
+set_master_project_booleans()
+set_optimization_flags()
+
 # What to build
 option(BUILD_SNIPPETS "Build snippets" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
@@ -54,6 +59,17 @@ elseif (APPLE AND CLANG)
 elseif (UNIX AND NOT APPLE AND GCC)
     set(EXPECTED_COMPILER ON)
 endif ()
+
+# Find package we need for threads
+# Some systems don't require this package at all
+# but will still give us errors trying to link
+# to a target that doesn't exist
+find_package(Threads)
+if (NOT Threads_FOUND)
+    add_library(Threads INTERFACE)
+    add_library(Threads::Threads ALIAS Threads)
+endif()
+
 
 #######################################################
 ### Snippets and examples                           ###

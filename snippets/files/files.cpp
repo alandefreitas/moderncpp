@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <array>
 #include <chrono>
 #include <filesystem>
@@ -6,53 +7,62 @@
 #include <iostream>
 #include <memory>
 #include <vector>
-#include <algorithm>
 
 int main() {
-    using namespace std;
-
-    vector<int> numbers;
-    numbers.resize(15);
-    for (size_t i = 0; i < 15; ++i) {
-        numbers.emplace_back(i * 10 + 1);
+    //[vector_number Create a vector of numbers
+    std::vector<int> numbers;
+    constexpr size_t n = 15;
+    numbers.resize(n);
+    for (size_t i = 0; i < n; ++i) {
+        numbers[i] = i * 1000 + 1;
     }
+    //]
 
-    // Save numbers in text file
-    ofstream fout("numbers.txt");
+    //[save Save numbers in text file
+    std::ofstream fout("numbers.txt");
     for (int number : numbers) {
         fout << number << " ";
     }
     fout.close();
+    //]
 
-    // Load numbers from text file
-    vector<int> m_numbers;
-    ifstream fin("numbers.txt");
-    for (size_t i = 0; i < numbers.size(); ++i) {
+    //[load Load numbers from text file
+    std::vector<int> m_numbers;
+    std::ifstream fin("numbers.txt");
+    do {
         int x;
         fin >> x;
-        m_numbers.emplace_back(x);
-    }
+        if (fin) {
+            m_numbers.emplace_back(x);
+        }
+    } while (fin);
     fin.close();
+    //]
 
-    // Print numbers
-    for_each(numbers.begin(), numbers.end(), [](auto x) { cout << x << " "; });
-    cout << endl;
-    for_each(m_numbers.begin(), m_numbers.end(),
-             [](auto x) { cout << x << " "; });
-    cout << endl;
+    //[print Print numbers from file
+    for (const auto &number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << '\n';
+    for (const auto &number : m_numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << '\n';
+    //]
 
-    // Save numbers in binary file
-    fout.open("numbers.bin", ios::binary);
-    for (int & number : numbers) {
+    //[save_binary Save numbers in binary file
+    fout.open("numbers.bin", std::ios::binary);
+    for (int &number : numbers) {
         char *pointer_to_number = (char *)&number;
         size_t bytes_per_number = sizeof(number);
         fout.write(pointer_to_number, bytes_per_number);
     }
     fout.close();
+    //]
 
-    // Load numbers from binary file
+    //[load_binary Load numbers from binary file
     m_numbers.clear();
-    fin.open("numbers.bin", ios::binary);
+    fin.open("numbers.bin", std::ios::binary);
     for (size_t i = 0; i < numbers.size(); ++i) {
         int x;
         char *pointer_to_number = (char *)&x;
@@ -61,19 +71,23 @@ int main() {
         m_numbers.emplace_back(x);
     }
     fin.close();
+    //]
 
-    // Print numbers
-    for_each(numbers.begin(), numbers.end(), [](auto x) { cout << x << " "; });
-    cout << endl;
+    //[print Print numbers from binary file
+    for_each(numbers.begin(), numbers.end(),
+             [](auto x) { std::cout << x << " "; });
+    std::cout << '\n';
     for_each(m_numbers.begin(), m_numbers.end(),
-             [](auto x) { cout << x << " "; });
-    cout << endl;
+             [](auto x) { std::cout << x << " "; });
+    std::cout << '\n';
+    //]
 
-    // Compare file sizes
-    cout << "File size (text): " << filesystem::file_size("numbers.txt")
-         << " bytes" << endl;
-    cout << "File size (binary): " << filesystem::file_size("numbers.bin")
-         << " bytes" << endl;
+    //[filesize Compare file sizes
+    std::cout << "File size (text): "
+              << std::filesystem::file_size("numbers.txt") << " bytes\n";
+    std::cout << "File size (binary): "
+              << std::filesystem::file_size("numbers.bin") << " bytes\n";
+    //]
 
     return 0;
 }

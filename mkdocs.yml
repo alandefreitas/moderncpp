@@ -5,6 +5,118 @@ repo_name: alandefreitas/moderncpp
 
 site_description: Modern C++ Snippets
 
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Installing C++:
+    - Compiler: installing-cpp/compiler.md
+    - WebAssembly: installing-cpp/webassembly.md
+    - Interpreter: installing-cpp/cling.md
+    - CMake: installing-cpp/cmake.md
+    - IDEs: installing-cpp/ides.md
+  - Basic Syntax:
+    - Input / Output:
+      - Hello World: basic-syntax/input-output/hello-world.md
+      - Input: basic-syntax/input-output/input.md
+      - Output: basic-syntax/input-output/output.md
+      - Format: basic-syntax/input-output/format.md
+    - Control flow:
+      - Sequential: basic-syntax/control-flow/sequential.md
+      - Conditional: basic-syntax/control-flow/conditional.md
+      - Loops: basic-syntax/control-flow/loops.md
+      - Scopes: basic-syntax/control-flow/scopes.md
+    - Data types:
+      - Fundamental Data Types: basic-syntax/data-types/fundamental-data-types.md
+      - Operators: basic-syntax/data-types/operators.md
+      - Type deduction: basic-syntax/data-types/auto.md
+      - Constants: basic-syntax/data-types/constants.md
+    - Basic Data Types:
+      - Raw arrays: basic-syntax/basic-data-types/raw-arrays.md
+      - Arrays: basic-syntax/basic-data-types/arrays.md
+      - Vectors: basic-syntax/basic-data-types/vectors.md
+      - Strings: basic-syntax/basic-data-types/strings.md
+      - Move: basic-syntax/basic-data-types/move.md
+      - Aggregate initialization: basic-syntax/basic-data-types/aggregate-initialization.md
+      - Structured binding: basic-syntax/basic-data-types/structured-binding.md
+    - Pointers:
+      - Address Operator: basic-syntax/pointers/address-operator.md
+      - Raw pointers: basic-syntax/pointers/raw-pointers.md
+      - References: basic-syntax/pointers/references.md
+      - Smart pointers: basic-syntax/pointers/smart-pointers.md
+    - Functions:
+      - Functions: basic-syntax/functions/function.md
+      - Lambdas: basic-syntax/functions/lambda.md
+    - Files:
+      - File streams: basic-syntax/files/file-streams.md
+      - Filesystem: basic-syntax/files/filesystem.md
+  - Algorithms / Data Structures:
+    - Date and time:
+      - Clock: algorithms-data-structures/date-and-time/clock.md
+      - Datetime: algorithms-data-structures/date-and-time/datetime.md
+    - Random:
+      - Random: algorithms-data-structures/random/random.md
+      - PCG: algorithms-data-structures/random/pcg.md
+    - Templates:
+      - Template Parameters: algorithms-data-structures/templates/template-parameters.md
+      - Template Aliases: algorithms-data-structures/templates/template-aliases.md
+      - Concepts: algorithms-data-structures/templates/concepts.md
+      - SFINAE: algorithms-data-structures/templates/sfinae.md
+      - Metaprogramming: algorithms-data-structures/templates/metaprogramming.md
+    - Algorithm:
+      - Searching: algorithms-data-structures/algorithm/searching.md
+      - Sorting: algorithms-data-structures/algorithm/sorting.md
+      - Basic Algorithms: algorithms-data-structures/algorithm/basic-algorithms.md
+      - Ranges: algorithms-data-structures/algorithm/ranges.md
+    - Data structures:
+      - Sequence Containers: algorithms-data-structures/data-structures/sequence-containers.md
+      - Associative Containers: algorithms-data-structures/data-structures/associative-containers.md
+      - Memory resources: algorithms-data-structures/data-structures/memory-resources.md
+      - Span: algorithms-data-structures/data-structures/span.md
+      - Bitset: algorithms-data-structures/data-structures/bitset.md
+      - Spatial Containers: algorithms-data-structures/data-structures/spatial-containers.md
+    - Heterogeneous Types:
+      - Tuples: algorithms-data-structures/heterogeneous-types/tuples.md
+      - Any: algorithms-data-structures/heterogeneous-types/any.md
+      - Optional: algorithms-data-structures/heterogeneous-types/optional.md
+      - Variant: algorithms-data-structures/heterogeneous-types/variant.md
+  - Programming Paradigms:
+    - Object-oriented programming:
+      - Polymorphism: programming-paradigms/basic-paradigms/polymorphism.md
+      - Shared from this: programming-paradigms/basic-paradigms/shared-from-this.md
+      - CRTP: programming-paradigms/basic-paradigms/crtp.md
+    - Parallelism:
+      - Execution Policies: programming-paradigms/parallelism/execution-policies.md
+      - Threads: programming-paradigms/parallelism/threads.md
+      - Executors: programming-paradigms/parallelism/executors.md
+      - Timers: programming-paradigms/parallelism/timers.md
+      - Signals: programming-paradigms/parallelism/signals.md
+      - Async++: programming-paradigms/parallelism/async.md
+  - Utilities:
+    - Regular Expressions:
+      - Regex: utilities/regular-expressions/regex.md
+    - Networking:
+      - Network: utilities/networking/network.md
+      - Async Network: utilities/networking/async-network.md
+      - Http server: utilities/networking/http-server.md
+  - GUIs:
+    - Qt: guis/qt.md
+    - SDL: guis/opengl-sdl.md
+    - GLFW: guis/opengl-glfw.md
+    - ImGUI: guis/imgui.md
+    - Webview: guis/webview.md
+    - System tray: guis/system-tray.md
+  - Testing:
+    - Catch2: testing/catch2.md
+    - boost.ut: testing/boostut.md
+    - Source Location: testing/source-location.md
+    - Plots: testing/plots.md
+  - CMake Functions:
+    - Project Flags: cmake-functions/project-flags.md
+    - Target Options: cmake-functions/target-options.md
+    - Sanitizers: cmake-functions/sanitizers.md
+    - Qt Helpers: cmake-functions/qt-helpers.md
+  - Contributors: contributors.md
+
 theme:
   name: material
   custom_dir: docs/overrides
@@ -14,15 +126,18 @@ theme:
     repo: fontawesome/brands/git-alt
     logo: fontawesome/solid/code
 
-edit_uri: ""
+edit_uri: 'edit/master/docs/'
 
 plugins:
   - search
-  - awesome-pages
+  - macros:
+      module_name: docs/macros
+      include_dir: ..
 
-google_analytics:
-  - UA-109858331-3
-  - auto
+extra:
+  analytics:
+    provider: google
+    property: UA-109858331-3
 
 copyright: Copyright &copy; Alan Freitas
 
@@ -35,13 +150,18 @@ markdown_extensions:
       linenums_style: pymdownx.inline
   - pymdownx.inlinehilite
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
   - meta
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://media.ethicalads.io/media/client/ethicalads.min.js
+  - javascripts/extra.js

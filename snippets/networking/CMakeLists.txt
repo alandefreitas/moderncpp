@@ -14,10 +14,14 @@ endif ()
 #######################################################
 ### Networking                                      ###
 #######################################################
+#[network CMakeLists.txt
 add_executable(network network.cpp)
 target_link_libraries(network asio)
+#]
 
+#[network_async CMakeLists.txt
 add_executable(network_async network_async.cpp)
 target_link_libraries(network_async asio)
+#]
 
 add_subdirectory(server)

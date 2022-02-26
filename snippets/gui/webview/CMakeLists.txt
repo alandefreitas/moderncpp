@@ -13,12 +13,16 @@ endif ()
 # - There's no CMake build script for this library yet
 # - There's a CMake build script in the master branch but
 #   still does not work for some platforms
+#[fetch_webview Fetch webview
 FetchContent_Declare(
         webview
         GIT_REPOSITORY https://github.com/webview/webview.git
         GIT_TAG 50e4bcc420abdc7be96a54b7c79934a000b76901
 )
 FetchContent_GetProperties(webview)
+#]
+
+#[webview_target Create webview target
 if (NOT webview_POPULATED)
     # Library does not have a CMake build script
     # We have to do it ourselves
@@ -45,7 +49,9 @@ if (NOT webview_POPULATED)
         target_link_libraries(webview INTERFACE "$(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0)")
     endif ()
 endif ()
+#]
 
-# Create example
+#[link Link webview
 add_executable(webview_hello webview_hello.cpp)
 target_link_libraries(webview_hello PUBLIC webview)
+#]

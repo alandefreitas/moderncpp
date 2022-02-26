@@ -1,91 +1,80 @@
 #include <iostream>
 #include <memory>
 
-
 int main() {
-    using namespace std;
-
-    // Use smart pointers instead of raw pointer whenever possible
-    // - But you can't do it without understanding raw pointers
-    // - Recur to raw *non-owning* pointers if they are needed
-    // In general, use:
-    // 1) No pointers
-    // 2) Raw non-owning pointers if they are needed
-    // 3) Smart pointers IF owning pointers can not be averted
-    // 4) Owning raw pointers if you know exactly what you are doing
-    //        and need them (e.g. interfacing with C code).
-
+    //[unique Unique pointer with no pointed value
     // Only one unique pointer can point to an address
     std::unique_ptr<int> c;
     if (c) {
-        std::cout << "*c : " << *c << std::endl;
+        std::cout << "*c : " << *c << '\n';
     } else {
-        std::cout << "c is empty" << std::endl;
+        std::cout << "c is empty" << '\n';
     }
+    //]
 
-    // Changing value
+    //[change Changing value of unique pointer
+    // Previous value is deleted if needed
     c = std::make_unique<int>(2);
     if (c) {
-        std::cout << "*c : " << *c << std::endl;
+        std::cout << "*c : " << *c << '\n';
     } else {
-        std::cout << "c is empty" << std::endl;
+        std::cout << "c is empty" << '\n';
     }
+    //]
 
-    // Invalid:
-    // c = new int(2);
+    //[unique_init Initialize unique pointer with value
+    auto c2 = std::make_unique<int>(3);
+    //]
 
-    // Another unique pointer
-    std::unique_ptr<int> c2(new int(3));
-
-    // Invalid:
-    // c = c2; doesn't work
-
+    //[swap Swap unique pointers
     // Swapping values is valid
     c.swap(c2);
+    // c = c2; <- but copying doesn't work
+    //]
 
-    // Moving values is valid
+    //[move_unique Moving values is valid
     c = std::move(c2);
     if (c) {
-        std::cout << "New *c : " << *c << std::endl;
+        std::cout << "New *c : " << *c << '\n';
     } else {
-        std::cout << "c is empty" << std::endl;
+        std::cout << "c is empty" << '\n';
     }
+    //]
 
     if (c2) {
-        std::cout << "New *c2 : " << *c << std::endl;
+        std::cout << "New *c2 : " << *c << '\n';
     } else {
-        std::cout << "c2 is empty" << std::endl;
+        std::cout << "c2 is empty" << '\n';
     }
 
-    // Shared pointers
-    // - More than one pointer can point to the same address
-    // - Deletes data automatically when the last pointer is over
-    // - More expensive than unique pointers
-    std::shared_ptr<int> sp(new int(2));
+    //[shared_ptr Create shared pointer
+    auto sp = std::make_shared<int>(2);
     if (sp) {
-        std::cout << "New *sp : " << *sp << std::endl;
+        std::cout << "New *sp : " << *sp << '\n';
     } else {
-        std::cout << "sp is empty" << std::endl;
+        std::cout << "sp is empty" << '\n';
     }
+    //]
 
-    // Another pointer
-    // This is valid now:
+    //[share_ptr Share pointed value
     std::shared_ptr<int> sp2 = sp;
     *sp2 = 3;
     if (sp) {
-        cout << "New *sp : " << *sp << endl;
+        std::cout << "New *sp : " << *sp << '\n'; // 3
     } else {
-        cout << "sp is empty" << endl;
+        std::cout << "sp is empty" << '\n';
     }
     if (sp2) {
-        cout << "New *sp2 : " << *sp << endl;
+        std::cout << "New *sp2 : " << *sp << '\n'; // 3
     } else {
-        cout << "sp2 is empty" << endl;
+        std::cout << "sp2 is empty" << '\n';
     }
 
-    // How many pointers are pointing to this number 3?
+    //[count Count number of shared pointers
+    // How many pointers are pointing to this number?
     std::cout << "There are " << sp.use_count() << " pointers to " << sp.get()
-              << std::endl;
+              << '\n';
+    //]
 
     return 0;
 }

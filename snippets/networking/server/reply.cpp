@@ -12,7 +12,7 @@
 #include <string>
 
 namespace http::server {
-
+    //[status_strings Status Strings
     namespace status_strings {
 
         const std::string ok = "HTTP/1.0 200 OK\r\n";
@@ -36,7 +36,9 @@ namespace http::server {
         const std::string bad_gateway = "HTTP/1.0 502 Bad Gateway\r\n";
         const std::string service_unavailable =
             "HTTP/1.0 503 Service Unavailable\r\n";
+        //]
 
+        //[to_buffer Store status string in buffer
         asio::const_buffer to_buffer(reply::status_type status) {
             switch (status) {
             case reply::ok:
@@ -75,14 +77,13 @@ namespace http::server {
                 return asio::buffer(internal_server_error);
             }
         }
-
     } // namespace status_strings
+    //]
 
+    //[to_buffers Write reply to buffers
     namespace misc_strings {
-
         const char name_value_separator[] = {':', ' '};
         const char crlf[] = {'\r', '\n'};
-
     } // namespace misc_strings
 
     std::vector<asio::const_buffer> reply::to_buffers() {
@@ -99,7 +100,9 @@ namespace http::server {
         buffers.push_back(asio::buffer(content));
         return buffers;
     }
+    //]
 
+    //[stock_replies Stock replies for messages
     namespace stock_replies {
 
         namespace as_string {
@@ -216,7 +219,9 @@ namespace http::server {
             }
         }
     } // namespace stock_replies
+    //]
 
+    //[stock_reply Create stock reply from status
     reply reply::stock_reply(reply::status_type status) {
         reply rep;
         rep.status = status;
@@ -228,5 +233,6 @@ namespace http::server {
         rep.headers[1].value = "text/html";
         return rep;
     }
+    //]
 
 } // namespace http::server

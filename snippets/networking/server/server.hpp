@@ -19,49 +19,54 @@
 
 namespace http::server {
 
-    /// The top-level class of the HTTP server.
+    //[server_define Define top-level class for the HTTP server.
     class server {
       public:
         server(const server &) = delete;
         server &operator=(const server &) = delete;
 
-        /// Construct the server to listen on the specified TCP address and
-        /// port, and serve up files from the given directory.
+        // Construct the server to listen on the specified TCP address and
+        // port, and serve up files from the given directory.
         explicit server(const std::string &address, const std::string &port,
                         const std::string &doc_root);
 
-        /// Run the server's io_context loop.
+        // Run the server's io_context loop.
         void run();
 
       private:
-        /// Perform an asynchronous accept operation.
-        void do_accept();
+        // Perform an asynchronous accept operation.
+        void schedule_accept();
 
-        /// Wait for a request to stop the server.
-        void do_await_stop();
+        // Wait for a request to stop the server.
+        void schedule_await_stop();
 
-        /// The io_context used to perform asynchronous operations.
+        // The io_context used to perform asynchronous operations.
         asio::io_context io_context_;
 
-        /// Executor for the io context
+        // Executor for the io context
         asio::thread_pool pool_;
 
-        /// The signal_set is used to register for process termination
-        /// notifications.
+        // The signal_set is used to register for process termination
+        // notifications.
         asio::signal_set signals_;
 
-        /// Acceptor used to listen for incoming connections.
+        // Acceptor used to listen for incoming connections.
         asio::ip::tcp::acceptor acceptor_;
 
-        /// The connection manager which owns all live connections.
+        // The connection manager which owns all live connections.
         connection_manager connection_manager_;
 
-        /// The handler for all incoming requests.
+        // The handler for all incoming requests.
         request_handler request_handler_;
+
+        // Helper class to setup signals
         void setup_signals();
+
+        // Helper class to setup acceptor
         void setup_acceptor(const std::string &address,
                             const std::string &port);
     };
+    //]
 
 } // namespace http::server
 

@@ -1,6 +1,8 @@
 #include <cstring>
 #include <iostream>
+//[headers Headers
 #include <tray.h>
+//]
 
 // Set string with the icon file for your OS
 #if TRAY_APPINDICATOR
@@ -14,7 +16,7 @@
 #define TRAY_ICON2 "icon.ico"
 #endif
 
-// Encapsulate tray and menu options into a class
+//[tray_class Encapsulate tray and menu options into a class
 class tray_and_menu {
   public:
     tray_and_menu() {
@@ -121,11 +123,16 @@ class tray_and_menu {
     // Tray with pointers to menu
     static tray tray_;
 };
+//]
 
+//[instantiate Instantiate tray
 tray tray_and_menu::tray_{.icon = TRAY_ICON1, .menu = nullptr};
+//]
 
 int main() {
+    //[run Run tray
     tray_and_menu t;
     tray_and_menu::run_tray();
+    //]
     return 0;
 }

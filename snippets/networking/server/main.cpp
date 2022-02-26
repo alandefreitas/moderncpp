@@ -12,11 +12,9 @@
 #include <iostream>
 #include <string>
 
+//[cli_check Check command line arguments.
 int main(int argc, char *argv[]) {
-    // - Move this to examples
-    // - Replace these snippets with an http server library
     try {
-        // Check command line arguments.
         if (argc != 4) {
             std::cout << "Usage: http_server <address> <port> <doc_root>\n";
             std::cout << "  For IPv4, try: ";
@@ -24,20 +22,25 @@ int main(int argc, char *argv[]) {
             std::cout << "  For IPv6, try: ";
             std::cout << "    receiver 0::0 80 .\n";
         }
+        //]
 
-        // Initialise the server
+        //[init Initialise the server
         std::string address = argc > 1 ? argv[1] : "0.0.0.0";
         std::string port = argc > 2 ? argv[2] : "80";
         std::string doc_root = argc > 3 ? argv[3] : ".";
         std::cout << "Server address: http://" << address << ":" << port
                   << '\n';
         http::server::server s(address, port, doc_root);
+        //]
 
-        // Run the server until stopped.
+        //[run Run the server until stopped.
         s.run();
+        //]
+    //[catch Catch server exceptions
     } catch (std::exception &e) {
         std::cerr << "exception: " << e.what() << "\n";
     }
+    //]
 
     return 0;
 }

@@ -16,7 +16,7 @@
 #include <vector>
 
 namespace http::server {
-    /// A request received from a client.
+    //[request A request received from a client.
     struct request {
         std::string method;
         std::string uri;
@@ -24,6 +24,7 @@ namespace http::server {
         int http_version_minor;
         std::vector<header> headers;
     };
+    //]
 } // namespace http::server
 
 #endif // HTTP_REQUEST_HPP

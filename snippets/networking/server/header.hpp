@@ -14,10 +14,12 @@
 #include <string>
 
 namespace http::server {
+    //[header Struct for request headers
     struct header {
         std::string name;
         std::string value;
     };
+    //]
 } // namespace http::server
 
 #endif // HTTP_HEADER_HPP

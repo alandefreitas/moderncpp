@@ -1,8 +1,11 @@
+//[headers Headers
 #include <matplot/matplot.h>
+//]
 
 int main() {
-    using namespace matplot;
-    plot(std::vector{1, 2, 3, 4, 5, 6});
-    show();
+    //[line_plot Line plot
+    matplot::plot(std::vector{1, 2, 3, 4, 5, 6});
+    matplot::show();
+    //]
     return 0;
 }

@@ -1,0 +1,18 @@
+---
+layout: default
+title: Build script
+nav_order: 1
+has_children: false
+parent: Basic Data Types
+grand_parent: Basic Syntax
+has_toc: false
+---
+# Build script
+
+```cmake
+--8<-- "snippets/basic_types/CMakeLists.txt"
+```
+
+
+
+

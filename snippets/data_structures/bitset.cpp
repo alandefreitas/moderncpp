@@ -1,85 +1,96 @@
-#include <bitset>
 #include <iostream>
 #include <cstddef>
+//[headers Headers
+#include <bitset>
+//]
 
 
 int main() {
-    using namespace std;
+    //[sizeof Get type size
+    std::cout << "sizeof(char) = " << sizeof(char) << " bytes" << '\n';
+    std::cout << "sizeof(unsigned char) = " << sizeof(unsigned char) << " bytes"
+         << '\n';
+    std::cout << "sizeof(short) = " << sizeof(short) << " bytes" << '\n';
+    std::cout << "sizeof(int) = " << sizeof(int) << " bytes" << '\n';
+    std::cout << "sizeof(long) = " << sizeof(long) << " bytes" << '\n';
+    std::cout << "sizeof(size_t) = " << sizeof(size_t) << " bytes" << '\n';
+    std::cout << "sizeof(double) = " << sizeof(double) << " bytes" << '\n' << '\n';
+    //]
 
-    // Get type size
-    cout << "sizeof(char) = " << sizeof(char) << " bytes" << endl;
-    cout << "sizeof(unsigned char) = " << sizeof(unsigned char) << " bytes"
-         << endl;
-    cout << "sizeof(short) = " << sizeof(short) << " bytes" << endl;
-    cout << "sizeof(int) = " << sizeof(int) << " bytes" << endl;
-    cout << "sizeof(long) = " << sizeof(long) << " bytes" << endl;
-    cout << "sizeof(size_t) = " << sizeof(size_t) << " bytes" << endl;
-    cout << "sizeof(double) = " << sizeof(double) << " bytes" << endl << endl;
-
-    // Binary literals
+    //[bin_literals Binary literals
     uint32_t r = 0b111111110100010001100110;
-    cout << r << endl;
+    std::cout << r << '\n';
+    //]
 
-    // Bitsets
-    cout << "r = " << bitset<32>(r) << endl << endl;
+    //[bitset Bitsets
+    std::cout << "r = " << std::bitset<32>(r) << '\n' << '\n';
+    //]
 
-    // Operators
+    //[bitset_operators Operators
     const uint32_t unit = 0x01;
-    cout << "unit << 0 = " << bitset<32>(unit << 0) << endl;
-    cout << "~(unit << 0) = " << bitset<32>(~(unit << 0)) << endl;
-    cout << "r & (~(unit << 0)) = " << bitset<32>(r & (~(unit << 0))) << endl
-         << endl;
+    std::cout << "unit << 0 = " << std::bitset<32>(unit << 0) << '\n';
+    std::cout << "~(unit << 0) = " << std::bitset<32>(~(unit << 0)) << '\n';
+    std::cout << "r & (~(unit << 0)) = " << std::bitset<32>(r & (~(unit << 0))) << '\n'
+         << '\n';
 
-    cout << "unit << 1 = " << bitset<32>(unit << 1) << endl;
-    cout << "~(unit << 1) = " << bitset<32>(~(unit << 1)) << endl;
-    cout << "r & (~(unit << 1)) = " << bitset<32>(r & (~(unit << 1))) << endl
-         << endl;
+    std::cout << "unit << 1 = " << std::bitset<32>(unit << 1) << '\n';
+    std::cout << "~(unit << 1) = " << std::bitset<32>(~(unit << 1)) << '\n';
+    std::cout << "r & (~(unit << 1)) = " << std::bitset<32>(r & (~(unit << 1))) << '\n'
+         << '\n';
 
-    cout << "unit << 2 = " << bitset<32>(unit << 2) << endl;
-    cout << "~(unit << 2) = " << bitset<32>(~(unit << 2)) << endl;
-    cout << "r & (~(unit << 2)) = " << bitset<32>(r & (~(unit << 2))) << endl
-         << endl;
+    std::cout << "unit << 2 = " << std::bitset<32>(unit << 2) << '\n';
+    std::cout << "~(unit << 2) = " << std::bitset<32>(~(unit << 2)) << '\n';
+    std::cout << "r & (~(unit << 2)) = " << std::bitset<32>(r & (~(unit << 2))) << '\n'
+         << '\n';
 
-    cout << "unit << 3 = " << bitset<32>(unit << 3) << endl;
-    cout << "~(unit << 3) = " << bitset<32>(~(unit << 3)) << endl;
-    cout << "r & (~(unit << 3)) = " << bitset<32>(r & (~(unit << 3))) << endl
-         << endl;
+    std::cout << "unit << 3 = " << std::bitset<32>(unit << 3) << '\n';
+    std::cout << "~(unit << 3) = " << std::bitset<32>(~(unit << 3)) << '\n';
+    std::cout << "r & (~(unit << 3)) = " << std::bitset<32>(r & (~(unit << 3))) << '\n'
+         << '\n';
 
-    cout << "unit << 4 = " << bitset<32>(unit << 4) << endl;
-    cout << "~(unit << 4) = " << bitset<32>(~(unit << 4)) << endl;
-    cout << "r & (~(unit << 4)) = " << bitset<32>(r & (~(unit << 4))) << endl
-         << endl;
+    std::cout << "unit << 4 = " << std::bitset<32>(unit << 4) << '\n';
+    std::cout << "~(unit << 4) = " << std::bitset<32>(~(unit << 4)) << '\n';
+    std::cout << "r & (~(unit << 4)) = " << std::bitset<32>(r & (~(unit << 4))) << '\n'
+         << '\n';
 
-    cout << "unit << 5 = " << bitset<32>(unit << 5) << endl;
-    cout << "~(unit << 5) = " << bitset<32>(~(unit << 5)) << endl;
-    cout << "r & (~(unit << 5)) = " << bitset<32>(r & (~(unit << 5))) << endl
-         << endl;
+    std::cout << "unit << 5 = " << std::bitset<32>(unit << 5) << '\n';
+    std::cout << "~(unit << 5) = " << std::bitset<32>(~(unit << 5)) << '\n';
+    std::cout << "r & (~(unit << 5)) = " << std::bitset<32>(r & (~(unit << 5))) << '\n'
+         << '\n';
 
-    cout << "unit << 6 = " << bitset<32>(unit << 6) << endl;
-    cout << "~(unit << 6) = " << bitset<32>(~(unit << 6)) << endl;
-    cout << "r & (~(unit << 6)) = " << bitset<32>(r & (~(unit << 6))) << endl
-         << endl;
+    std::cout << "unit << 6 = " << std::bitset<32>(unit << 6) << '\n';
+    std::cout << "~(unit << 6) = " << std::bitset<32>(~(unit << 6)) << '\n';
+    std::cout << "r & (~(unit << 6)) = " << std::bitset<32>(r & (~(unit << 6))) << '\n'
+         << '\n';
 
-    cout << "unit << 7 = " << bitset<32>(unit << 7) << endl;
-    cout << "~(unit << 7) = " << bitset<32>(~(unit << 7)) << endl;
-    cout << "r & (~(unit << 7)) = " << bitset<32>(r & (~(unit << 7))) << endl
-         << endl;
+    std::cout << "unit << 7 = " << std::bitset<32>(unit << 7) << '\n';
+    std::cout << "~(unit << 7) = " << std::bitset<32>(~(unit << 7)) << '\n';
+    std::cout << "r & (~(unit << 7)) = " << std::bitset<32>(r & (~(unit << 7))) << '\n'
+         << '\n';
 
-    cout << "unit << 8 = " << bitset<32>(unit << 8) << endl;
-    cout << "~(unit << 8) = " << bitset<32>(~(unit << 8)) << endl;
-    cout << "r & (~(unit << 8)) = " << bitset<32>(r & (~(unit << 8))) << endl
-         << endl;
+    std::cout << "unit << 8 = " << std::bitset<32>(unit << 8) << '\n';
+    std::cout << "~(unit << 8) = " << std::bitset<32>(~(unit << 8)) << '\n';
+    std::cout << "r & (~(unit << 8)) = " << std::bitset<32>(r & (~(unit << 8))) << '\n'
+         << '\n';
+    //]
 
+    //[new_bitset Create bitset with 8 bits
     std::bitset<8> b(20);
-    std::cout << "b: " << b << std::endl;
-    std::cout << "b: " << b.to_ulong() << std::endl;
-    std::cout << "b: " << b.to_string() << std::endl;
-    for (size_t i = 0; i < b.size(); ++i) {
-        std::cout << "b[i] : " << b[i] << std::endl;
-    }
+    //]
 
+    //[convert Convert bitset
+    std::cout << "b: " << b << '\n';
+    std::cout << "b: " << b.to_ulong() << '\n';
+    std::cout << "b: " << b.to_string() << '\n';
+    for (size_t i = 0; i < b.size(); ++i) {
+        std::cout << "b[i] : " << b[i] << '\n';
+    }
+    //]
+
+    //[byte Create byte
     std::byte a{20};
-    std::cout << "a: " << std::to_integer<int>(a) << std::endl;
+    std::cout << "a: " << std::to_integer<int>(a) << '\n';
+    //]
 
     return 0;
 }

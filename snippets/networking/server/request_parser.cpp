@@ -13,10 +13,15 @@
 
 namespace http::server {
 
+    //[request_parser Construct parser
     request_parser::request_parser() : state_(method_start) {}
+    //]
 
+    //[reset Reset parser
     void request_parser::reset() { state_ = method_start; }
+    //]
 
+    //[consume Consume char input
     request_parser::result_type request_parser::consume(request &req,
                                                         char input) {
         switch (state_) {
@@ -201,13 +206,19 @@ namespace http::server {
             return bad;
         }
     }
+    //]
 
+    //[is_char Check if c is char
     bool request_parser::is_char(int c) { return c >= 0 && c <= 127; }
+    //]
 
+    //[is_ctl Check if c is ctl
     bool request_parser::is_ctl(int c) {
         return (c >= 0 && c <= 31) || (c == 127);
     }
+    //]
 
+    //[is_tspecial Check if c is special
     bool request_parser::is_tspecial(int c) {
         switch (c) {
         case '(':
@@ -234,7 +245,10 @@ namespace http::server {
             return false;
         }
     }
+    //]
 
+    //[is_digit Check if c is digit
     bool request_parser::is_digit(int c) { return c >= '0' && c <= '9'; }
+    //]
 
 } // namespace http::server

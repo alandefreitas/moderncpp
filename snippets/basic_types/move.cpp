@@ -2,37 +2,48 @@
 #include <numeric>
 #include <vector>
 #include <algorithm>
+//[headers Headers
+#include <utility>
+//]
 
 int main() {
-    std::vector<double> v(30, 1.0);
+    //[copy Copying a vector
+    std::vector<double> v1(30, 1.0);
+    std::vector<double> v2 = v1;
+    //]
 
-    // Copying v
-    std::vector<double> v2 = v;
-
+    //[iterate_1 Both vectors are valid
     std::cout << "v1: ";
-    std::for_each(v.begin(), v.end(),
-                  [](const double c) { std::cout << c << " "; });
-    std::cout << std::endl;
+    for (double x: v1) {
+        std::cout << x << " ";
+    }
+    std::cout << '\n';
 
     std::cout << "v2: ";
-    std::for_each(v.begin(), v.end(),
-                  [](const double c) { std::cout << c << " "; });
-    std::cout << std::endl;
+    for (double x: v2) {
+        std::cout << x << " ";
+    }
+    std::cout << '\n';
+    //]
 
-    // Moving v
-    // - std::move casts v to an rvalue
-    std::vector<double> v3 = std::move(v);
+    //[copy Moving a vector
+    std::vector<double> v3 = std::move(v1);
+    //]
 
+    //[iterate_2 The vector moved-from is invalidated
     std::cout << "v1: ";
     // NOLINTNEXTLINE(bugprone-use-after-move): making a point
-    std::for_each(v.begin(), v.end(),
-                  [](const double c) { std::cout << c << " "; });
-    std::cout << std::endl;
+    for (double x: v1) {
+        std::cout << x << " "; // prints nothing
+    }
+    std::cout << '\n';
 
     std::cout << "v3: ";
-    std::for_each(v3.begin(), v3.end(),
-                  [](const double c) { std::cout << c << " "; });
-    std::cout << std::endl;
+    for (double x: v3) {
+        std::cout << x << " ";
+    }
+    std::cout << '\n';
+    //]
 
     return 0;
 }
