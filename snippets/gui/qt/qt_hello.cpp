@@ -36,6 +36,6 @@ int main(int argc, char **argv) {
 
     //[run Run application
     window.show();
-    return QApplication::exec();
+    return app.exec();
     //]
 }
