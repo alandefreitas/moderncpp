@@ -92,8 +92,8 @@ nav:
       - Signals: programming-paradigms/parallelism/signals.md
       - Async++: programming-paradigms/parallelism/async.md
   - Utilities:
-    - Regular Expressions:
-      - Regex: utilities/regular-expressions/regex.md
+    - Regular Expressions: utilities/regex.md
+    - Command line parsing: utilities/lyra.md
     - Networking:
       - Network: utilities/networking/network.md
       - Async Network: utilities/networking/async-network.md

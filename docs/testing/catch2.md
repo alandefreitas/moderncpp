@@ -1,6 +1,6 @@
 # Catch2
 
-{{ code_snippet("snippets/tests/CMakeLists.txt", "fetch_catch2", "cmake") }}
+{{ code_snippet("snippets/tests/CMakeLists.txt", "find_catch2", "cmake") }}
 
 <hr>
 
